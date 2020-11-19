@@ -1,0 +1,6 @@
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\DTO__SmartParking\bin\Debug\DTO__SmartParking.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\DTO__SmartParking\bin\Debug\DTO__SmartParking.pdb
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\DTO__SmartParking\obj\Debug\DTO__SmartParking.csprojAssemblyReference.cache
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\DTO__SmartParking\obj\Debug\DTO__SmartParking.csproj.CoreCompileInputs.cache
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\DTO__SmartParking\obj\Debug\DTO__SmartParking.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\DTO__SmartParking\obj\Debug\DTO__SmartParking.pdb

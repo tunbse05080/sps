@@ -104,3 +104,9 @@ C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\obj\Debug\GUI_SmartPar
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\obj\Debug\GUI_SmartParking.csproj.CopyComplete
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\obj\Debug\GUI_SmartParking.exe
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\obj\Debug\GUI_SmartParking.pdb
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\BUS_SmartParking.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\DTO__SmartParking.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\DAL_SmartParking.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\BUS_SmartParking.pdb
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\DTO__SmartParking.pdb
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\DAL_SmartParking.pdb

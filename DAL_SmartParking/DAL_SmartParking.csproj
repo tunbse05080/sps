@@ -41,7 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_ParkingPlace.cs" />
+    <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO__SmartParking\DTO__SmartParking.csproj">
+      <Project>{8877e765-d96c-4f34-bcb4-3f1dd445ffcd}</Project>
+      <Name>DTO__SmartParking</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,6 +12,8 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using System.IO;
 using System.Threading;
+using DTO__SmartParking;
+using BUS_SmartParking;
 
 namespace SmartParking
 {
@@ -22,6 +24,7 @@ namespace SmartParking
         private Bitmap BMP;
         private FilterInfoCollection CAMS;
         System.Windows.Forms.Timer tmr = null;
+        BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         #endregion
         public MainForm()
         {
@@ -63,6 +66,8 @@ namespace SmartParking
             pictureBox1.Image = BMP;
             //   throw new NotImplementedException();
         }
+
+        //Get info from Setting
         private void CallSetting()
         {
             using (SettingForm form2 = new SettingForm())
@@ -70,11 +75,14 @@ namespace SmartParking
                 if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     lblGate.Text = form2.SelectedText;
+                    lblParkingName.Text = form2.ParkingName;
                 }
             }
             StartTimer();
             startCamera();
         }
+
+        //Timenow
         private void StartTimer()
         {
             tmr = new System.Windows.Forms.Timer();
@@ -92,6 +100,7 @@ namespace SmartParking
             CallSetting();
         }
 
+        //Capture button
         private void btnCapture_Click(object sender, EventArgs e)
         {
             CapturePhoto();
