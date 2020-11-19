@@ -190,7 +190,7 @@
             this.lblTimeIn.Size = new System.Drawing.Size(128, 66);
             this.lblTimeIn.TabIndex = 1;
             this.lblTimeIn.Text = "Time In:";
-            this.lblTimeIn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTimeIn.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // lblTimeOut
             // 
@@ -222,7 +222,7 @@
             this.lblDateTimeIn.Size = new System.Drawing.Size(238, 66);
             this.lblDateTimeIn.TabIndex = 3;
             this.lblDateTimeIn.Text = "Time";
-            this.lblDateTimeIn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDateTimeIn.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblDateTimeOut
             // 
