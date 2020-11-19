@@ -1,2 +1,0 @@
-# sps
-smart parking place

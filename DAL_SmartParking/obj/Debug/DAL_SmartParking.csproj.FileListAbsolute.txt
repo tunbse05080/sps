@@ -1,9 +1,0 @@
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\bin\Debug\DAL_SmartParking.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\bin\Debug\DAL_SmartParking.pdb
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\bin\Debug\DTO_SmartParking.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\bin\Debug\DTO_SmartParking.pdb
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\obj\Debug\DAL_SmartParking.csprojAssemblyReference.cache
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\obj\Debug\DAL_SmartParking.csproj.CoreCompileInputs.cache
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\obj\Debug\DAL_SmartParking.csproj.CopyComplete
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\obj\Debug\DAL_SmartParking.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\DAL_SmartParking\obj\Debug\DAL_SmartParking.pdb
