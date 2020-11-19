@@ -29,12 +29,37 @@ namespace SmartParking
         public MainForm()
         {
             InitializeComponent();
-            CAMS = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo info in CAMS)
+           CAMS = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (CAMS.Count > 0)
             {
-                comboBox1.Items.Add(info.Name);
+                foreach (FilterInfo info in CAMS)
+                {
+                    comboBox1.Items.Add(info.Name);
+                }
+                comboBox1.SelectedIndex = 0;
             }
-            comboBox1.SelectedIndex = 0;
+            else
+            {
+                comboBox1.Text = "No cameras found";
+                string message = "No cameras found. Insert a camera please!";
+                string caption = "No cameras found";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                // Displays the MessageBox.
+
+                result = MessageBox.Show(this, message, caption, buttons);
+
+                if (result == DialogResult.Yes)
+                {
+
+                    // Closes the parent form.
+                    Close();
+
+                }
+            }
+            
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,7 +72,10 @@ namespace SmartParking
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            CAM.Stop();
+            if (CAMS.Count > 0)
+            {
+                CAM.Stop();
+            }
             this.Close();
         }
         private void startCamera()
@@ -79,7 +107,10 @@ namespace SmartParking
                 }
             }
             StartTimer();
-            startCamera();
+            if (CAMS.Count > 0)
+            {
+                startCamera();
+            }               
         }
 
         //Timenow
