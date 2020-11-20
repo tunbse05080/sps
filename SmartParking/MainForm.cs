@@ -25,6 +25,8 @@ namespace SmartParking
         private FilterInfoCollection CAMS;
         System.Windows.Forms.Timer tmr = null;
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
+        public int CarFree { get; set; }
+        public int MotorFree { get; set; }
         #endregion
         public MainForm()
         {
@@ -106,6 +108,8 @@ namespace SmartParking
                 {
                     lblGate.Text = form2.SelectedText;
                     lblParkingName.Text = form2.ParkingName;
+                    lblNumberCar.Text = busPK.getCarFree(form2.ParkingID).ToString();
+                    lblNumberMotor.Text = busPK.getMotorFree(form2.ParkingID).ToString();
                 }
             }
             StartTimer();

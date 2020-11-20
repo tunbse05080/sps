@@ -18,5 +18,14 @@ namespace DAL_SmartParking
             da.Fill(dtParkingPlace);
             return dtParkingPlace;
         }
+        public DataTable getParkingPlacebyID(int ParkingID)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from ParkingPlace where ParkingPlaceID = " + ParkingID+"", conn);
+            DataTable dtParkingPlace = new DataTable();
+            da.Fill(dtParkingPlace);
+            return dtParkingPlace;
+        }
+
+
     }
 }

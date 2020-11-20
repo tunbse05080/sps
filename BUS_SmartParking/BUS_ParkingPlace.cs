@@ -16,5 +16,13 @@ namespace BUS_SmartParking
         {
             return dalParkingPlace.getParkingPlace();
         }
+        public int getCarFree(int ParkingID)
+        {
+            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][6].ToString());
+        }
+        public int getMotorFree(int ParkingID)
+        {
+            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][7].ToString());
+        }
     }
 }

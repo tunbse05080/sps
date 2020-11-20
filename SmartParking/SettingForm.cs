@@ -21,6 +21,7 @@ namespace SmartParking
         #region
         public string SelectedText { get; set; }
         public string ParkingName { get; set; }
+        public int ParkingID { get; set; }
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         #endregion
         public SettingForm()
@@ -28,6 +29,7 @@ namespace SmartParking
             InitializeComponent();
             comboBox1.DataSource = busPK.getParkingPlace();
             comboBox1.DisplayMember = busPK.getParkingPlace().Columns[1].ToString();
+            comboBox1.ValueMember = busPK.getParkingPlace().Columns[0].ToString();
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
@@ -40,6 +42,7 @@ namespace SmartParking
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             ParkingName = comboBox1.Text;
+            ParkingID = Convert.ToInt32(comboBox1.SelectedValue);
             if (rbtIn.Checked == true)
             {
                 SelectedText = "Gate In";
