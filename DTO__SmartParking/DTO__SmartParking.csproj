@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO_Card.cs" />
+    <Compile Include="DTO_MonthlyTicket.cs" />
     <Compile Include="DTO_ParkingPlace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
