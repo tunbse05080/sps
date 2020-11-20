@@ -54,7 +54,7 @@ namespace SmartParking
                 {
 
                     // Closes the parent form.
-                    Close();
+                    Application.Exit();
 
                 }
             }
@@ -78,6 +78,8 @@ namespace SmartParking
             }
             this.Close();
         }
+
+        //start camera
         private void startCamera()
         {
             if (CAM != null && CAM.IsRunning)
@@ -136,6 +138,8 @@ namespace SmartParking
         {
             CapturePhoto();
         }
+
+        //capture photo
         private void CapturePhoto()
         {
             pictureBox_C.Image = pictureBox1.Image;
