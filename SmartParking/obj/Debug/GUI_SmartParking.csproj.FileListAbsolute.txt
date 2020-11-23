@@ -51,16 +51,6 @@ C:\Users\hanov\OneDrive\Documents\Visual Studio 2015\Projects\SmartParking\Smart
 C:\Users\hanov\OneDrive\Documents\Visual Studio 2015\Projects\SmartParking\SmartParking\obj\Debug\GUI_SmartParking.csproj.CopyComplete
 C:\Users\hanov\OneDrive\Documents\Visual Studio 2015\Projects\SmartParking\SmartParking\obj\Debug\GUI_SmartParking.exe
 C:\Users\hanov\OneDrive\Documents\Visual Studio 2015\Projects\SmartParking\SmartParking\obj\Debug\GUI_SmartParking.pdb
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x64\concrt140.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x64\msvcp140.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x64\opencv_videoio_ffmpeg411_64.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x64\vcruntime140.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x86\concrt140.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x86\msvcp140.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x86\opencv_videoio_ffmpeg411.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x86\vcruntime140.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x64\cvextern.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\x86\cvextern.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\GUI_SmartParking.exe.config
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\GUI_SmartParking.exe
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\GUI_SmartParking.pdb
@@ -68,17 +58,12 @@ C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\AForge.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\AForge.Video.DirectShow.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\AForge.Video.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.UI.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.UI.GL.dll
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.World.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\OpenTK.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\OpenTK.GLControl.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\ZedGraph.dll
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\AForge.xml
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\AForge.Video.xml
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\AForge.Video.DirectShow.xml
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.UI.xml
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.UI.GL.xml
-C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.World.xml
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\OpenTK.xml
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\OpenTK.GLControl.xml
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\ZedGraph.xml
@@ -110,3 +95,8 @@ C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\DAL_SmartPar
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\BUS_SmartParking.pdb
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\DTO__SmartParking.pdb
 C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\DAL_SmartParking.pdb
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.CV.ML.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\Emgu.Util.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\System.Drawing.Primitives.dll
+C:\Users\hanov\OneDrive\Documents\GitHub\sps\SmartParking\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
