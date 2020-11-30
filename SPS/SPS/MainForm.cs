@@ -1,0 +1,559 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using AForge;
+using AForge.Video;
+using AForge.Video.DirectShow;
+using Emgu.CV;
+using Emgu.CV.Structure;
+using Emgu.CV.ML;
+using Emgu.CV.ML.Structure;
+using Emgu.CV.UI;
+using Emgu.Util;
+using Emgu.CV.CvEnum;
+using DTO_SPS;
+using BUS_SPS;
+using tesseract;
+
+namespace SPS
+{
+    public partial class MainForm : Form
+    {
+        #region
+        private VideoCaptureDevice CAM;
+        private Bitmap BMP;
+        private FilterInfoCollection CAMS;
+        System.Windows.Forms.Timer tmr = null;
+        BUS_ParkingPlace busPK = new BUS_ParkingPlace();
+        public int CarFree { get; set; }
+        public int MotorFree { get; set; }
+        private int ParkingID;
+        private string m_path = Application.StartupPath + @"\data\"; //duong dan luu hinh anh
+        List<Image<Bgr, Byte>> PlateImagesList = new List<Image<Bgr, byte>>();
+        List<string> PlateTextList = new List<string>();
+        List<Rectangle> listRect = new List<Rectangle>();
+        PictureBox[] box = new PictureBox[12];
+
+        public TesseractProcessor full_tesseract = null;
+        public TesseractProcessor ch_tesseract = null;
+        public TesseractProcessor num_tesseract = null;
+        private List<string> lstimages = new List<string>();
+        private const string m_lang = "eng";
+        #endregion
+        public MainForm()
+        {
+            InitializeComponent();
+            CAMS = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (CAMS.Count > 0)
+            {
+                foreach (FilterInfo info in CAMS)
+                {
+                    toolStripComboBox1.Items.Add(info.Name);
+                }
+                toolStripComboBox1.SelectedIndex = 0;
+            }
+            else
+            {
+                toolStripComboBox1.Text = "No cameras found";
+                string message = "No cameras found. Insert a camera please!";
+                string caption = "No cameras found";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                // Displays the MessageBox.
+
+                result = MessageBox.Show(this, message, caption, buttons);
+
+                if (result == DialogResult.Yes)
+                {
+
+                    // Closes the parent form.
+                    Application.Exit();
+
+                }
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn chắc chắn muốn thoát không?", "Hỏi Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                CAM.Stop();
+                Application.Exit();
+            }    
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            full_tesseract = new TesseractProcessor();
+            bool succeed = full_tesseract.Init(m_path, m_lang, 3);
+            if (!succeed)
+            {
+                MessageBox.Show("Tesseract initialization failed. The application will exit.");
+                Application.Exit();
+            }
+            full_tesseract.SetVariable("tessedit_char_whitelist", "ACDFHKLMNPRSTVXY1234567890").ToString();
+
+            ch_tesseract = new TesseractProcessor();
+            succeed = ch_tesseract.Init(m_path, m_lang, 3);
+            if (!succeed)
+            {
+                MessageBox.Show("Tesseract initialization failed. The application will exit.");
+                Application.Exit();
+            }
+            ch_tesseract.SetVariable("tessedit_char_whitelist", "ACDEFHKLMNPRSTUVXY").ToString();
+
+            num_tesseract = new TesseractProcessor();
+            succeed = num_tesseract.Init(m_path, m_lang, 3);
+            if (!succeed)
+            {
+                MessageBox.Show("Tesseract initialization failed. The application will exit.");
+                Application.Exit();
+            }
+            num_tesseract.SetVariable("tessedit_char_whitelist", "1234567890").ToString();
+
+            System.Environment.CurrentDirectory = System.IO.Path.GetFullPath(m_path);
+            for (int i = 0; i < box.Length; i++)
+            {
+                box[i] = new PictureBox();
+            }
+            //string folder = Application.StartupPath + "\\ImageTest";
+            //foreach (string fileName in Directory.GetFiles(folder, "*.bmp", SearchOption.TopDirectoryOnly))
+            //{
+            //    lstimages.Add(Path.GetFullPath(fileName));
+            //}
+            //foreach (string fileName in Directory.GetFiles(folder, "*.jpg", SearchOption.TopDirectoryOnly))
+            //{
+            //    lstimages.Add(Path.GetFullPath(fileName));
+            //}
+            CallSetting();
+        }
+
+        //Get info from Setting
+        private void CallSetting()
+        {
+            using (SettingForm form2 = new SettingForm())
+            {
+                if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    ParkingID = form2.SelectedGate;
+                    if (ParkingID == 0)
+                    {
+                        lblGate.Text = "Cổng vào";
+                    }
+                    else {
+                        lblGate.Text = "Cổng ra";
+                    }
+                    groupPanel1.Text = "Bãi đỗ xe " + form2.ParkingName;
+                    lblCar.Text = busPK.getCarFree(form2.ParkingID).ToString();
+                    lblMotor.Text = busPK.getMotorFree(form2.ParkingID).ToString();
+                }
+            }
+            StartTimer();
+            if (CAMS.Count > 0)
+            {
+                startCamera();
+            }
+        }
+        //start camera
+        private void startCamera()
+        {
+            if (CAM != null && CAM.IsRunning)
+            {
+                CAM.Stop();
+            }
+            CAM = new VideoCaptureDevice(CAMS[toolStripComboBox1.SelectedIndex].MonikerString);
+            CAM.NewFrame += CAM_NewFrame;
+            CAM.Start();
+        }
+        private void CAM_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            BMP = (Bitmap)eventArgs.Frame.Clone();
+            pictureBox_WC.Image = BMP;
+            //   throw new NotImplementedException();
+        }
+
+        //Timenow
+        private void StartTimer()
+        {
+            tmr = new System.Windows.Forms.Timer();
+            tmr.Interval = 1000;
+            tmr.Tick += new EventHandler(tmr_Tick);
+            tmr.Enabled = true;
+        }
+
+        void tmr_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt - dd/MM/yyyy");
+        }
+
+        private void btnCapture_Click(object sender, EventArgs e)
+        {
+            reset();
+            bool checkxe = true;
+            CapturePhoto();
+            string link = m_path + "aa.bmp";
+            ProcessImage(link);
+            if (PlateImagesList.Count != 0)
+            {
+                Image<Bgr, byte> src = new Image<Bgr, byte>(PlateImagesList[0].ToBitmap());
+                Bitmap grayframe;
+                Detect con = new Detect();
+                Bitmap color;
+               // MessageBox.Show("1");
+                int c = con.IdentifyContours(src.ToBitmap(), 50, false, out grayframe, out color, out listRect);
+               // MessageBox.Show("2");
+                //int z = con.count;
+                //pictureBox6.Image = color;
+                //pictureBox3.Image = grayframe;
+               // MessageBox.Show("3");
+                // textBox2.Text = c.ToString();
+                Image<Gray, byte> dst = new Image<Gray, byte>(grayframe);
+                //dst = dst.Dilate(2);
+                //dst = dst.Erode(3);
+                grayframe = dst.ToBitmap();
+                //pictureBox2.Image = grayframe.Clone(listRect[2], grayframe.PixelFormat);
+                string zz = "";
+                string bienso = "";
+
+                // lọc và sắp xếp số
+                List<Bitmap> bmp = new List<Bitmap>();
+                List<int> erode = new List<int>();
+                List<Rectangle> up = new List<Rectangle>();
+                List<Rectangle> dow = new List<Rectangle>();
+                int up_y = 0, dow_y = 0;
+                bool flag_up = false;
+
+                int di = 0;
+
+                if (listRect == null) return;
+
+                for (int i = 0; i < listRect.Count; i++)
+                {
+                    Bitmap ch = grayframe.Clone(listRect[i], grayframe.PixelFormat);
+                    int cou = 0;
+                    full_tesseract.Clear();
+                    full_tesseract.ClearAdaptiveClassifier();
+                    string temp = full_tesseract.Apply(ch);
+                    while (temp.Length > 3)
+                    {
+                        Image<Gray, byte> temp2 = new Image<Gray, byte>(ch);
+                        temp2 = temp2.Erode(2);
+                        ch = temp2.ToBitmap();
+                        full_tesseract.Clear();
+                        full_tesseract.ClearAdaptiveClassifier();
+                        temp = full_tesseract.Apply(ch);
+                        cou++;
+                        if (cou > 10)
+                        {
+                            listRect.RemoveAt(i);
+                            i--;
+                            di = 0;
+                            break;
+                        }
+                        di = cou;
+                    }
+                }
+
+                for (int i = 0; i < listRect.Count; i++)
+                {
+                    for (int j = i; j < listRect.Count; j++)
+                    {
+                        if (listRect[i].Y > listRect[j].Y + 100)
+                        {
+                            flag_up = true;
+                            up_y = listRect[j].Y;
+                            dow_y = listRect[i].Y;
+                            break;
+                        }
+                        else if (listRect[j].Y > listRect[i].Y + 100)
+                        {
+                            flag_up = true;
+                            up_y = listRect[i].Y;
+                            dow_y = listRect[j].Y;
+                            break;
+                        }
+                        if (flag_up == true) break;
+                    }
+                }
+
+                for (int i = 0; i < listRect.Count; i++)
+                {
+                    if (listRect[i].Y < up_y + 50 && listRect[i].Y > up_y - 50)
+                    {
+                        up.Add(listRect[i]);
+                    }
+                    else if (listRect[i].Y < dow_y + 50 && listRect[i].Y > dow_y - 50)
+                    {
+                        dow.Add(listRect[i]);
+                    }
+                }
+
+                if (flag_up == false) dow = listRect;
+
+                for (int i = 0; i < up.Count; i++)
+                {
+                    for (int j = i; j < up.Count; j++)
+                    {
+                        if (up[i].X > up[j].X)
+                        {
+                            Rectangle w = up[i];
+                            up[i] = up[j];
+                            up[j] = w;
+                        }
+                    }
+                }
+                for (int i = 0; i < dow.Count; i++)
+                {
+                    for (int j = i; j < dow.Count; j++)
+                    {
+                        if (dow[i].X > dow[j].X)
+                        {
+                            Rectangle w = dow[i];
+                            dow[i] = dow[j];
+                            dow[j] = w;
+                        }
+                    }
+                }
+
+                int x = 12;
+                int c_x = 0;
+
+                for (int i = 0; i < up.Count; i++)
+                {
+                    Bitmap ch = grayframe.Clone(up[i], grayframe.PixelFormat);
+                    Bitmap o = ch;
+                    //ch = con.Erodetion(ch);
+                    string temp = "";
+                    if (i < 2)
+                    {
+                        temp = Ocr(ch, false, true); // nhan dien so
+                    }
+                    if (i == 2)
+                    {
+                        temp = Ocr(ch, false, false);// nhan dien chu
+                    }
+                    if (i == 3)
+                    {
+                        checkxe = false;
+                        temp = Ocr(ch, false, true); // nhan dien so
+                    }
+
+
+                    zz += temp;
+                    bienso += temp;
+                    box[i].Location = new System.Drawing.Point(x + i * 50, 0);
+                    box[i].Size = new Size(50, 100);
+                    box[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                    box[i].Image = ch;
+                    //panel1.Controls.Add(box[i]);
+                    c_x++;
+                }
+                zz += "\r\n";
+
+                for (int i = 0; i < dow.Count; i++)
+                {
+                    Bitmap ch = grayframe.Clone(dow[i], grayframe.PixelFormat);
+                    //ch = con.Erodetion(ch);
+                    string temp = Ocr(ch, false, true); // nhan dien so
+
+
+                    zz += temp;
+                    bienso += temp;
+                    box[i + c_x].Location = new System.Drawing.Point(x + i * 50, 100);
+                    box[i + c_x].Size = new Size(50, 100);
+                    box[i + c_x].SizeMode = PictureBoxSizeMode.StretchImage;
+                    box[i + c_x].Image = ch;
+
+                    //panel1.Controls.Add(box[i + c_x]);
+                }
+                #region hienthi
+                txtLicense.Text = zz;
+                //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
+                lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt");
+                if (checkxe == true)
+                {
+                    lblVehicle.Text = "Xe Ôtô";
+
+                }
+                else
+                {
+                    lblVehicle.Text = "Xe Máy";
+                }
+                #endregion
+
+                bienso.Trim();
+                do
+                {
+                    bienso = bienso.Replace("\n", "");
+                } while (bienso.IndexOf("\n") != -1);
+
+
+                //string Str1 = bienso.Substring(0, 2); //lay 2 chu so dau cua bien so de xac dinh tinh / thanh pho
+                //int n = int.Parse(Str1);             
+
+              
+            }
+        }
+
+        private string Ocr(Bitmap image_s, bool isFull, bool isNum = false)
+        {
+            string temp = "";
+            Image<Gray, byte> src = new Image<Gray, byte>(image_s);
+            double ratio = 1;
+            while (true)
+            {
+                ratio = (double)CvInvoke.cvCountNonZero(src) / (src.Width * src.Height);
+                if (ratio > 0.5) break;
+                src = src.Dilate(2);
+            }
+            Bitmap image = src.ToBitmap();
+
+            TesseractProcessor ocr;
+            if (isFull)
+                ocr = full_tesseract;
+            else if (isNum)
+                ocr = num_tesseract;
+            else
+                ocr = ch_tesseract;
+
+            int cou = 0;
+            ocr.Clear();
+            ocr.ClearAdaptiveClassifier();
+            temp = ocr.Apply(image);
+            while (temp.Length > 3)
+            {
+                Image<Gray, byte> temp2 = new Image<Gray, byte>(image);
+                temp2 = temp2.Erode(2);
+                image = temp2.ToBitmap();
+                ocr.Clear();
+                ocr.ClearAdaptiveClassifier();
+                temp = ocr.Apply(image);
+                cou++;
+                if (cou > 10)
+                {
+                    temp = "";
+                    break;
+                }
+            }
+            return temp;
+
+        }
+        public void reset()
+        {
+            //pictureBox1.Image = null;
+            //pictureBox3.Image = null;
+            //pictureBox6.Image = null;
+            //imageBox1.Image = null;
+            //panel1.Controls.Clear();
+            lblVehicle.Text = "";
+            lblLicense.Text = "";
+            lblCost.Text = "VND";
+            lblTimeIn.Text = "";
+            lblTimeOut.Text = "";
+            lblTicket.Text = "";
+            lblName.Text = "";
+            lblCardNumber.Text = "";
+            txtLicense.Text = "";
+
+        }
+        //capture photo
+        private void CapturePhoto()
+        {
+            pictureBox1.Image = pictureBox_WC.Image;
+            if (System.IO.File.Exists(m_path + "aa.bmp")) //xoa file aa.bmp neu file da ton tai
+            {
+                System.IO.File.Delete(m_path + "aa.bmp");
+            }
+            pictureBox1.Image.Save(m_path + "aa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            CallSetting();
+        }
+        //phan tich hinh anh
+        public void ProcessImage(string urlImage)
+        {
+            PlateImagesList.Clear();
+            PlateTextList.Clear();
+
+            Bitmap img = new Bitmap(urlImage);
+            FindLicensePlate(img);
+        }
+        public void FindLicensePlate(Bitmap image) //tim vi tri bien so xe trong hinh anh
+        {
+
+
+            Image<Bgr, byte> frame = new Image<Bgr, byte>(image);
+
+
+
+
+            using (Image<Gray, byte> grayframe = new Image<Gray, byte>(image))
+            {
+
+
+                var faces =
+                       grayframe.DetectHaarCascade(
+                               new HaarCascade(Application.StartupPath + "\\output-hv-33-x25.xml"), 1.1, 8,
+                               HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
+                               new Size(0, 0)
+                               )[0];
+
+                #region giaithich
+                //Thấy khu vực hình chữ nhật trong hình ảnh cho rằng rất có thể chứa các đối tượng thác đã được huấn luyện và trả lại những 
+                //vùng như là một chuỗi các hình chữ nhật. Các chức năng quét hình ảnh nhiều lần ở các quy mô khác nhau 
+                // (xem cvSetImagesForHaarClassifierCascade). Mỗi lần nó xem xét các khu vực chồng chéo trong hình ảnh và áp dụng 
+                //     các phân loại cho các khu vực sử dụng cvRunHaarClassifierCascade. Nó cũng có thể áp dụng một số chẩn đoán để 
+                //          giảm số lượng các khu vực phân tích, chẳng hạn như prunning Canny. Sau khi đã tiến hành và thu thập các hình
+                // chữ nhật ứng cử viên (khu vực mà thông qua các đợt phân loại), nó nhóm chúng và trả về một chuỗi các hình chữ nhật trung 
+                //     bình cho mỗi nhóm đủ lớn. Các thông số mặc định (scale_factor = 1.1, min_neighbors = 3, cờ = 0) được điều chỉnh cho chính 
+                //          xác phát hiện đối tượng chưa chậm. Đối với một hoạt động nhanh hơn trên thực video hình ảnh các thiết lập là: scale_factor = 1.2,
+                //   min_neighbors = 2, cờ = CV_HAAR_DO_CANNY_PRUNING, MIN_SIZE = <có thể tối thiểu kích thước mặt> (ví dụ, ~ 1/4 đến 1/16 của khu vực hình ảnh trong trường hợp hội nghị truyền hình).
+                #endregion
+
+                foreach (var face in faces)
+                {
+                    Image<Bgr, Byte> tmp = frame.Copy();
+                    tmp.ROI = face.rect;
+
+                    frame.Draw(face.rect, new Bgr(Color.Red), 2);
+
+                    PlateImagesList.Add(tmp.Resize(500, 500, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC, true));
+
+                    //Image<Gray, byte> tmp2 = new Image<Gray, byte>(tmp.ToBitmap());
+                    //tmp2 = tmp2.ThresholdBinary(new Gray(50), new Gray(255));
+
+
+
+
+                   // pictureBox6.Image = tmp.ToBitmap();
+                   // pictureBox6.Update();
+
+
+
+
+                    //string pl = this.Ocr(tmp2.ToBitmap());
+
+                    //PlateTextList.Add(pl);
+                }
+
+                Image<Bgr, Byte> showimg = new Image<Bgr, Byte>(image.Size);
+                //showimg = frame.Resize(imageBox1.Width, imageBox1.Height, 0);
+                //imageBox1.Image = showimg;
+
+            }
+
+        }
+    }
+}

@@ -1,0 +1,6 @@
+C:\Users\hanov\Downloads\SPS\SPS\DTO_SPS\bin\Debug\DTO_SPS.dll
+C:\Users\hanov\Downloads\SPS\SPS\DTO_SPS\bin\Debug\DTO_SPS.pdb
+C:\Users\hanov\Downloads\SPS\SPS\DTO_SPS\obj\Debug\DTO_SPS.csprojAssemblyReference.cache
+C:\Users\hanov\Downloads\SPS\SPS\DTO_SPS\obj\Debug\DTO_SPS.csproj.CoreCompileInputs.cache
+C:\Users\hanov\Downloads\SPS\SPS\DTO_SPS\obj\Debug\DTO_SPS.dll
+C:\Users\hanov\Downloads\SPS\SPS\DTO_SPS\obj\Debug\DTO_SPS.pdb

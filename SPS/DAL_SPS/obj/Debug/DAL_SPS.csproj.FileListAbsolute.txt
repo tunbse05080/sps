@@ -1,0 +1,9 @@
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\bin\Debug\DAL_SPS.dll
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\bin\Debug\DAL_SPS.pdb
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\bin\Debug\DTO_SPS.dll
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\bin\Debug\DTO_SPS.pdb
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\obj\Debug\DAL_SPS.csprojAssemblyReference.cache
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CoreCompileInputs.cache
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CopyComplete
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\obj\Debug\DAL_SPS.dll
+C:\Users\hanov\Downloads\SPS\SPS\DAL_SPS\obj\Debug\DAL_SPS.pdb

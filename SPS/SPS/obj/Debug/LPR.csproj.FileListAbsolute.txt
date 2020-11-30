@@ -1,0 +1,68 @@
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\bin\Debug\LPR.exe.config
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\bin\Debug\LPR.exe
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\bin\Debug\LPR.pdb
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\bin\Debug\MetroFramework.Design.dll
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\bin\Debug\MetroFramework.dll
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\bin\Debug\MetroFramework.Fonts.dll
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\obj\Debug\LPR.csprojResolveAssemblyReference.cache
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\obj\Debug\LPR.Form1.resources
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\obj\Debug\LPR.Properties.Resources.resources
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\obj\Debug\LPR.csproj.GenerateResource.Cache
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\obj\Debug\LPR.exe
+c:\users\quân\documents\visual studio 2013\Projects\LPR\LPR\obj\Debug\LPR.pdb
+C:\Users\Administrator\Downloads\LPR\LPR\bin\Debug\LPR.exe.config
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\LPR.exe
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\LPR.pdb
+C:\Users\Administrator\Downloads\LPR\LPR\bin\Debug\LPR.exe
+C:\Users\Administrator\Downloads\LPR\LPR\bin\Debug\LPR.pdb
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\LPR.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\LPR.Properties.Resources.resources
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\LPR.csproj.GenerateResource.Cache
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\LPR.Form2.resources
+C:\Users\Administrator\Downloads\LPR\LPR\bin\Debug\Interop.SpeechLib.dll
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\Interop.SpeechLib.dll
+C:\Users\Administrator\Downloads\LPR\LPR\obj\Debug\LPR.csproj.ResolveComReference.cache
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\LPR.exe.config
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\Interop.SpeechLib.dll
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csproj.ResolveComReference.cache
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.exe
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.pdb
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\LPR.exe
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\LPR.pdb
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\Interop.SpeechLib.dll
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.Form2.resources
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.Properties.Resources.resources
+C:\Users\Administrator\Desktop\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csproj.GenerateResource.Cache
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csprojAssemblyReference.cache
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\Interop.SpeechLib.dll
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csproj.ResolveComReference.cache
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.Form2.resources
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.Properties.Resources.resources
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csproj.GenerateResource.cache
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csproj.CoreCompileInputs.cache
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.exe
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.pdb
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\LPR.exe.config
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\LPR.exe
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\LPR.pdb
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\bin\Debug\Interop.SpeechLib.dll
+C:\Users\hanov\Downloads\TTCN-DINHHUUVI\LPR\LPR\obj\Debug\LPR.csproj.CopyComplete
+C:\Users\hanov\Downloads\SPS\LPR\LPR\bin\Debug\LPR.exe.config
+C:\Users\hanov\Downloads\SPS\LPR\LPR\bin\Debug\LPR.exe
+C:\Users\hanov\Downloads\SPS\LPR\LPR\bin\Debug\LPR.pdb
+C:\Users\hanov\Downloads\SPS\LPR\LPR\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\hanov\Downloads\SPS\LPR\LPR\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\hanov\Downloads\SPS\LPR\LPR\bin\Debug\Interop.SpeechLib.dll
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.csprojAssemblyReference.cache
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\Interop.SpeechLib.dll
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.csproj.ResolveComReference.cache
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.Form2.resources
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.Properties.Resources.resources
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.csproj.GenerateResource.cache
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.csproj.CoreCompileInputs.cache
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.csproj.CopyComplete
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.exe
+C:\Users\hanov\Downloads\SPS\LPR\LPR\obj\Debug\LPR.pdb
