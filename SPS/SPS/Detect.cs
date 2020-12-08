@@ -246,7 +246,12 @@ namespace SPS
                                 max += value;
                             }
                         }
-                    T0 = (min / m + max / M) / 2;
+                    try
+                    {
+                        T0 = (min / m + max / M) / 2;
+                    }
+                    catch (DivideByZeroException e) { }
+
                 } while (T - T0 > 1 || T0 - T > 1);
 
 

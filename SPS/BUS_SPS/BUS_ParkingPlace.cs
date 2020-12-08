@@ -17,11 +17,11 @@ namespace BUS_SPS
         }
         public int getCarFree(int ParkingID)
         {
-            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][6].ToString());
+            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][5].ToString());
         }
         public int getMotorFree(int ParkingID)
         {
-            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][7].ToString());
+            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][6].ToString());
         }
     }
 }

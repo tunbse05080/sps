@@ -19,6 +19,7 @@ using Emgu.CV.CvEnum;
 using DTO_SPS;
 using BUS_SPS;
 using tesseract;
+using System.IO;
 
 namespace SPS
 {
@@ -30,21 +31,24 @@ namespace SPS
         private FilterInfoCollection CAMS;
         System.Windows.Forms.Timer tmr = null;
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
+        BUS_Card busCard = new BUS_Card();
+        Messages mes = new Messages();
         public int CarFree { get; set; }
         public int MotorFree { get; set; }
         private int ParkingID;
+        private int GateID;
         private string m_path = Application.StartupPath + @"\data\"; //duong dan luu hinh anh
         List<Image<Bgr, Byte>> PlateImagesList = new List<Image<Bgr, byte>>();
         List<string> PlateTextList = new List<string>();
         List<Rectangle> listRect = new List<Rectangle>();
         PictureBox[] box = new PictureBox[12];
-
         public TesseractProcessor full_tesseract = null;
         public TesseractProcessor ch_tesseract = null;
         public TesseractProcessor num_tesseract = null;
         private List<string> lstimages = new List<string>();
         private const string m_lang = "eng";
         #endregion
+
         public MainForm()
         {
             InitializeComponent();
@@ -81,7 +85,7 @@ namespace SPS
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn chắc chắn muốn thoát không?", "Hỏi Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(mes.mes(1), "Hỏi Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 CAM.Stop();
                 Application.Exit();
@@ -137,6 +141,18 @@ namespace SPS
             CallSetting();
         }
 
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            CallSetting();
+        }
+
+        private void btnCapture_Click(object sender, EventArgs e)
+        {
+            lblCardNumber.Text = txtCardNo.Text;
+            checkCard();
+        }
+
+
         //Get info from Setting
         private void CallSetting()
         {
@@ -144,17 +160,19 @@ namespace SPS
             {
                 if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    ParkingID = form2.SelectedGate;
-                    if (ParkingID == 0)
+                    GateID = form2.SelectedGate;
+                    ParkingID = form2.ParkingID;
+                    if (GateID == 0)
                     {
                         lblGate.Text = "Cổng vào";
                     }
-                    else {
+                    else
+                    {
                         lblGate.Text = "Cổng ra";
                     }
                     groupPanel1.Text = "Bãi đỗ xe " + form2.ParkingName;
-                    lblCar.Text = busPK.getCarFree(form2.ParkingID).ToString();
-                    lblMotor.Text = busPK.getMotorFree(form2.ParkingID).ToString();
+                    lblCar.Text = busPK.getCarFree(ParkingID).ToString();
+                    lblMotor.Text = busPK.getMotorFree(ParkingID).ToString();
                 }
             }
             StartTimer();
@@ -195,7 +213,39 @@ namespace SPS
             lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt - dd/MM/yyyy");
         }
 
-        private void btnCapture_Click(object sender, EventArgs e)
+        //capture photo
+        private void CapturePhoto()
+        {
+            pictureBox1.Image = pictureBox_WC.Image;
+            if (System.IO.File.Exists(m_path + "aa.bmp")) //xoa file aa.bmp neu file da ton tai
+            {
+                System.IO.File.Delete(m_path + "aa.bmp");
+            }
+            pictureBox1.Image.Save(m_path + "aa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            
+
+        }
+
+        //kiem tra card
+        private void checkCard()
+        {
+            if (busCard.checkCard(lblCardNumber.Text) == false)
+            {
+                Error(2);
+            }
+            else if (GateID == 0 && busCard.getCardStatus(lblCardNumber.Text) == 1)
+            {
+                Error(3);
+            }
+            else if (GateID == 0 && busCard.getCardStatus(lblCardNumber.Text) == 2)
+            {
+                Error(4);
+            }
+            else { GetVehicleInfo(); }
+        }
+
+        //phan tich hinh anh
+        private void GetVehicleInfo()
         {
             reset();
             bool checkxe = true;
@@ -208,13 +258,13 @@ namespace SPS
                 Bitmap grayframe;
                 Detect con = new Detect();
                 Bitmap color;
-               // MessageBox.Show("1");
+                // MessageBox.Show("1");
                 int c = con.IdentifyContours(src.ToBitmap(), 50, false, out grayframe, out color, out listRect);
-               // MessageBox.Show("2");
+                // MessageBox.Show("2");
                 //int z = con.count;
                 //pictureBox6.Image = color;
                 //pictureBox3.Image = grayframe;
-               // MessageBox.Show("3");
+                // MessageBox.Show("3");
                 // textBox2.Text = c.ToString();
                 Image<Gray, byte> dst = new Image<Gray, byte>(grayframe);
                 //dst = dst.Dilate(2);
@@ -377,8 +427,12 @@ namespace SPS
                 }
                 #region hienthi
                 txtLicense.Text = zz;
-                //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
-                lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt");
+                if (GateID == 0)
+                {
+                    lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
+                    //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
+                }
+
                 if (checkxe == true)
                 {
                     lblVehicle.Text = "Xe Ôtô";
@@ -400,10 +454,22 @@ namespace SPS
                 //string Str1 = bienso.Substring(0, 2); //lay 2 chu so dau cua bien so de xac dinh tinh / thanh pho
                 //int n = int.Parse(Str1);             
 
-              
+
             }
         }
+        public void ProcessImage(string urlImage)
+        {
+            PlateImagesList.Clear();
+            PlateTextList.Clear();
 
+            Bitmap img = new Bitmap(pictureBox1.Image);
+            //using (FileStream fs = new FileStream(m_path + "aa.bmp", FileMode.Open))
+            //{
+            //    pictureBox1.Image = Image.FromStream(fs);
+            //    fs.Close();
+            //}
+            FindLicensePlate(img);
+        }
         private string Ocr(Bitmap image_s, bool isFull, bool isNum = false)
         {
             string temp = "";
@@ -446,49 +512,6 @@ namespace SPS
             }
             return temp;
 
-        }
-        public void reset()
-        {
-            //pictureBox1.Image = null;
-            //pictureBox3.Image = null;
-            //pictureBox6.Image = null;
-            //imageBox1.Image = null;
-            //panel1.Controls.Clear();
-            lblVehicle.Text = "";
-            lblLicense.Text = "";
-            lblCost.Text = "VND";
-            lblTimeIn.Text = "";
-            lblTimeOut.Text = "";
-            lblTicket.Text = "";
-            lblName.Text = "";
-            lblCardNumber.Text = "";
-            txtLicense.Text = "";
-
-        }
-        //capture photo
-        private void CapturePhoto()
-        {
-            pictureBox1.Image = pictureBox_WC.Image;
-            if (System.IO.File.Exists(m_path + "aa.bmp")) //xoa file aa.bmp neu file da ton tai
-            {
-                System.IO.File.Delete(m_path + "aa.bmp");
-            }
-            pictureBox1.Image.Save(m_path + "aa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
-            
-        }
-
-        private void btnSetting_Click(object sender, EventArgs e)
-        {
-            CallSetting();
-        }
-        //phan tich hinh anh
-        public void ProcessImage(string urlImage)
-        {
-            PlateImagesList.Clear();
-            PlateTextList.Clear();
-
-            Bitmap img = new Bitmap(urlImage);
-            FindLicensePlate(img);
         }
         public void FindLicensePlate(Bitmap image) //tim vi tri bien so xe trong hinh anh
         {
@@ -554,6 +577,47 @@ namespace SPS
 
             }
 
+        }
+
+        private void txtCardNo_TextChanged(object sender, EventArgs e) //su kien quet the
+        {
+
+        }
+
+        //xoa thong tin xe dang hien thi
+        public void reset()
+        {
+            //pictureBox1.Image = null;
+            //pictureBox3.Image = null;
+            //pictureBox6.Image = null;
+            //imageBox1.Image = null;
+            //panel1.Controls.Clear();
+            cleanError();
+            lblVehicle.Text = "";
+            lblLicense.Text = "";
+            lblCost.Text = "VND";
+            lblTimeIn.Text = "";
+            lblTimeOut.Text = "";
+            lblTicket.Text = "";
+            lblName.Text = "";
+            //lblCardNumber.Text = "";
+            txtLicense.Text = "";
+        } 
+
+        //Thong bao
+        public void Error(int a)
+        {
+            labelX11.BackColor = Color.Red;
+            lblCost.BackColor = Color.Red;
+            labelX11.Text = "Lỗi:";
+            lblCost.Text = mes.mes(a);
+        }
+        public void cleanError()
+        {
+            labelX11.BackColor = Color.White;
+            lblCost.BackColor = Color.White;
+            labelX11.Text = "Số tiền:";
+            lblCost.Text = "VND";
         }
     }
 }

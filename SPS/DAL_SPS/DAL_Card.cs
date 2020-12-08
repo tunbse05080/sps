@@ -17,5 +17,13 @@ namespace DAL_SPS
             da.Fill(dtCard);
             return dtCard;
         }
+
+        public DataTable getCardbyCardNumber(string cardnumber)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from Card where CardNumber = " + cardnumber + "", conn);
+            DataTable dtCard = new DataTable();
+            da.Fill(dtCard);
+            return dtCard;
+        }
     }
 }

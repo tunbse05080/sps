@@ -328,6 +328,7 @@
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(156, 35);
             this.txtCardNo.TabIndex = 0;
+            this.txtCardNo.TextChanged += new System.EventHandler(this.txtCardNo_TextChanged);
             // 
             // tableLayoutPanel5
             // 
