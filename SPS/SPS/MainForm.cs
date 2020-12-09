@@ -316,7 +316,7 @@ namespace SPS
                     {
                         if (busPK.getCarFree(ParkingID) > 0)
                         {
-                         //   pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                             lblTimeOut.Text = pictureLink;
                         }
                         else
@@ -333,36 +333,36 @@ namespace SPS
         }
 
         //upload anh len imageshack
-        //public string UploadImageToImageShack(string imageAddress)
-        //{
-        //    string _baseUri = "https://api.imageshack.com/v2/images";
-        //    string key = "JHUV8MSZf125d77eb0025b3991e46e175590215d";
+        public string UploadImageToImageShack(string imageAddress)
+        {
+            string _baseUri = "https://api.imageshack.com/v2/images";
+            string key = "JHUV8MSZf125d77eb0025b3991e46e175590215d";
 
-        //    WebClient w = new WebClient();
-        //    w.Headers.Add("Authorization", "Client-ID " + key);
-        //    w.Headers.Add("Authorization", "key" + key);
-        //    w.Headers.Set("Content-Type", "multipart/form-data");
+            WebClient w = new WebClient();
+            w.Headers.Add("Authorization", "Client-ID " + key);
+            w.Headers.Add("Authorization", "key" + key);
+            w.Headers.Set("Content-Type", "multipart/form-data");
 
-        //    try
-        //    {
-        //        string kaka = string.Format("api_key={0}&file={1}&type=base64&public=yes", key, Convert.ToBase64String(File.ReadAllBytes(imageAddress)));
+            try
+            {
+                string kaka = string.Format("api_key={0}&file={1}&type=base64&public=yes", key, Convert.ToBase64String(File.ReadAllBytes(imageAddress)));
 
-        //        string responseArray = w.UploadString(_baseUri, kaka);
+                string responseArray = w.UploadString(_baseUri, kaka);
 
-        //        dynamic result = responseArray;// Encoding.ASCII.GetString(responseArray);
-        //        System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex("link\":\"(.*?)\"");               
-        //        Match match = reg.Match(result);
-        //        string url = match.ToString().Replace("link\":\"", "").Replace("\"", "").Replace("\\/", "/");
-        //        return "http://" + url;
-        //    }
-        //    catch (Exception s)
-        //    {
-        //        MessageBox.Show("Something went wrong. " + s.Message); return "Failed!";
-        //    }
+                dynamic result = responseArray;// Encoding.ASCII.GetString(responseArray);
+                System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex("link\":\"(.*?)\"");
+                Match match = reg.Match(result);
+                string url = match.ToString().Replace("link\":\"", "").Replace("\"", "").Replace("\\/", "/");
+                return "http://" + url;
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show("Something went wrong. " + s.Message); return "Failed!";
+            }
 
 
 
-        //}
+        }
         //phan tich hinh anh
         private void GetVehicleInfo()
         {
