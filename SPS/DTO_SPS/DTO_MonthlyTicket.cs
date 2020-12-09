@@ -17,14 +17,14 @@ namespace DTO_SPS
         private string regisdate;
         private string Exdate;
         private int cardID;
-        private int parkingID;
+        //private int parkingID;
 
         /* ======== GETTER/SETTER ======== */
-        public int MyParkingID
-        {
-            get { return parkingID; }
-            set { parkingID = value; }
-        }
+        //public int MyParkingID
+        //{
+        //    get { return parkingID; }
+        //    set { parkingID = value; }
+        //}
 
         public int MyCardID
         {
@@ -92,7 +92,7 @@ namespace DTO_SPS
         {
         }
 
-        public DTO_MonthlyTicket(int ticketID, string name, int identity, int phone, string email, int vehicle, string license, string regisdate, string exdate, int cardID, int parkingID)
+        public DTO_MonthlyTicket(int ticketID, string name, int identity, int phone, string email, int vehicle, string license, string regisdate, string exdate, int cardID)
         {
             this.ticketID = ticketID;
             this.name = name;
@@ -104,7 +104,7 @@ namespace DTO_SPS
             this.regisdate = regisdate;
             Exdate = exdate;
             this.cardID = cardID;
-            this.parkingID = parkingID;
+           // this.parkingID = parkingID;
         }
     }
 }

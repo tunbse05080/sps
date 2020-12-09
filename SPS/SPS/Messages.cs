@@ -11,6 +11,22 @@ namespace SPS
         private string m02 = "Thẻ không hợp lệ";
         private string m03 = "Thẻ đang sử dụng";
         private string m04 = "Thẻ bị khóa";
+        private string m05 = "Vé tháng đã hết hạn";
+        private string m06 = "Xe vào bãi đỗ";
+
+        public string M06
+        {
+            get { return m06; }
+            set { m06 = value; }
+        }
+
+
+        public string M05
+        {
+            get { return m05; }
+            set { m05 = value; }
+        }
+
 
         public string M04
         {
@@ -44,7 +60,15 @@ namespace SPS
             {
                 return m04;
             }
-            else return "";
+            if (a == 5)
+            {
+                return m05;
+            }
+            if (a == 6)
+            {
+                return m06;
+            }
+            else return "NONE";
         }
         public string M02
         {

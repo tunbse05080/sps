@@ -32,6 +32,7 @@ namespace SPS
         System.Windows.Forms.Timer tmr = null;
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         BUS_Card busCard = new BUS_Card();
+        BUS_MonthlyTicket busTicket = new BUS_MonthlyTicket();
         Messages mes = new Messages();
         public int CarFree { get; set; }
         public int MotorFree { get; set; }
@@ -47,6 +48,8 @@ namespace SPS
         public TesseractProcessor num_tesseract = null;
         private List<string> lstimages = new List<string>();
         private const string m_lang = "eng";
+        bool chkCard = true;
+        bool chklicense = true;
         #endregion
 
         public MainForm()
@@ -148,8 +151,16 @@ namespace SPS
 
         private void btnCapture_Click(object sender, EventArgs e)
         {
-            lblCardNumber.Text = txtCardNo.Text;
-            checkCard();
+            if (txtCardNo.Text != "")
+            {
+                lblCardNo.Text = txtCardNo.Text;
+                txtCardNo.Text = "";
+                autoCapture();
+               
+            }else {
+                autoCapture();
+            }
+            
         }
 
 
@@ -229,19 +240,60 @@ namespace SPS
         //kiem tra card
         private void checkCard()
         {
-            if (busCard.checkCard(lblCardNumber.Text) == false)
+            
+            if (busCard.checkCard(lblCardNo.Text) == false)
             {
                 Error(2);
+                chkCard = false;
             }
-            else if (GateID == 0 && busCard.getCardStatus(lblCardNumber.Text) == 1)
+            else if (GateID == 0 && busCard.getCardStatus(lblCardNo.Text) == 1)
             {
                 Error(3);
+                chkCard = false;
             }
-            else if (GateID == 0 && busCard.getCardStatus(lblCardNumber.Text) == 2)
+            else if (GateID == 0 && busCard.getCardStatus(lblCardNo.Text) == 2)
             {
                 Error(4);
+                chkCard = false;
             }
-            else { GetVehicleInfo(); }
+            else
+            {
+                chkCard = true;
+            }
+        }
+
+        //kiem tra bien so xe
+        private void checkLicense()
+        {
+            
+            if (busTicket.checkLicense(txtLicense.Text) == true)
+            {
+                lblTicket.Text = "Vé tháng";
+                lblName.Text = busTicket.getName(txtLicense.Text);
+                if (DateTime.Parse(busTicket.getExpiryDate(txtLicense.Text)) < DateTime.Now)
+                {
+                    //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
+                    chklicense = false;
+                    Error(5);
+                }
+                
+            }else 
+            {
+                lblTicket.Text = "Vé ngày/bloc";
+                
+            }
+        }
+
+        //
+        //su kien kiem tra hinh anh khi quet the hoac nhan nut Capture
+        private void autoCapture()
+        {
+            checkCard();
+            if (chkCard == true)
+            {
+                GetVehicleInfo();
+                checkLicense();
+            }
         }
 
         //phan tich hinh anh
@@ -426,7 +478,8 @@ namespace SPS
                     //panel1.Controls.Add(box[i + c_x]);
                 }
                 #region hienthi
-                txtLicense.Text = zz;
+                
+                lblCardNumber.Text = lblCardNo.Text;
                 if (GateID == 0)
                 {
                     lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
@@ -449,7 +502,8 @@ namespace SPS
                 {
                     bienso = bienso.Replace("\n", "");
                 } while (bienso.IndexOf("\n") != -1);
-
+                lblLicense.Text = bienso;
+                txtLicense.Text = bienso;
 
                 //string Str1 = bienso.Substring(0, 2); //lay 2 chu so dau cua bien so de xac dinh tinh / thanh pho
                 //int n = int.Parse(Str1);             
@@ -610,6 +664,13 @@ namespace SPS
             labelX11.BackColor = Color.Red;
             lblCost.BackColor = Color.Red;
             labelX11.Text = "Lỗi:";
+            lblCost.Text = mes.mes(a);
+        }
+        public void Passed(int a)
+        {
+            labelX11.BackColor = Color.CadetBlue;
+            lblCost.BackColor = Color.CadetBlue;
+            labelX11.Text = "Thông qua:";
             lblCost.Text = mes.mes(a);
         }
         public void cleanError()
