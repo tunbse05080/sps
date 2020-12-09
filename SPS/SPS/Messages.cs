@@ -13,6 +13,14 @@ namespace SPS
         private string m04 = "Thẻ bị khóa";
         private string m05 = "Vé tháng đã hết hạn";
         private string m06 = "Xe vào bãi đỗ";
+        private string m07 = "Bãi đỗ xe đã đầy";
+
+        public string M07
+        {
+            get { return m07 ; }
+            set { m07  = value; }
+        }
+
 
         public string M06
         {
@@ -67,6 +75,10 @@ namespace SPS
             if (a == 6)
             {
                 return m06;
+            }
+            if (a == 7)
+            {
+                return m07;
             }
             else return "NONE";
         }

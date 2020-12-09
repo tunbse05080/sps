@@ -49,7 +49,8 @@ namespace SPS
         private List<string> lstimages = new List<string>();
         private const string m_lang = "eng";
         bool chkCard = true;
-        bool chklicense = true;
+        bool chkLicense = true;
+        int vehicleType; //loai xe 0-xemay, 1-oto
         #endregion
 
         public MainForm()
@@ -151,7 +152,11 @@ namespace SPS
 
         private void btnCapture_Click(object sender, EventArgs e)
         {
-            if (txtCardNo.Text != "")
+            if (busPK.getMotorFree(ParkingID) == 0 && busPK.getCarFree(ParkingID)==0)
+            {
+                Error(7);
+            }
+            else if (txtCardNo.Text != "")
             {
                 lblCardNo.Text = txtCardNo.Text;
                 txtCardNo.Text = "";
@@ -273,18 +278,17 @@ namespace SPS
                 if (DateTime.Parse(busTicket.getExpiryDate(txtLicense.Text)) < DateTime.Now)
                 {
                     //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
-                    chklicense = false;
+                    chkLicense = false;
                     Error(5);
                 }
                 
             }else 
             {
                 lblTicket.Text = "Vé ngày/bloc";
-                
+                chkLicense = true;
             }
         }
 
-        //
         //su kien kiem tra hinh anh khi quet the hoac nhan nut Capture
         private void autoCapture()
         {
@@ -489,11 +493,12 @@ namespace SPS
                 if (checkxe == true)
                 {
                     lblVehicle.Text = "Xe Ôtô";
-
+                    vehicleType = 1;
                 }
                 else
                 {
                     lblVehicle.Text = "Xe Máy";
+                    vehicleType = 0;
                 }
                 #endregion
 
