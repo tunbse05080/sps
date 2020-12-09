@@ -279,7 +279,7 @@ namespace SPS
                 {
                     //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
                     chkLicense = false;
-                    Error(5);
+                    
                 }
                 
             }else 
@@ -297,6 +297,34 @@ namespace SPS
             {
                 GetVehicleInfo();
                 checkLicense();
+                if (chkLicense == true)
+                {
+                    if (vehicleType == 0)
+                    {
+                        if (busPK.getMotorFree(ParkingID) > 0)
+                        {
+
+                        }else
+                        {
+                            Error(7);
+                        }
+                    }
+                    else
+                    {
+                        if (busPK.getCarFree(ParkingID) > 0)
+                        {
+
+                        }
+                        else
+                        {
+                            Error(7);
+                        }
+                    }
+                }
+                else
+                {
+                    Error(5);
+                }
             }
         }
 
