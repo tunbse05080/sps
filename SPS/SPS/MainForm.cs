@@ -357,6 +357,11 @@ namespace SPS
                             if (busPK.getMotorFree(ParkingID) > 0)
                             {
                                 pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                updateCard(1);
+                                updateMotoFree();
+                                insertImage();
+                                insertTransaction();
+                                Passed(6);
                             }
                             else
                             {
