@@ -53,5 +53,18 @@ namespace DTO_SPS
             this.linkOut = linkOut;
             this.transID = transID;
         }
+
+        public DTO_Image(int imageID, string linkIn, int transID)
+        {
+            this.imageID = imageID;
+            this.linkIn = linkIn;
+            this.transID = transID;
+        }
+
+        public DTO_Image(int imageID, string linkOut)
+        {
+            this.imageID = imageID;
+            this.linkOut = linkOut;
+        }
     }
 }

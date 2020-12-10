@@ -24,5 +24,26 @@ namespace BUS_SPS
         {
             return dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][2].ToString();
         }
+        public bool insertTransaction(DTO_Transaction trans)
+        {
+            return dalTrans.insertTransaction(trans);
+        }
+        public bool updateTransaction(DTO_Transaction trans)
+        {
+            return dalTrans.updateTransaction(trans);
+        }
+        public int getTransactionID(string license)
+        {
+            return Convert.ToInt32(dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][0].ToString());
+        }
+        public int getCardID(int trans)
+        {
+            return Convert.ToInt32(dalTrans.getTransactionbyID(trans).Rows[0][6].ToString());
+        }
+        public string getTimeIn(int transID) //thong tin thoi gian vao
+        {
+            return dalTrans.getTransactionbyID(transID).Rows[0][1].ToString();
+            //  return DateTime.ParseExact(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        }
     }
 }

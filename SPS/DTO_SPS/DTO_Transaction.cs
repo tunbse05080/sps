@@ -99,7 +99,22 @@ namespace DTO_SPS
             this.vehicleType = vehicleType;
         }
 
-        
+        public DTO_Transaction(int transID, string timeIN, string license, int ticketType, int cardID, int parkingID, int vehicleType)
+        {
+            this.transID = transID;
+            this.timeIN = timeIN;
+            this.license = license;
+            this.ticketType = ticketType;
+            this.cardID = cardID;
+            this.parkingID = parkingID;
+            this.vehicleType = vehicleType;
+        }
 
+        public DTO_Transaction(int transID, string timeOut, double price)
+        {
+            this.transID = transID;
+            this.timeOut = timeOut;
+            this.price = price;
+        }
     }
 }

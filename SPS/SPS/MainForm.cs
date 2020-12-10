@@ -41,6 +41,9 @@ namespace SPS
         public int MotorFree { get; set; }
         private int ParkingID;
         private int GateID;
+        private int CardID;
+        private int TransID;
+        private double TotalPrice;
         private string m_path = Application.StartupPath + @"\data\"; //duong dan luu hinh anh
         List<Image<Bgr, Byte>> PlateImagesList = new List<Image<Bgr, byte>>();
         List<string> PlateTextList = new List<string>();
@@ -54,6 +57,7 @@ namespace SPS
         bool chkCard = true;
         bool chkLicense = true;
         int vehicleType; //loai xe 0-xemay, 1-oto
+        int ticketType; //loai ve 0-ve thang, 1-vengay/block
         string pictureLink;
         #endregion
 
@@ -270,6 +274,7 @@ namespace SPS
             else
             {
                 chkCard = true;
+                CardID = busCard.getCardID(lblCardNo.Text);
             }
         }
 
@@ -290,38 +295,49 @@ namespace SPS
                         chkLicense = false;
                         Error(9);
                     }
-                    if (GateID == 1 && busTrans.checkLicenseTimeOut(txtLicense.Text) != "")
+                    else if (GateID == 1 && busTrans.checkLicenseTimeOut(txtLicense.Text) != "")
                     {
                         chkLicense = false;
                         Error(10);
                     }
+                    else
+                    {
+                        TransID = busTrans.getTransactionID(txtLicense.Text);
+                        if (GateID == 1 && busCard.getCardID(lblCardNo.Text)!= busTrans.getCardID(TransID))
+                        {
+                            chkLicense = false;
+                            Error(11);
+                        }
+                    }
+                }
+
+
+
+                if (busTicket.checkLicense(txtLicense.Text) == true)
+                {
+                    lblTicket.Text = "Vé tháng";
+                    ticketType = 0;
+                    lblName.Text = busTicket.getName(txtLicense.Text);
+                    if (DateTime.Parse(busTicket.getExpiryDate(txtLicense.Text)) < DateTime.Now)
+                    {
+                        //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
+                        chkLicense = true; //ve thang het han, tinh tien nhu ve ngay, block
+                       // ticketType = 1;
+                        Warning(5);
+                    }
+
                 }
                 else
                 {
-
-
-                    if (busTicket.checkLicense(txtLicense.Text) == true)
-                    {
-                        lblTicket.Text = "Vé tháng";
-                        lblName.Text = busTicket.getName(txtLicense.Text);
-                        if (DateTime.Parse(busTicket.getExpiryDate(txtLicense.Text)) < DateTime.Now)
-                        {
-                            //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
-                            chkLicense = false;
-                            Error(5);
-                        }
-
-                    }
-                    else
-                    {
-                        lblTicket.Text = "Vé ngày/block";
-                        chkLicense = true;
-                    }
+                    lblTicket.Text = "Vé ngày/block";
+                    ticketType = 1;
+                    chkLicense = true;
                 }
+
             }
         }
 
-        //su kien kiem tra hinh anh khi quet the hoac nhan nut Capture
+        //insert/update bang Transaction, Table khi quet the hoac nhan nut Capture
         private void autoCapture()
         {
             checkCard();
@@ -331,29 +347,37 @@ namespace SPS
                 checkLicense();
                 if (chkLicense == true)
                 {
-                    if (vehicleType == 0)
+                    if (GateID == 0)
                     {
-                        if (busPK.getMotorFree(ParkingID) > 0)
+                        if (vehicleType == 0)
                         {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            if (busPK.getMotorFree(ParkingID) > 0)
+                            {
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            }
+                            else
+                            {
+                                Error(7);
+                            }
                         }
                         else
                         {
-                            Error(7);
+                            if (busPK.getCarFree(ParkingID) > 0)
+                            {
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                lblTimeOut.Text = pictureLink;
+                            }
+                            else
+                            {
+                                Error(7);
+                            }
                         }
                     }
                     else
                     {
-                        if (busPK.getCarFree(ParkingID) > 0)
-                        {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                            lblTimeOut.Text = pictureLink;
-                        }
-                        else
-                        {
-                            Error(7);
-                        }
+
                     }
+
                 }
                 else
                 {
@@ -363,7 +387,7 @@ namespace SPS
         }
 
         //upload anh len imageshack
-        public string UploadImageToImageShack(string imageAddress)
+        private string UploadImageToImageShack(string imageAddress)
         {
             string _baseUri = "https://api.imageshack.com/v2/images";
             string key = "JHUV8MSZf125d77eb0025b3991e46e175590215d";
@@ -392,6 +416,53 @@ namespace SPS
 
 
 
+        }
+
+        //insert bang Transaction
+        private void insertTransaction()
+        {
+            //Tao DTO
+            //DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, "", lblLicense.Text, ticketType, 0, CardID, ParkingID, vehicleType);
+            DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, lblLicense.Text, ticketType, CardID, ParkingID, vehicleType);
+            // Them
+            if (busTrans.insertTransaction(trans))
+            {
+                MessageBox.Show("Thêm thành công");
+            }
+            else
+            {
+                MessageBox.Show("Thêm ko thành công");
+            }
+        }
+
+        //update bang Transaction
+        private void updateTransaction()
+        {
+            //Tao DTO
+            DTO_Transaction trans = new DTO_Transaction(TransID, lblTimeOut.Text, TotalPrice);
+            // Sửa
+            if (busTrans.updateTransaction(trans))
+            {
+                MessageBox.Show("Sửa thành công");                
+            }
+            else
+            {
+                MessageBox.Show("Sửa ko thành công");
+            }
+        }
+
+        //update bang Card
+        private void updateCard(int status)
+        {
+            DTO_Card card = new DTO_Card(CardID, status);
+            if (busCard.updateCard(card))
+            {
+                MessageBox.Show("Sửa thành công");
+            }
+            else
+            {
+                MessageBox.Show("Sửa ko thành công");
+            }
         }
 
         //phan tich hinh anh
@@ -583,7 +654,11 @@ namespace SPS
                     lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                     //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
                 }
-
+                if (GateID == 1)
+                {
+                    lblTimeIn.Text = DateTime.Parse(busTrans.getTimeIn(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
+                    lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
+                }
                 if (checkxe == true)
                 {
                     lblVehicle.Text = "Xe Ôtô";
@@ -758,21 +833,28 @@ namespace SPS
         }
 
         //Thong bao
-        public void Error(int a)
+        private void Error(int a)
         {
             labelX11.BackColor = Color.Red;
             lblCost.BackColor = Color.Red;
             labelX11.Text = "Lỗi:";
             lblCost.Text = mes.mes(a);
         }
-        public void Passed(int a)
+        private void Passed(int a)
         {
             labelX11.BackColor = Color.Blue;
             lblCost.BackColor = Color.Blue;
             labelX11.Text = "Thông qua:";
             lblCost.Text = mes.mes(a);
         }
-        public void cleanError()
+        private void Warning(int a)
+        {
+            labelX11.BackColor = Color.Yellow;
+            lblCost.BackColor = Color.Yellow;
+            labelX11.Text = "Cảnh báo:";
+            lblCost.Text = mes.mes(a);
+        }
+        private void cleanError()
         {
             labelX11.BackColor = Color.White;
             lblCost.BackColor = Color.White;

@@ -52,5 +52,11 @@ namespace DTO_SPS
             this.date = date;
             this.status = status;
         }
+
+        public DTO_Card(int cardID, int status)
+        {
+            this.cardID = cardID;
+            this.status = status;
+        }
     }
 }

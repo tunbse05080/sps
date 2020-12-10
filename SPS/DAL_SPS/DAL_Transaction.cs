@@ -33,6 +33,13 @@ namespace DAL_SPS
             da.Fill(dtTrans);
             return dtTrans;
         }
+        public DataTable getTransactionbyID(int transID)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from [Transaction] where TransactionID = '" + transID + "'", conn);
+            DataTable dtTrans = new DataTable();
+            da.Fill(dtTrans);
+            return dtTrans;
+        }
         public bool insertTransaction(DTO_Transaction trans) //them vao bang Transaction
         {
             try

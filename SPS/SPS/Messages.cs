@@ -11,12 +11,20 @@ namespace SPS
         private string m02 = "Thẻ không hợp lệ";
         private string m03 = "Thẻ đang sử dụng";
         private string m04 = "Thẻ bị khóa";
-        private string m05 = "Vé tháng đã hết hạn";
+        private string m05 = "Vé tháng hết hạn (chuyển thành vé ngày/block)";
         private string m06 = "Xe vào bãi đỗ";
         private string m07 = "Bãi đỗ xe đã đầy";
         private string m08 = "Biển số không đúng";
         private string m09 = "Xe đang trong bãi";
         private string m10 = "Xe không có trong bãi";
+        private string m11 = "Vé không đúng xe";
+
+        public string M11
+        {
+            get { return m11; }
+            set { m11 = value; }
+        }
+
 
         public string M10
         {
@@ -28,7 +36,7 @@ namespace SPS
         public string M09
         {
             get { return m09; }
-            set { m09  = value; }
+            set { m09 = value; }
         }
 
 
@@ -41,8 +49,8 @@ namespace SPS
 
         public string M07
         {
-            get { return m07 ; }
-            set { m07  = value; }
+            get { return m07; }
+            set { m07 = value; }
         }
 
 
@@ -69,7 +77,7 @@ namespace SPS
 
         public string M03
         {
-            get { return m03 ; }
+            get { return m03; }
             set { m03 = value; }
         }
 
@@ -116,18 +124,22 @@ namespace SPS
             {
                 return m10;
             }
+            if (a == 11)
+            {
+                return m11;
+            }
             else return "NONE";
         }
         public string M02
         {
-            get { return m02 ; }
-            set { m02  = value; }
+            get { return m02; }
+            set { m02 = value; }
         }
 
         public string M01
         {
-            get { return m01 ; }
-            set { m01  = value; }
+            get { return m01; }
+            set { m01 = value; }
         }
 
     }

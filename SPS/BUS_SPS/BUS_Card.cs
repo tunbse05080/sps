@@ -27,5 +27,17 @@ namespace BUS_SPS
         {
             return Convert.ToInt32(dalCard.getCardbyCardNumber(cardnumber).Rows[0][3].ToString());
         }
+        public int getCardStatusbyID(int cardID)
+        {
+            return Convert.ToInt32(dalCard.getCardbyCardID(cardID).Rows[0][3].ToString());
+        }
+        public int getCardID(string cardnumber)
+        {
+            return Convert.ToInt32(dalCard.getCardbyCardNumber(cardnumber).Rows[0][0].ToString());
+        }
+        public bool updateCard(DTO_Card card)
+        {
+            return dalCard.updateCard(card);
+        }
     }
 }
