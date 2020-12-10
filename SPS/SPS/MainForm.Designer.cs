@@ -58,8 +58,10 @@
             this.lblCar = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtLicense1 = new System.Windows.Forms.TextBox();
             this.btnEnter = new DevComponents.DotNetBar.ButtonX();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtLicense2 = new System.Windows.Forms.TextBox();
+            this.txtLicense1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCardNo = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -76,8 +78,6 @@
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
             this.lblCardNumber = new DevComponents.DotNetBar.LabelX();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtLicense2 = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -89,10 +89,10 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
-            this.tableLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -613,18 +613,6 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(464, 41);
             this.tableLayoutPanel8.TabIndex = 6;
             // 
-            // txtLicense1
-            // 
-            this.txtLicense1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLicense1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicense1.Location = new System.Drawing.Point(0, 0);
-            this.txtLicense1.Margin = new System.Windows.Forms.Padding(0);
-            this.txtLicense1.Name = "txtLicense1";
-            this.txtLicense1.Size = new System.Drawing.Size(111, 35);
-            this.txtLicense1.TabIndex = 1;
-            // 
             // btnEnter
             // 
             this.btnEnter.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -639,6 +627,49 @@
             this.btnEnter.TabIndex = 0;
             this.btnEnter.Text = "Nhập";
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel11.ColumnCount = 2;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel11.Controls.Add(this.txtLicense2, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.txtLicense1, 0, 0);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(278, 41);
+            this.tableLayoutPanel11.TabIndex = 1;
+            // 
+            // txtLicense2
+            // 
+            this.txtLicense2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLicense2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicense2.Location = new System.Drawing.Point(111, 0);
+            this.txtLicense2.Margin = new System.Windows.Forms.Padding(0);
+            this.txtLicense2.Name = "txtLicense2";
+            this.txtLicense2.Size = new System.Drawing.Size(167, 35);
+            this.txtLicense2.TabIndex = 2;
+            // 
+            // txtLicense1
+            // 
+            this.txtLicense1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLicense1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicense1.Location = new System.Drawing.Point(0, 0);
+            this.txtLicense1.Margin = new System.Windows.Forms.Padding(0);
+            this.txtLicense1.Name = "txtLicense1";
+            this.txtLicense1.Size = new System.Drawing.Size(111, 35);
+            this.txtLicense1.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 
@@ -773,7 +804,6 @@
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(233, 35);
             this.lblName.TabIndex = 7;
-            this.lblName.Text = "họ và tên";
             // 
             // lblVehicle
             // 
@@ -924,37 +954,6 @@
             this.labelX17.TabIndex = 8;
             this.labelX17.Text = "Số thẻ:";
             // 
-            // tableLayoutPanel11
-            // 
-            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel11.ColumnCount = 2;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel11.Controls.Add(this.txtLicense2, 1, 0);
-            this.tableLayoutPanel11.Controls.Add(this.txtLicense1, 0, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 1;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(278, 41);
-            this.tableLayoutPanel11.TabIndex = 1;
-            // 
-            // txtLicense2
-            // 
-            this.txtLicense2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLicense2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicense2.Location = new System.Drawing.Point(111, 0);
-            this.txtLicense2.Margin = new System.Windows.Forms.Padding(0);
-            this.txtLicense2.Name = "txtLicense2";
-            this.txtLicense2.Size = new System.Drawing.Size(167, 35);
-            this.txtLicense2.TabIndex = 2;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -978,11 +977,11 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
-            this.tableLayoutPanel11.ResumeLayout(false);
-            this.tableLayoutPanel11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

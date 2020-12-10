@@ -48,7 +48,7 @@ namespace DAL_SPS
                 conn.Open();
 
                 // Query string - vì mình để Transaction ID là identity (giá trị tự tăng dần) nên ko cần fải insert ID
-                string SQL = string.Format("INSERT INTO [Transaction](TimeIn, LicensePlate, TypeOfTicket, CardID, ParkingPlaceID, TypeOfVehicleTran) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", trans.MyTimeIN, trans.MyLicense, trans.MyTicketType,trans.MyCardID,trans.MyParkingID,trans.MyVehicleType);
+                string SQL = string.Format("INSERT INTO [Transaction](TimeIn, LicensePlates, TypeOfTicket, CardID, ParkingPlaceID, TypeOfVerhicleTran) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", trans.MyTimeIN, trans.MyLicense, trans.MyTicketType,trans.MyCardID,trans.MyParkingID,trans.MyVehicleType);
 
                 // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
                 SqlCommand cmd = new SqlCommand(SQL, conn);

@@ -88,10 +88,11 @@ namespace DTO_SPS
             this.Status = status;
         }
 
-        public DTO_ParkingPlace(int placeID, int numberCarFree)
+        public DTO_ParkingPlace(int placeID, int numberCarFree, int numberMotorFree)
         {
-            PlaceID = placeID;
-            NumberCarFree = numberCarFree;
+            this.PlaceID = placeID;
+            this.NumberCarFree = numberCarFree;
+            this.NumberMotorFree = numberMotorFree;
         }
 
     }

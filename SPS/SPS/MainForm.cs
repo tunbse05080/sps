@@ -283,7 +283,7 @@ namespace SPS
         //kiem tra bien so xe
         private void checkLicense()
         {
-            if (lblLicense.Text.Length < 6)
+            if (txtLicense1.Text.Length < 3 || lblLicense.Text.Length < 6)
             {
                 chkLicense = false;
                 Error(8);
@@ -351,16 +351,18 @@ namespace SPS
                 {
                     if (GateID == 0) //cong vao
                     {
-                        TransID = busTrans.getTransactionID(lblLicense.Text);
+
                         if (vehicleType == 0)
                         {
                             if (busPK.getMotorFree(ParkingID) > 0)
                             {
                                 pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                lblTimeOut.Text = pictureLink;
                                 updateCard(1);
                                 updateMotoFree();
-                                insertImage();
                                 insertTransaction();
+                                TransID = busTrans.getTransactionID(lblLicense.Text);
+                                insertImage();
                                 Passed(6);
                             }
                             else
@@ -440,7 +442,7 @@ namespace SPS
         {
             //Tao DTO
             //DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, "", lblLicense.Text, ticketType, 0, CardID, ParkingID, vehicleType);
-            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType);
+            DTO_Transaction trans = new DTO_Transaction(0,DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType);
             // Them
             if (busTrans.insertTransaction(trans))
             {
@@ -519,11 +521,11 @@ namespace SPS
             DTO_ParkingPlace parking = new DTO_ParkingPlace();
             if (GateID == 0)
             {
-                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) - 1);
+                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) - 1,0);
             }
             else
             {
-                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) + 1);
+                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) + 1,0);
             }
             if (busPK.updateCarParking(parking))
             {
@@ -538,14 +540,14 @@ namespace SPS
         }
         private void updateMotoFree()
         {
-            DTO_ParkingPlace parking = new DTO_ParkingPlace();
+            int MotoSlot = busPK.getMotorFree(ParkingID);
+            DTO_ParkingPlace parking = new DTO_ParkingPlace();   
             if (GateID == 0)
             {
-                parking = new DTO_ParkingPlace(ParkingID, busPK.getMotorFree(ParkingID) - 1);
-            }
-            else
+                parking = new DTO_ParkingPlace(ParkingID, 0, MotoSlot - 1);
+            }else
             {
-                parking = new DTO_ParkingPlace(ParkingID, busPK.getMotorFree(ParkingID) + 1);
+                parking = new DTO_ParkingPlace(ParkingID, 0, MotoSlot + 1);
             }
             if (busPK.updateMotoParking(parking))
             {
