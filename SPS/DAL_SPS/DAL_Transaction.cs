@@ -33,5 +33,65 @@ namespace DAL_SPS
             da.Fill(dtTrans);
             return dtTrans;
         }
+        public bool insertTransaction(DTO_Transaction trans) //them vao bang Transaction
+        {
+            try
+            {
+                // Ket noi
+                conn.Open();
+
+                // Query string - vì mình để Transaction ID là identity (giá trị tự tăng dần) nên ko cần fải insert ID
+                string SQL = string.Format("INSERT INTO [Transaction](TimeIn, LicensePlate, TypeOfTicket, CardID, ParkingPlaceID, TypeOfVehicleTran) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", trans.MyTimeIN, trans.MyLicense, trans.MyTicketType,trans.MyCardID,trans.MyParkingID,trans.MyVehicleType);
+
+                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
+                SqlCommand cmd = new SqlCommand(SQL, conn);
+
+                // Query và kiểm tra
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                // Dong ket noi
+                conn.Close();
+            }
+
+            return false;
+        }
+        public bool updateTransaction(DTO_Transaction trans) //update bang Transaction
+        {
+            try
+            {
+                // Ket noi
+                conn.Open();
+
+                // Query string
+                string SQL = string.Format("UPDATE [Transaction] SET TimeOutv = '{0}', TotalPrice = '{1}' WHERE TransactionID = {2}", trans.MyTimeOut, trans.Myprice,trans.MyTransID);
+
+                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
+                SqlCommand cmd = new SqlCommand(SQL, conn);
+
+                // Query và kiểm tra
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                // Dong ket noi
+                conn.Close();
+            }
+
+            return false;
+        }
     }
 }

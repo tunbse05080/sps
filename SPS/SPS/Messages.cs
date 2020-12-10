@@ -16,6 +16,14 @@ namespace SPS
         private string m07 = "Bãi đỗ xe đã đầy";
         private string m08 = "Biển số không đúng";
         private string m09 = "Xe đang trong bãi";
+        private string m10 = "Xe không có trong bãi";
+
+        public string M10
+        {
+            get { return m10; }
+            set { m10 = value; }
+        }
+
 
         public string M09
         {
@@ -103,6 +111,10 @@ namespace SPS
             if (a == 9)
             {
                 return m09;
+            }
+            if (a == 10)
+            {
+                return m10;
             }
             else return "NONE";
         }

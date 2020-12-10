@@ -285,10 +285,15 @@ namespace SPS
             {
                 if (busTrans.checkLicense(txtLicense.Text) == true)
                 {
-                    if (busTrans.checkLicenseTimeOut(txtLicense.Text) != "")
+                    if (GateID == 0 && busTrans.checkLicenseTimeOut(txtLicense.Text) == "")
                     {
                         chkLicense = false;
                         Error(9);
+                    }
+                    if (GateID == 1 && busTrans.checkLicenseTimeOut(txtLicense.Text) != "")
+                    {
+                        chkLicense = false;
+                        Error(10);
                     }
                 }
                 else
