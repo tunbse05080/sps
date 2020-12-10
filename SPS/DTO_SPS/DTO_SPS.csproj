@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO_Card.cs" />
+    <Compile Include="DTO_Image.cs" />
     <Compile Include="DTO_MonthlyTicket.cs" />
     <Compile Include="DTO_ParkingPlace.cs" />
+    <Compile Include="DTO_Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

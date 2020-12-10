@@ -7,13 +7,29 @@ namespace SPS
 {
     class Messages
     {
-        private string m01 = "Bạn có muốn chắc chắn muốn thoát không?";
+        private string m01 = "Bạn có chắc chắn muốn thoát không?";
         private string m02 = "Thẻ không hợp lệ";
         private string m03 = "Thẻ đang sử dụng";
         private string m04 = "Thẻ bị khóa";
         private string m05 = "Vé tháng đã hết hạn";
         private string m06 = "Xe vào bãi đỗ";
         private string m07 = "Bãi đỗ xe đã đầy";
+        private string m08 = "Biển số không đúng";
+        private string m09 = "Xe đang trong bãi";
+
+        public string M09
+        {
+            get { return m09; }
+            set { m09  = value; }
+        }
+
+
+        public string M08
+        {
+            get { return m08; }
+            set { m08 = value; }
+        }
+
 
         public string M07
         {
@@ -79,6 +95,14 @@ namespace SPS
             if (a == 7)
             {
                 return m07;
+            }
+            if (a == 8)
+            {
+                return m08;
+            }
+            if (a == 9)
+            {
+                return m09;
             }
             else return "NONE";
         }

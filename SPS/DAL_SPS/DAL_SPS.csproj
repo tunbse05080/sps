@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_Card.cs" />
+    <Compile Include="DAL_Image.cs" />
     <Compile Include="DAL_MonthlyTicket.cs" />
     <Compile Include="DAL_ParkingPlace.cs" />
+    <Compile Include="DAL_Transaction.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

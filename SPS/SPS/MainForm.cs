@@ -35,6 +35,7 @@ namespace SPS
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         BUS_Card busCard = new BUS_Card();
         BUS_MonthlyTicket busTicket = new BUS_MonthlyTicket();
+        BUS_Transaction busTrans = new BUS_Transaction();
         Messages mes = new Messages();
         public int CarFree { get; set; }
         public int MotorFree { get; set; }
@@ -96,7 +97,7 @@ namespace SPS
             {
                 CAM.Stop();
                 Application.Exit();
-            }    
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -155,7 +156,7 @@ namespace SPS
 
         private void btnCapture_Click(object sender, EventArgs e)
         {
-            if (busPK.getMotorFree(ParkingID) == 0 && busPK.getCarFree(ParkingID)==0)
+            if (busPK.getMotorFree(ParkingID) == 0 && busPK.getCarFree(ParkingID) == 0)
             {
                 Error(7);
             }
@@ -164,11 +165,13 @@ namespace SPS
                 lblCardNo.Text = txtCardNo.Text;
                 txtCardNo.Text = "";
                 autoCapture();
-               
-            }else {
+
+            }
+            else
+            {
                 autoCapture();
             }
-            
+
         }
 
 
@@ -241,14 +244,14 @@ namespace SPS
                 System.IO.File.Delete(m_path + "aa.bmp");
             }
             pictureBox1.Image.Save(m_path + "aa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
-            
+
 
         }
 
         //kiem tra card
         private void checkCard()
         {
-            
+
             if (busCard.checkCard(lblCardNo.Text) == false)
             {
                 Error(2);
@@ -273,22 +276,43 @@ namespace SPS
         //kiem tra bien so xe
         private void checkLicense()
         {
-            
-            if (busTicket.checkLicense(txtLicense.Text) == true)
+            if (txtLicense.Text.Length < 6)
             {
-                lblTicket.Text = "Vé tháng";
-                lblName.Text = busTicket.getName(txtLicense.Text);
-                if (DateTime.Parse(busTicket.getExpiryDate(txtLicense.Text)) < DateTime.Now)
+                chkLicense = false;
+                Error(8);
+            }
+            else
+            {
+                if (busTrans.checkLicense(txtLicense.Text) == true)
                 {
-                    //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
-                    chkLicense = false;
-                    
+                    if (busTrans.checkLicenseTimeOut(txtLicense.Text) != "")
+                    {
+                        chkLicense = false;
+                        Error(9);
+                    }
                 }
-                
-            }else 
-            {
-                lblTicket.Text = "Vé ngày/bloc";
-                chkLicense = true;
+                else
+                {
+
+
+                    if (busTicket.checkLicense(txtLicense.Text) == true)
+                    {
+                        lblTicket.Text = "Vé tháng";
+                        lblName.Text = busTicket.getName(txtLicense.Text);
+                        if (DateTime.Parse(busTicket.getExpiryDate(txtLicense.Text)) < DateTime.Now)
+                        {
+                            //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
+                            chkLicense = false;
+                            Error(5);
+                        }
+
+                    }
+                    else
+                    {
+                        lblTicket.Text = "Vé ngày/block";
+                        chkLicense = true;
+                    }
+                }
             }
         }
 
@@ -306,8 +330,9 @@ namespace SPS
                     {
                         if (busPK.getMotorFree(ParkingID) > 0)
                         {
-                            
-                        }else
+                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                        }
+                        else
                         {
                             Error(7);
                         }
@@ -327,7 +352,7 @@ namespace SPS
                 }
                 else
                 {
-                    Error(5);
+
                 }
             }
         }
@@ -363,6 +388,7 @@ namespace SPS
 
 
         }
+
         //phan tich hinh anh
         private void GetVehicleInfo()
         {
@@ -545,7 +571,7 @@ namespace SPS
                     //panel1.Controls.Add(box[i + c_x]);
                 }
                 #region hienthi
-                
+
                 lblCardNumber.Text = lblCardNo.Text;
                 if (GateID == 0)
                 {
@@ -682,8 +708,8 @@ namespace SPS
 
 
 
-                   // pictureBox6.Image = tmp.ToBitmap();
-                   // pictureBox6.Update();
+                    // pictureBox6.Image = tmp.ToBitmap();
+                    // pictureBox6.Update();
 
 
 
@@ -724,7 +750,7 @@ namespace SPS
             lblName.Text = "";
             //lblCardNumber.Text = "";
             txtLicense.Text = "";
-        } 
+        }
 
         //Thong bao
         public void Error(int a)
@@ -736,8 +762,8 @@ namespace SPS
         }
         public void Passed(int a)
         {
-            labelX11.BackColor = Color.CadetBlue;
-            lblCost.BackColor = Color.CadetBlue;
+            labelX11.BackColor = Color.Blue;
+            lblCost.BackColor = Color.Blue;
             labelX11.Text = "Thông qua:";
             lblCost.Text = mes.mes(a);
         }
