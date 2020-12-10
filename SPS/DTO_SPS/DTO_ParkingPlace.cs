@@ -9,12 +9,12 @@ namespace DTO_SPS
     {
         private int PlaceID;
         private string PlaceName;
-        private string PlaceLocation;
-        private int NumberOfSlot;
+        private string PlaceLocation;       
         private int NumberOfCar;
         private int NumberOfMotor;
         private int NumberCarFree;
         private int NumberMotorFree;
+        private int Status;
 
         /* ======== GETTER/SETTER ======== */
         public int MyNumberMotorFree
@@ -45,10 +45,10 @@ namespace DTO_SPS
         }
 
 
-        public int MyNumberOfSlot
+        public int MyStatus
         {
-            get { return NumberOfSlot; }
-            set { NumberOfSlot = value; }
+            get { return Status; }
+            set { Status = value; }
         }
 
 
@@ -76,16 +76,23 @@ namespace DTO_SPS
         {
         }
 
-        public DTO_ParkingPlace(int placeID, string placeName, string placeLocation, int numberOfSlot, int numberOfCar, int numberOfMotor, int numberCarFree, int numberMotorFree)
+        public DTO_ParkingPlace(int placeID, string placeName, string placeLocation, int numberOfCar, int numberOfMotor, int numberCarFree, int numberMotorFree, int status)
+        {
+            this.PlaceID = placeID;
+            this.PlaceName = placeName;
+            this.PlaceLocation = placeLocation;
+            this.NumberOfCar = numberOfCar;
+            this.NumberOfMotor = numberOfMotor;
+            this.NumberCarFree = numberCarFree;
+            this.NumberMotorFree = numberMotorFree;
+            this.Status = status;
+        }
+
+        public DTO_ParkingPlace(int placeID, int numberCarFree)
         {
             PlaceID = placeID;
-            PlaceName = placeName;
-            PlaceLocation = placeLocation;
-            NumberOfSlot = numberOfSlot;
-            NumberOfCar = numberOfCar;
-            NumberOfMotor = numberOfMotor;
             NumberCarFree = numberCarFree;
-            NumberMotorFree = numberMotorFree;
         }
+
     }
 }

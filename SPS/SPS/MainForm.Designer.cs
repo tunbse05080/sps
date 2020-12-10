@@ -635,6 +635,7 @@
             this.btnEnter.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEnter.TabIndex = 0;
             this.btnEnter.Text = "Nhập";
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // tableLayoutPanel7
             // 

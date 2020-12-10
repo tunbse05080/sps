@@ -20,3 +20,14 @@ C:\Users\hanov\Downloads\Git\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CoreCompil
 C:\Users\hanov\Downloads\Git\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CopyComplete
 C:\Users\hanov\Downloads\Git\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.dll
 C:\Users\hanov\Downloads\Git\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.pdb
+D:\temp\sps\SPS\BUS_SPS\bin\Debug\BUS_SPS.dll
+D:\temp\sps\SPS\BUS_SPS\bin\Debug\BUS_SPS.pdb
+D:\temp\sps\SPS\BUS_SPS\bin\Debug\DAL_SPS.dll
+D:\temp\sps\SPS\BUS_SPS\bin\Debug\DTO_SPS.dll
+D:\temp\sps\SPS\BUS_SPS\bin\Debug\DAL_SPS.pdb
+D:\temp\sps\SPS\BUS_SPS\bin\Debug\DTO_SPS.pdb
+D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csprojAssemblyReference.cache
+D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CoreCompileInputs.cache
+D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CopyComplete
+D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.dll
+D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.pdb

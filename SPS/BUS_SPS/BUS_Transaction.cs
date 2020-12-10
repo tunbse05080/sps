@@ -40,6 +40,11 @@ namespace BUS_SPS
         {
             return Convert.ToInt32(dalTrans.getTransactionbyID(trans).Rows[0][6].ToString());
         }
+        public int getParkingID(int trans)
+        {
+            return Convert.ToInt32(dalTrans.getTransactionbyID(trans).Rows[0][7].ToString());
+        }
+
         public string getTimeIn(int transID) //thong tin thoi gian vao
         {
             return dalTrans.getTransactionbyID(transID).Rows[0][1].ToString();

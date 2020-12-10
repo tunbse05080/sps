@@ -16,3 +16,12 @@ C:\Users\hanov\Downloads\Git\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CoreCompil
 C:\Users\hanov\Downloads\Git\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CopyComplete
 C:\Users\hanov\Downloads\Git\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.dll
 C:\Users\hanov\Downloads\Git\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.pdb
+D:\temp\sps\SPS\DAL_SPS\bin\Debug\DAL_SPS.dll
+D:\temp\sps\SPS\DAL_SPS\bin\Debug\DAL_SPS.pdb
+D:\temp\sps\SPS\DAL_SPS\bin\Debug\DTO_SPS.dll
+D:\temp\sps\SPS\DAL_SPS\bin\Debug\DTO_SPS.pdb
+D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csprojAssemblyReference.cache
+D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CoreCompileInputs.cache
+D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CopyComplete
+D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.dll
+D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.pdb

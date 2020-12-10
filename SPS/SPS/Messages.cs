@@ -17,7 +17,7 @@ namespace SPS
         private string m08 = "Biển số không đúng";
         private string m09 = "Xe đang trong bãi";
         private string m10 = "Xe không có trong bãi";
-        private string m11 = "Vé không đúng xe";
+        private string m11 = "Vé không đúng";
 
         public string M11
         {

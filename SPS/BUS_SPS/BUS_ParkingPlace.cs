@@ -23,5 +23,13 @@ namespace BUS_SPS
         {
             return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][6].ToString());
         }
+        public bool updateCarParking(DTO_ParkingPlace parking)
+        {
+            return dalParkingPlace.updateCarParking(parking);
+        }
+        public bool updateMotoParking(DTO_ParkingPlace parking)
+        {
+            return dalParkingPlace.updateMotoParking(parking);
+        }
     }
 }

@@ -10,3 +10,9 @@ C:\Users\hanov\Downloads\Git\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.csprojAssemblyRef
 C:\Users\hanov\Downloads\Git\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.csproj.CoreCompileInputs.cache
 C:\Users\hanov\Downloads\Git\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.dll
 C:\Users\hanov\Downloads\Git\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.pdb
+D:\temp\sps\SPS\DTO_SPS\bin\Debug\DTO_SPS.dll
+D:\temp\sps\SPS\DTO_SPS\bin\Debug\DTO_SPS.pdb
+D:\temp\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.csprojAssemblyReference.cache
+D:\temp\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.csproj.CoreCompileInputs.cache
+D:\temp\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.dll
+D:\temp\sps\SPS\DTO_SPS\obj\Debug\DTO_SPS.pdb
