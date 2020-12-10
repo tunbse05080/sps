@@ -283,28 +283,28 @@ namespace SPS
         //kiem tra bien so xe
         private void checkLicense()
         {
-            if (txtLicense.Text.Length < 6)
+            if (lblLicense.Text.Length < 6)
             {
                 chkLicense = false;
                 Error(8);
             }
             else
             {
-                if (busTrans.checkLicense(txtLicense.Text) == true)
+                if (busTrans.checkLicense(lblLicense.Text) == true)
                 {
-                    if (GateID == 0 && busTrans.checkLicenseTimeOut(txtLicense.Text) == "")
+                    if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == "")
                     {
                         chkLicense = false;
                         Error(9);
                     }
-                    else if (GateID == 1 && busTrans.checkLicenseTimeOut(txtLicense.Text) != "")
+                    else if (GateID == 1 && busTrans.checkLicenseTimeOut(lblLicense.Text) != "")
                     {
                         chkLicense = false;
                         Error(10);
                     }
                     else
                     {
-                        TransID = busTrans.getTransactionID(txtLicense.Text);
+                        TransID = busTrans.getTransactionID(lblLicense.Text);
                         if (GateID == 1 && busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID))
                         {
                             chkLicense = false;
@@ -315,12 +315,12 @@ namespace SPS
 
 
 
-                if (chkLicense == true && busTicket.checkLicense(txtLicense.Text) == true)
+                if (chkLicense == true && busTicket.checkLicense(lblLicense.Text) == true)
                 {
                     lblTicket.Text = "Vé tháng";
                     ticketType = 0;
-                    lblName.Text = busTicket.getName(txtLicense.Text);
-                    if (DateTime.Parse(busTicket.getExpiryDate(txtLicense.Text)) < DateTime.Now)
+                    lblName.Text = busTicket.getName(lblLicense.Text);
+                    if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) < DateTime.Now)
                     {
                         //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
                         chkLicense = true; //ve thang het han, tinh tien nhu ve ngay, block
@@ -351,7 +351,7 @@ namespace SPS
                 {
                     if (GateID == 0) //cong vao
                     {
-                        TransID = busTrans.getTransactionID(txtLicense.Text);
+                        TransID = busTrans.getTransactionID(lblLicense.Text);
                         if (vehicleType == 0)
                         {
                             if (busPK.getMotorFree(ParkingID) > 0)
@@ -514,7 +514,7 @@ namespace SPS
             DTO_ParkingPlace parking = new DTO_ParkingPlace();
             if (GateID == 0)
             {
-                 parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) - 1);
+                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) - 1);
             }
             else
             {
@@ -524,7 +524,7 @@ namespace SPS
             {
                 MessageBox.Show("Sửa thành công");
                 lblCar.Text = busPK.getCarFree(ParkingID).ToString();
-                
+
             }
             else
             {
@@ -582,7 +582,8 @@ namespace SPS
                 //pictureBox2.Image = grayframe.Clone(listRect[2], grayframe.PixelFormat);
                 string zz = "";
                 string bienso = "";
-
+                string license1 = "";
+                string license2 = "";
                 // lọc và sắp xếp số
                 List<Bitmap> bmp = new List<Bitmap>();
                 List<int> erode = new List<int>();
@@ -709,6 +710,7 @@ namespace SPS
 
                     zz += temp;
                     bienso += temp;
+                    license1 += temp;
                     box[i].Location = new System.Drawing.Point(x + i * 50, 0);
                     box[i].Size = new Size(50, 100);
                     box[i].SizeMode = PictureBoxSizeMode.StretchImage;
@@ -727,6 +729,7 @@ namespace SPS
 
                     zz += temp;
                     bienso += temp;
+                    license2 += temp;
                     box[i + c_x].Location = new System.Drawing.Point(x + i * 50, 100);
                     box[i + c_x].Size = new Size(50, 100);
                     box[i + c_x].SizeMode = PictureBoxSizeMode.StretchImage;
@@ -764,8 +767,20 @@ namespace SPS
                 {
                     bienso = bienso.Replace("\n", "");
                 } while (bienso.IndexOf("\n") != -1);
+                license1.Trim();
+                do
+                {
+                    license1 = license1.Replace("\n", "");
+                } while (license1.IndexOf("\n") != -1);
+                license2.Trim();
+                do
+                {
+                    license2 = license2.Replace("\n", "");
+                } while (license2.IndexOf("\n") != -1);
+
                 lblLicense.Text = bienso;
-                txtLicense.Text = bienso;
+                txtLicense1.Text = license1;
+                txtLicense2.Text = license2;
 
                 //string Str1 = bienso.Substring(0, 2); //lay 2 chu so dau cua bien so de xac dinh tinh / thanh pho
                 //int n = int.Parse(Str1);             
@@ -902,7 +917,7 @@ namespace SPS
         //hien thi thong tin
         private void showInformation()
         {
-        //   lblCardNumber.Text = lblCardNo.Text;
+            lblLicense.Text = txtLicense1.Text + txtLicense2.Text;
             if (GateID == 0)
             {
                 lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
@@ -913,16 +928,21 @@ namespace SPS
                 lblTimeIn.Text = DateTime.Parse(busTrans.getTimeIn(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
                 lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
             }
-            //if (checkxe == true)
-            //{
-            //    lblVehicle.Text = "Xe Ôtô";
-            //    vehicleType = 1;
-            //}
-            //else
-            //{
-            //    lblVehicle.Text = "Xe Máy";
-            //    vehicleType = 0;
-            //}
+            if (txtLicense1.Text.Length == 3)
+            {
+                lblVehicle.Text = "Xe Ôtô";
+                vehicleType = 1;
+            }
+            else if (txtLicense1.Text.Length == 4)
+            {
+                lblVehicle.Text = "Xe Máy";
+                vehicleType = 0;
+            }
+            else
+            {
+                lblVehicle.Text = "";
+                vehicleType = 0;
+            }
         }
         private void btnEnter_Click(object sender, EventArgs e) //nhap bien so  xe bang  tay
         {
@@ -934,7 +954,7 @@ namespace SPS
             {
                 if (GateID == 0) //cong vao
                 {
-                    TransID = busTrans.getTransactionID(txtLicense.Text);
+                    TransID = busTrans.getTransactionID(lblLicense.Text);
                     if (vehicleType == 0)
                     {
                         if (busPK.getMotorFree(ParkingID) > 0)
@@ -991,7 +1011,8 @@ namespace SPS
             lblTicket.Text = "";
             lblName.Text = "";
             //lblCardNumber.Text = "";
-            txtLicense.Text = "";
+            txtLicense1.Text = "";
+            txtLicense2.Text = "";
         }
 
         //Thong bao
