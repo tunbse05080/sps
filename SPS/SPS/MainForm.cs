@@ -46,7 +46,7 @@ namespace SPS
         private int TransID;
         private double TotalPrice;
         private int ImageID;
-        private int enterMethod;
+        private int enterMethod; // 1-nhap bien so bang tay, 0-kiem tra bien so tu dong
         private string m_path = Application.StartupPath + @"\data\"; //duong dan luu hinh anh
         List<Image<Bgr, Byte>> PlateImagesList = new List<Image<Bgr, byte>>();
         List<string> PlateTextList = new List<string>();
@@ -175,12 +175,26 @@ namespace SPS
             {
                 lblCardNo.Text = txtCardNo.Text;
                 txtCardNo.Text = "";
-                autoCapture();
+                if (enterMethod == 0)
+                {
+                    autoCapture();
+                }else
+                {
+                    GetVehicleInfo();
+                }
+                
 
             }
             else
             {
-                autoCapture();
+                if (enterMethod == 0)
+                {
+                    autoCapture();
+                }
+                else
+                {
+                    GetVehicleInfo();
+                }
             }
             txtCardNo.Focus();
         }
@@ -459,7 +473,7 @@ namespace SPS
             checkCard();
             if (chkCard == true)
             {
-                //GetVehicleInfo();
+                //CapturePhoto();
                 checkLicense();
                 if (chkLicense == true)
                 {
