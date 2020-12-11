@@ -95,6 +95,7 @@ namespace SPS
 
                 }
             }
+            txtCardNo.Focus();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -104,6 +105,7 @@ namespace SPS
                 CAM.Stop();
                 Application.Exit();
             }
+            txtCardNo.Focus();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -153,11 +155,13 @@ namespace SPS
             //    lstimages.Add(Path.GetFullPath(fileName));
             //}
             CallSetting();
+            txtCardNo.Focus();
         }
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
             CallSetting();
+            txtCardNo.Focus();
         }
 
         private void btnCapture_Click(object sender, EventArgs e)
@@ -177,7 +181,7 @@ namespace SPS
             {
                 autoCapture();
             }
-
+            txtCardNo.Focus();
         }
 
 
@@ -1046,9 +1050,24 @@ namespace SPS
 
         }
 
-        private void txtCardNo_TextChanged(object sender, EventArgs e) //su kien quet the
+        //su kien quet the
+        private void txtCardNo_TextChanged(object sender, EventArgs e) 
         {
-
+            if (txtCardNo.Text.Length == 10)
+            {
+                
+                lblCardNo.Text = txtCardNo.Text;
+                txtCardNo.Clear();
+                txtCardNo.Focus();
+                if (busPK.getMotorFree(ParkingID) == 0 && busPK.getCarFree(ParkingID) == 0)
+                {
+                    Error(7);
+                }
+                else
+                {
+                    autoCapture();
+                }               
+            }
         }
         //hien thi thong tin
         private void showInformation()
@@ -1086,7 +1105,8 @@ namespace SPS
         {
             chkLicense = true;
             showInformation();
-            manualEnter();           
+            manualEnter();
+            txtCardNo.Focus();
         }
 
         //xoa thong tin xe dang hien thi
