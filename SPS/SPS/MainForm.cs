@@ -318,7 +318,7 @@ namespace SPS
                         return;
                     }
                 }
-               // checkTicketType();
+                checkTicketType();
             }
 
             if (busTrans.checkLicense(lblLicense.Text) == false)
@@ -326,6 +326,7 @@ namespace SPS
                 checkTicketType();
             }
         }
+
         //phan loai ve thang, ve ngay/block
         private void checkTicketType()
         {
@@ -333,6 +334,7 @@ namespace SPS
             {
                 lblTicket.Text = "Vé tháng";
                 ticketType = 0;
+
                 lblName.Text = busTicket.getName(lblLicense.Text);
                 if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) < DateTime.Now)
                 {
@@ -365,6 +367,93 @@ namespace SPS
             if (chkCard == true)
             {
                 GetVehicleInfo();
+                checkLicense();
+                if (chkLicense == true)
+                {
+                    if (GateID == 0) //cong vao
+                    {
+
+                        if (vehicleType == 0)
+                        {
+                            if (busPK.getMotorFree(ParkingID) > 0)
+                            {
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                //lblTimeOut.Text = pictureLink;
+                                insertTransaction();
+                                TransID = busTrans.getTransactionID(lblLicense.Text);
+
+                                insertImage();
+                                updateCard(1);
+                                updateMotoFree();
+
+                            }
+                            else
+                            {
+                                Error(7);
+                            }
+                        }
+                        else
+                        {
+                            if (busPK.getCarFree(ParkingID) > 0)
+                            {
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                //lblTimeOut.Text = pictureLink;
+                                insertTransaction();
+                                TransID = busTrans.getTransactionID(lblLicense.Text);
+
+                                insertImage();
+                                updateCard(1);
+                                updateCarFree();
+
+                            }
+                            else
+                            {
+                                Error(7);
+                            }
+                        }
+                    }
+                    else //cong  ra
+                    {
+                        if (vehicleType == 0)
+                        {
+                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            TransID = busTrans.getTransactionID(lblLicense.Text);
+                            ImageID = busImage.getImageID(TransID);
+
+                            updateTransaction();
+                            updateImage();
+                            updateCard(0);
+                            updateMotoFree();
+                        }
+                        else
+                        {
+                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            TransID = busTrans.getTransactionID(lblLicense.Text);
+                            ImageID = busImage.getImageID(TransID);
+
+                            updateTransaction();
+                            updateImage();
+                            updateCard(0);
+                            updateCarFree();
+                        }
+                    }
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        ////insert/update bang Transaction, Table khi nhan nut Nhap
+        private void manualEnter()
+        {
+
+            checkCard();
+            if (chkCard == true)
+            {
+                //GetVehicleInfo();
                 checkLicense();
                 if (chkLicense == true)
                 {
@@ -991,56 +1080,15 @@ namespace SPS
                 vehicleType = 0;
             }
         }
-        private void btnEnter_Click(object sender, EventArgs e) //nhap bien so  xe bang  tay
+
+        //nhap bien so  xe bang  tay khi click nut Nhap
+        private void btnEnter_Click(object sender, EventArgs e) 
         {
             chkLicense = true;
             showInformation();
-            checkLicense();
-
-            if (chkLicense == true)
-            {
-                if (GateID == 0) //cong vao
-                {
-                    TransID = busTrans.getTransactionID(lblLicense.Text);
-                    if (vehicleType == 0)
-                    {
-                        if (busPK.getMotorFree(ParkingID) > 0)
-                        {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                        }
-                        else
-                        {
-                            Error(7);
-                        }
-                    }
-                    else
-                    {
-                        if (busPK.getCarFree(ParkingID) > 0)
-                        {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                            lblTimeOut.Text = pictureLink;
-                        }
-                        else
-                        {
-                            Error(7);
-                        }
-                    }
-                }
-                else //cong  ra
-                {
-                    if (vehicleType == 0)
-                    {
-                        pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                        ImageID = busImage.getImageID(TransID);
-                    }
-                    else
-                    {
-                        pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                        ImageID = busImage.getImageID(TransID);
-                    }
-                }
-            }
+            manualEnter();           
         }
+
         //xoa thong tin xe dang hien thi
         public void reset()
         {
