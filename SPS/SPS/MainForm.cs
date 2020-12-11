@@ -292,17 +292,17 @@ namespace SPS
 
             if (busTrans.checkLicense(lblLicense.Text) == true)
             {
-                lblTicket.Text = "haha";
-                lblTimeOut.Text = busTrans.checkLicenseTimeOut(lblLicense.Text);
+                //lblTicket.Text = "haha";
+               // lblTimeOut.Text = busTrans.checkLicenseTimeOut(lblLicense.Text);
 
-                if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == null)
+                if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == "")
                 {
-                    lblTicket.Text = "haha";
+                    //lblTicket.Text = "hahaha";
                     chkLicense = false;
                     Error(9);
                     return;
                 }
-                else if (GateID == 1 && busTrans.checkLicenseTimeOut(lblLicense.Text) != null)
+                else if (GateID == 1 && busTrans.checkLicenseTimeOut(lblLicense.Text) != "")
                 {
                     chkLicense = false;
                     Error(10);
