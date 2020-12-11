@@ -46,6 +46,7 @@ namespace SPS
         private int TransID;
         private double TotalPrice;
         private int ImageID;
+        private int enterMethod;
         private string m_path = Application.StartupPath + @"\data\"; //duong dan luu hinh anh
         List<Image<Bgr, Byte>> PlateImagesList = new List<Image<Bgr, byte>>();
         List<string> PlateTextList = new List<string>();
@@ -194,6 +195,7 @@ namespace SPS
                 {
                     GateID = form2.SelectedGate;
                     ParkingID = form2.ParkingID;
+                    enterMethod = form2.EnterMethod;
                     if (GateID == 0)
                     {
                         lblGate.Text = "Cổng vào";

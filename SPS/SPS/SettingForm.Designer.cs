@@ -35,7 +35,7 @@
             this.rbtOut = new System.Windows.Forms.RadioButton();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.switchButton1 = new DevComponents.DotNetBar.Controls.SwitchButton();
+            this.swbtnEnter = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
@@ -127,21 +127,21 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Hủy";
             // 
-            // switchButton1
+            // swbtnEnter
             // 
             // 
             // 
             // 
-            this.switchButton1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.switchButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switchButton1.Location = new System.Drawing.Point(322, 84);
-            this.switchButton1.Name = "switchButton1";
-            this.switchButton1.OffText = "Tắt";
-            this.switchButton1.OnText = "Bật";
-            this.switchButton1.Size = new System.Drawing.Size(94, 37);
-            this.switchButton1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.switchButton1.SwitchWidth = 48;
-            this.switchButton1.TabIndex = 9;
+            this.swbtnEnter.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.swbtnEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.swbtnEnter.Location = new System.Drawing.Point(322, 84);
+            this.swbtnEnter.Name = "swbtnEnter";
+            this.swbtnEnter.OffText = "Tắt";
+            this.swbtnEnter.OnText = "Bật";
+            this.swbtnEnter.Size = new System.Drawing.Size(94, 37);
+            this.swbtnEnter.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.swbtnEnter.SwitchWidth = 48;
+            this.swbtnEnter.TabIndex = 9;
             // 
             // labelX3
             // 
@@ -162,7 +162,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.switchButton1);
+            this.Controls.Add(this.swbtnEnter);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.rbtOut);
@@ -187,7 +187,7 @@
         private System.Windows.Forms.RadioButton rbtOut;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX btnCancel;
-        private DevComponents.DotNetBar.Controls.SwitchButton switchButton1;
+        private DevComponents.DotNetBar.Controls.SwitchButton swbtnEnter;
         private DevComponents.DotNetBar.LabelX labelX3;
     }
 }

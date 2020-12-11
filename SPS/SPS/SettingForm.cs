@@ -16,6 +16,7 @@ namespace SPS
         public int SelectedGate { get; set; }
         public string ParkingName { get; set; }
         public int ParkingID { get; set; }
+        public int EnterMethod { get; set; }
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         #endregion
         public SettingForm()
@@ -38,6 +39,14 @@ namespace SPS
             else
             {
                 SelectedGate = 1;
+            }
+            if (swbtnEnter.Value == true)
+            {
+                EnterMethod = 1;
+            }
+            else
+            {
+                EnterMethod = 0;
             }
             this.Close();
         }
