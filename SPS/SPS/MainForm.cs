@@ -287,55 +287,74 @@ namespace SPS
             {
                 chkLicense = false;
                 Error(8);
+                return;
             }
-            else
+
+            if (busTrans.checkLicense(lblLicense.Text) == true)
             {
-                if (busTrans.checkLicense(lblLicense.Text) == true)
+                lblTicket.Text = "haha";
+                lblTimeOut.Text = busTrans.checkLicenseTimeOut(lblLicense.Text);
+
+                if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == null)
                 {
-                    if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == "")
-                    {
-                        chkLicense = false;
-                        Error(9);
-                    }
-                    else if (GateID == 1 && busTrans.checkLicenseTimeOut(lblLicense.Text) != "")
-                    {
-                        chkLicense = false;
-                        Error(10);
-                    }
-                    else
-                    {
-                        TransID = busTrans.getTransactionID(lblLicense.Text);
-                        if (GateID == 1 && busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID))
-                        {
-                            chkLicense = false;
-                            Error(11);
-                        }
-                    }
+                    lblTicket.Text = "haha";
+                    chkLicense = false;
+                    Error(9);
+                    return;
                 }
-
-
-
-                if (chkLicense == true && busTicket.checkLicense(lblLicense.Text) == true)
+                else if (GateID == 1 && busTrans.checkLicenseTimeOut(lblLicense.Text) != null)
                 {
-                    lblTicket.Text = "Vé tháng";
-                    ticketType = 0;
-                    lblName.Text = busTicket.getName(lblLicense.Text);
-                    if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) < DateTime.Now)
-                    {
-                        //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
-                        chkLicense = true; //ve thang het han, tinh tien nhu ve ngay, block
-                                           // ticketType = 1;
-                        Warning(5);
-                    }
-
+                    chkLicense = false;
+                    Error(10);
+                    return;
                 }
                 else
                 {
-                    lblTicket.Text = "Vé ngày/block";
-                    ticketType = 1;
-                    chkLicense = true;
+                    TransID = busTrans.getTransactionID(lblLicense.Text);
+                    if (GateID == 1 && busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID))
+                    {
+                        chkLicense = false;
+                        Error(11);
+                        return;
+                    }
+                }
+               // checkTicketType();
+            }
+
+            if (busTrans.checkLicense(lblLicense.Text) == false)
+            {
+                checkTicketType();
+            }
+        }
+        //phan loai ve thang, ve ngay/block
+        private void checkTicketType()
+        {
+            if (busTicket.checkLicense(lblLicense.Text) == true)
+            {
+                lblTicket.Text = "Vé tháng";
+                ticketType = 0;
+                lblName.Text = busTicket.getName(lblLicense.Text);
+                if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) < DateTime.Now)
+                {
+                    //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
+                    chkLicense = true; //ve thang het han, tinh tien nhu ve ngay, block
+                                       // ticketType = 1;
+                    Warning(5);
+                    return;
+                }
+                else
+                {
+                    Passed(6);
+                    return;
                 }
 
+            }
+            else if (busTicket.checkLicense(lblLicense.Text) == false)
+            {
+                lblTicket.Text = "Vé ngày/block";
+                ticketType = 1;
+                chkLicense = true;
+                Passed(6);
             }
         }
 
@@ -357,13 +376,14 @@ namespace SPS
                             if (busPK.getMotorFree(ParkingID) > 0)
                             {
                                 pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                                lblTimeOut.Text = pictureLink;
-                                updateCard(1);
-                                updateMotoFree();
+                                //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
+
                                 insertImage();
-                                Passed(6);
+                                updateCard(1);
+                                updateMotoFree();
+
                             }
                             else
                             {
@@ -375,7 +395,14 @@ namespace SPS
                             if (busPK.getCarFree(ParkingID) > 0)
                             {
                                 pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                                lblTimeOut.Text = pictureLink;
+                                //lblTimeOut.Text = pictureLink;
+                                insertTransaction();
+                                TransID = busTrans.getTransactionID(lblLicense.Text);
+
+                                insertImage();
+                                updateCard(1);
+                                updateCarFree();
+
                             }
                             else
                             {
@@ -388,12 +415,24 @@ namespace SPS
                         if (vehicleType == 0)
                         {
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
+
+                            updateTransaction();
+                            updateImage();
+                            updateCard(0);
+                            updateMotoFree();
                         }
                         else
                         {
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
+
+                            updateTransaction();
+                            updateImage();
+                            updateCard(0);
+                            updateCarFree();
                         }
                     }
 
@@ -442,7 +481,7 @@ namespace SPS
         {
             //Tao DTO
             //DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, "", lblLicense.Text, ticketType, 0, CardID, ParkingID, vehicleType);
-            DTO_Transaction trans = new DTO_Transaction(0,DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType);
+            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType);
             // Them
             if (busTrans.insertTransaction(trans))
             {
@@ -521,11 +560,11 @@ namespace SPS
             DTO_ParkingPlace parking = new DTO_ParkingPlace();
             if (GateID == 0)
             {
-                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) - 1,0);
+                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) - 1, 0);
             }
             else
             {
-                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) + 1,0);
+                parking = new DTO_ParkingPlace(ParkingID, busPK.getCarFree(ParkingID) + 1, 0);
             }
             if (busPK.updateCarParking(parking))
             {
@@ -541,11 +580,12 @@ namespace SPS
         private void updateMotoFree()
         {
             int MotoSlot = busPK.getMotorFree(ParkingID);
-            DTO_ParkingPlace parking = new DTO_ParkingPlace();   
+            DTO_ParkingPlace parking = new DTO_ParkingPlace();
             if (GateID == 0)
             {
                 parking = new DTO_ParkingPlace(ParkingID, 0, MotoSlot - 1);
-            }else
+            }
+            else
             {
                 parking = new DTO_ParkingPlace(ParkingID, 0, MotoSlot + 1);
             }
@@ -1041,7 +1081,7 @@ namespace SPS
         {
             labelX11.BackColor = Color.Yellow;
             lblCost.BackColor = Color.Yellow;
-            labelX11.Text = "Cảnh báo:";
+            labelX11.Text = "Vé tháng hết hạn:";
             lblCost.Text = mes.mes(a);
         }
         private void cleanError()

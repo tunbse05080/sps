@@ -11,7 +11,7 @@ namespace SPS
         private string m02 = "Thẻ không hợp lệ";
         private string m03 = "Thẻ đang sử dụng";
         private string m04 = "Thẻ bị khóa";
-        private string m05 = "Vé tháng hết hạn (chuyển thành vé ngày/block)";
+        private string m05 = "Tính tiền như vé ngày/block";
         private string m06 = "Xe vào bãi đỗ";
         private string m07 = "Bãi đỗ xe đã đầy";
         private string m08 = "Biển số không đúng";
