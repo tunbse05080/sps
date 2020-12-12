@@ -31,6 +31,7 @@ namespace SPS
         private VideoCaptureDevice CAM;
         private Bitmap BMP;
         private FilterInfoCollection CAMS;
+        Emgu.CV.Capture cameraCapture;
         System.Windows.Forms.Timer tmr = null;
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         BUS_Card busCard = new BUS_Card();
@@ -239,8 +240,13 @@ namespace SPS
             {
                 startCamera();
             }
+            else
+            {
+                startStream();
+            }
         }
-        //start camera
+
+        //start webcam camera
         private void startCamera()
         {
             if (CAM != null && CAM.IsRunning)
@@ -258,6 +264,18 @@ namespace SPS
             //   throw new NotImplementedException();
         }
 
+        //start Camera IP
+        private void startStream()
+        {
+            cameraCapture = new Emgu.CV.Capture("rtsp://admin:GXGPNW@192.168.1.16:554");
+            cameraCapture.ImageGrabbed += ProcessFrame;           
+        }
+        private void ProcessFrame(object sender, EventArgs arg)
+        {
+            Image<Bgr, byte> imgeOrigenal = cameraCapture.QueryFrame();
+            pictureBox_WC.Image = imgeOrigenal.Bitmap;
+
+        }
         //Timenow
         private void StartTimer()
         {
