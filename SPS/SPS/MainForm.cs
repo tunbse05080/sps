@@ -574,9 +574,9 @@ namespace SPS
             int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
             int numberOfhours = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalHours));
             int numberOfBlocks = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours) / Convert.ToDouble(timeOfblock))));
-            double dailyPrice = busPrice.getDailyPrice(ParkingID, TransID);
-            double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, TransID);
-            double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, TransID);
+            double dailyPrice = busPrice.getDailyPrice(ParkingID, vehicleType);
+            double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, vehicleType);
+            double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, vehicleType);
             if (ticketType == 0 && expiredTicket == false)
             {
                 price = 0;
@@ -585,6 +585,10 @@ namespace SPS
             {
                     price = (Convert.ToInt32(dailyPrice)==0) ? firstBlockPrice + (numberOfBlocks - 1)*nextBlockPrice : numberOfDays*dailyPrice;
             }
+            labelX11.BackColor = Color.Yellow;
+            lblCost.BackColor = Color.Yellow;
+            labelX11.Text = "Số tiền:";
+            lblCost.Text = price.ToString() + "VND";
         }
 
         //upload anh len imageshack
@@ -1123,6 +1127,7 @@ namespace SPS
         private void showInformation()
         {
             lblLicense.Text = txtLicense1.Text + txtLicense2.Text;
+            lblCardNumber.Text = lblCardNo.Text;
             if (GateID == 0)
             {
                 lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
