@@ -351,9 +351,15 @@ namespace SPS
                 checkTicketType();
             }
 
-            if (busTrans.checkLicense(lblLicense.Text) == false)
+            if (GateID == 0 && busTrans.checkLicense(lblLicense.Text) == false)
             {
                 checkTicketType();
+            }
+            if (GateID == 1 && busTrans.checkLicense(lblLicense.Text) == false)
+            {
+                chkLicense = false;
+                Error(10);
+                return;
             }
         }
 
@@ -578,7 +584,7 @@ namespace SPS
                 {
                     TimeIn = DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text));
                 }
-                    
+
             }
             DateTime TimeOut = DateTime.Now;
             int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
@@ -1205,8 +1211,8 @@ namespace SPS
         }
         private void Passed(int a)
         {
-            labelX11.BackColor = Color.Blue;
-            lblCost.BackColor = Color.Blue;
+            //labelX11.BackColor = Color.Blue;
+            //lblCost.BackColor = Color.Blue;
             labelX11.Text = "Thông qua:";
             lblCost.Text = mes.mes(a);
         }
