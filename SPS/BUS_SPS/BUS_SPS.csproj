@@ -46,6 +46,7 @@
     <Compile Include="BUS_Image.cs" />
     <Compile Include="BUS_MonthlyTicket.cs" />
     <Compile Include="BUS_ParkingPlace.cs" />
+    <Compile Include="BUS_Price.cs" />
     <Compile Include="BUS_Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

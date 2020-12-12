@@ -37,6 +37,7 @@ namespace SPS
         BUS_MonthlyTicket busTicket = new BUS_MonthlyTicket();
         BUS_Transaction busTrans = new BUS_Transaction();
         BUS_Image busImage = new BUS_Image();
+        BUS_Price busPrice = new BUS_Price();
         Messages mes = new Messages();
         public int CarFree { get; set; }
         public int MotorFree { get; set; }
@@ -44,7 +45,7 @@ namespace SPS
         private int GateID;
         private int CardID;
         private int TransID;
-        private double TotalPrice;
+        private double price;
         private int ImageID;
         private int enterMethod; // 1-nhap bien so bang tay, 0-kiem tra bien so tu dong
         private string m_path = Application.StartupPath + @"\data\"; //duong dan luu hinh anh
@@ -59,9 +60,11 @@ namespace SPS
         private const string m_lang = "eng";
         bool chkCard = true;
         bool chkLicense = true;
+        bool expiredTicket = false; //ve thang het han
         int vehicleType; //loai xe 0-xemay, 1-oto
         int ticketType; //loai ve 0-ve thang, 1-vengay/block
-        string pictureLink;
+        int timeOfblock = 2; //thoi gian moi block (gio)
+        string pictureLink; //duong dan hinh anh up len imageshark
         #endregion
 
         public MainForm()
@@ -116,6 +119,8 @@ namespace SPS
             this.WindowState = FormWindowState.Maximized;
             pictureBox_WC.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox_WC.Height = pictureBox_WC.Width / 16 * 9;
+            pictureBox1.Height = pictureBox1.Width / 16 * 9;
             full_tesseract = new TesseractProcessor();
             bool succeed = full_tesseract.Init(m_path, m_lang, 3);
             if (!succeed)
@@ -305,6 +310,8 @@ namespace SPS
         //kiem tra bien so xe
         private void checkLicense()
         {
+            chkLicense = true;
+            TransID = 0;
             if (txtLicense1.Text.Length < 3 || lblLicense.Text.Length < 6)
             {
                 chkLicense = false;
@@ -352,6 +359,7 @@ namespace SPS
         //phan loai ve thang, ve ngay/block
         private void checkTicketType()
         {
+            expiredTicket = false;
             if (busTicket.checkLicense(lblLicense.Text) == true)
             {
                 lblTicket.Text = "Vé tháng";
@@ -362,7 +370,8 @@ namespace SPS
                 {
                     //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
                     chkLicense = true; //ve thang het han, tinh tien nhu ve ngay, block
-                                       // ticketType = 1;
+                    expiredTicket = true;
+                    lblTicket.Text = "Vé tháng hết hạn";
                     Warning(5);
                     return;
                 }
@@ -442,7 +451,7 @@ namespace SPS
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
-
+                            totalPrice();
                             updateTransaction();
                             updateImage();
                             updateCard(0);
@@ -453,7 +462,7 @@ namespace SPS
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
-
+                            totalPrice();
                             updateTransaction();
                             updateImage();
                             updateCard(0);
@@ -529,7 +538,7 @@ namespace SPS
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
-
+                            totalPrice();
                             updateTransaction();
                             updateImage();
                             updateCard(0);
@@ -540,7 +549,7 @@ namespace SPS
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
-
+                            totalPrice();
                             updateTransaction();
                             updateImage();
                             updateCard(0);
@@ -553,6 +562,28 @@ namespace SPS
                 {
 
                 }
+            }
+        }
+
+        //tinh tien
+        private void totalPrice()
+        {
+            price = 0;
+            DateTime TimeIn = DateTime.Parse(busTrans.getTimeInbyLicense(lblLicense.Text));
+            DateTime TimeOut = DateTime.Now;
+            int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
+            int numberOfhours = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalHours));
+            int numberOfBlocks = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours) / Convert.ToDouble(timeOfblock))));
+            double dailyPrice = busPrice.getDailyPrice(ParkingID, TransID);
+            double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, TransID);
+            double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, TransID);
+            if (ticketType == 0 && expiredTicket == false)
+            {
+                price = 0;
+            }
+            if (ticketType == 1 || expiredTicket ==true)
+            {
+                    price = (Convert.ToInt32(dailyPrice)==0) ? firstBlockPrice + (numberOfBlocks - 1)*nextBlockPrice : numberOfDays*dailyPrice;
             }
         }
 
@@ -609,7 +640,7 @@ namespace SPS
         private void updateTransaction()
         {
             //Tao DTO
-            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), TotalPrice);
+            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price);
             // Sửa
             if (busTrans.updateTransaction(trans))
             {
@@ -906,7 +937,7 @@ namespace SPS
                 }
                 if (GateID == 1)
                 {
-                    lblTimeIn.Text = DateTime.Parse(busTrans.getTimeIn(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
+                    lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyTransID(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
                     lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                 }
                 if (checkxe == true)
@@ -1099,7 +1130,7 @@ namespace SPS
             }
             if (GateID == 1)
             {
-                lblTimeIn.Text = DateTime.Parse(busTrans.getTimeIn(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
+                lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyLicense(lblLicense.Text)).ToString("hh:mm:ss tt dd/MM/yyyy");
                 lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
             }
             if (txtLicense1.Text.Length == 3)

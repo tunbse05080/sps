@@ -46,6 +46,7 @@
     <Compile Include="DTO_Image.cs" />
     <Compile Include="DTO_MonthlyTicket.cs" />
     <Compile Include="DTO_ParkingPlace.cs" />
+    <Compile Include="DTO_Price.cs" />
     <Compile Include="DTO_Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
