@@ -185,11 +185,12 @@ namespace SPS
                 if (enterMethod == 0)
                 {
                     autoCapture();
-                }else
+                }
+                else
                 {
                     GetVehicleInfo();
                 }
-                
+
 
             }
             else
@@ -322,7 +323,7 @@ namespace SPS
             if (busTrans.checkLicense(lblLicense.Text) == true)
             {
                 //lblTicket.Text = "haha";
-               // lblTimeOut.Text = busTrans.checkLicenseTimeOut(lblLicense.Text);
+                // lblTimeOut.Text = busTrans.checkLicenseTimeOut(lblLicense.Text);
 
                 if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == "")
                 {
@@ -372,6 +373,7 @@ namespace SPS
                     chkLicense = true; //ve thang het han, tinh tien nhu ve ngay, block
                     expiredTicket = true;
                     lblTicket.Text = "Vé tháng hết hạn";
+                    lblTicket.BackColor = Color.Yellow;
                     Warning(5);
                     return;
                 }
@@ -570,6 +572,14 @@ namespace SPS
         {
             price = 0;
             DateTime TimeIn = DateTime.Parse(busTrans.getTimeInbyLicense(lblLicense.Text));
+            if (expiredTicket == true)
+            {
+                if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) > TimeIn)
+                {
+                    TimeIn = DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text));
+                }
+                    
+            }
             DateTime TimeOut = DateTime.Now;
             int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
             int numberOfhours = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalHours));
@@ -581,9 +591,9 @@ namespace SPS
             {
                 price = 0;
             }
-            if (ticketType == 1 || expiredTicket ==true)
+            if (ticketType == 1 || expiredTicket == true)
             {
-                    price = (Convert.ToInt32(dailyPrice)==0) ? firstBlockPrice + (numberOfBlocks - 1)*nextBlockPrice : numberOfDays*dailyPrice;
+                price = (Convert.ToInt32(dailyPrice) == 0) ? firstBlockPrice + (numberOfBlocks - 1) * nextBlockPrice : numberOfDays * dailyPrice;
             }
             labelX11.BackColor = Color.Yellow;
             lblCost.BackColor = Color.Yellow;
@@ -1105,11 +1115,11 @@ namespace SPS
         }
 
         //su kien quet the
-        private void txtCardNo_TextChanged(object sender, EventArgs e) 
+        private void txtCardNo_TextChanged(object sender, EventArgs e)
         {
             if (txtCardNo.Text.Length == 10)
             {
-                
+
                 lblCardNo.Text = txtCardNo.Text;
                 txtCardNo.Clear();
                 txtCardNo.Focus();
@@ -1120,7 +1130,7 @@ namespace SPS
                 else
                 {
                     autoCapture();
-                }               
+                }
             }
         }
         //hien thi thong tin
@@ -1156,7 +1166,7 @@ namespace SPS
         }
 
         //nhap bien so  xe bang  tay khi click nut Nhap
-        private void btnEnter_Click(object sender, EventArgs e) 
+        private void btnEnter_Click(object sender, EventArgs e)
         {
             chkLicense = true;
             showInformation();
@@ -1211,6 +1221,7 @@ namespace SPS
         {
             labelX11.BackColor = Color.White;
             lblCost.BackColor = Color.White;
+            lblTicket.BackColor = Color.White;
             labelX11.Text = "Số tiền:";
             lblCost.Text = "VND";
         }
