@@ -264,7 +264,6 @@
             this.lblTimeOut.Name = "lblTimeOut";
             this.lblTimeOut.Size = new System.Drawing.Size(302, 64);
             this.lblTimeOut.TabIndex = 1;
-            this.lblTimeOut.Text = "00:00:00";
             this.lblTimeOut.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
             // lblTimeIn
@@ -283,7 +282,6 @@
             this.lblTimeIn.Name = "lblTimeIn";
             this.lblTimeIn.Size = new System.Drawing.Size(302, 63);
             this.lblTimeIn.TabIndex = 0;
-            this.lblTimeIn.Text = "00:00:00";
             // 
             // labelX5
             // 
@@ -425,7 +423,6 @@
             this.pictureBox_WC.Location = new System.Drawing.Point(3, 3);
             this.pictureBox_WC.Name = "pictureBox_WC";
             this.pictureBox_WC.Size = new System.Drawing.Size(458, 340);
-           // this.pictureBox_WC.Height 
             this.pictureBox_WC.TabIndex = 0;
             this.pictureBox_WC.TabStop = false;
             // 
@@ -848,7 +845,6 @@
             this.lblTicket.Name = "lblTicket";
             this.lblTicket.Size = new System.Drawing.Size(233, 35);
             this.lblTicket.TabIndex = 4;
-            this.lblTicket.Text = "loại vé";
             // 
             // labelX12
             // 
@@ -932,7 +928,6 @@
             this.lblCardNumber.Name = "lblCardNumber";
             this.lblCardNumber.Size = new System.Drawing.Size(233, 39);
             this.lblCardNumber.TabIndex = 9;
-            this.lblCardNumber.Text = "số thẻ";
             // 
             // labelX17
             // 
