@@ -114,6 +114,8 @@ namespace SPS
             //this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+            pictureBox_WC.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             full_tesseract = new TesseractProcessor();
             bool succeed = full_tesseract.Init(m_path, m_lang, 3);
             if (!succeed)
@@ -366,6 +368,7 @@ namespace SPS
                 }
                 else
                 {
+                    chkLicense = true;
                     Passed(6);
                     return;
                 }
