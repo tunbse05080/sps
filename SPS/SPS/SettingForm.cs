@@ -55,5 +55,10 @@ namespace SPS
         {
             this.TopMost = true;
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close(); 
+        }
     }
 }

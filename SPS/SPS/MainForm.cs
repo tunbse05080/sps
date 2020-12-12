@@ -81,9 +81,9 @@ namespace SPS
             }
             else
             {
-                toolStripComboBox1.Text = "No cameras found";
-                string message = "No cameras found. Insert a camera please!";
-                string caption = "No cameras found";
+                toolStripComboBox1.Text = "Không tìm thấy camera";
+                string message = "Không tìm thấy camera. Kết nối với camera!";
+                string caption = "Không tìm thấy camera";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result;
 
@@ -106,7 +106,10 @@ namespace SPS
         {
             if (MessageBox.Show(mes.mes(1), "Hỏi Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                CAM.Stop();
+                if (CAM != null && CAM.IsRunning)
+                {
+                    CAM.Stop();
+                }
                 Application.Exit();
             }
             txtCardNo.Focus();
