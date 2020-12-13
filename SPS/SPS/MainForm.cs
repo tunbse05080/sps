@@ -268,11 +268,12 @@ namespace SPS
         private void startStream()
         {
             cameraCapture = new Emgu.CV.Capture("rtsp://admin:GXGPNW@192.168.1.16:554");
-            cameraCapture.ImageGrabbed += ProcessFrame;           
+            cameraCapture.ImageGrabbed += ProcessFrame;
+            cameraCapture.Start();
         }
         private void ProcessFrame(object sender, EventArgs arg)
         {
-            Image<Bgr, byte> imgeOrigenal = cameraCapture.QueryFrame();
+            Image<Bgr, byte> imgeOrigenal = cameraCapture.RetrieveBgrFrame();
             pictureBox_WC.Image = imgeOrigenal.Bitmap;
 
         }
