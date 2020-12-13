@@ -111,6 +111,10 @@ namespace SPS
                 {
                     CAM.Stop();
                 }
+                if(cameraCapture != null)
+                {
+                    cameraCapture.Stop();
+                }
                 Application.Exit();
             }
             txtCardNo.Focus();
