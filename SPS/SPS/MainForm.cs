@@ -271,7 +271,12 @@ namespace SPS
         //start Camera IP
         private void startStream()
         {
-            cameraCapture = new Emgu.CV.Capture("rtsp://admin:GXGPNW@192.168.1.16:554");
+            if (cameraCapture != null)
+            {
+                cameraCapture.Stop();
+            }
+            cameraCapture = new Emgu.CV.Capture("rtsp://admin:DQQHRY@192.168.31.88:554");
+            //cameraCapture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FPS, 15);
             cameraCapture.ImageGrabbed += ProcessFrame;
             cameraCapture.Start();
         }
