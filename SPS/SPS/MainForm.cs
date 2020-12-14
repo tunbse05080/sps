@@ -284,8 +284,10 @@ namespace SPS
         }
         private void ProcessFrame(object sender, EventArgs arg)
         {
-            Image<Bgr, byte> imgeOrigenal = cameraCapture.RetrieveBgrFrame();
-            pictureBox_WC.Image = imgeOrigenal.Bitmap;
+            //Image<Bgr, Byte> imgeOrigenal = new Image<Bgr, Byte>(cameraCapture.RetrieveBgrFrame().ToBitmap());
+            Image<Bgr, byte> imgeOrigenal = cameraCapture.RetrieveBgrFrame(0);
+            // imgeOrigenal = cameraCapture.QueryFrame();
+            pictureBox_WC.Image = imgeOrigenal.ToBitmap();
             //imageBox1.Image = imgeOrigenal;
 
         }
