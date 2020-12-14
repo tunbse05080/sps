@@ -129,6 +129,8 @@ namespace SPS
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox_WC.Height = pictureBox_WC.Width / 16 * 9;
             pictureBox1.Height = pictureBox1.Width / 16 * 9;
+            //imageBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            //imageBox1.Width = imageBox1.Height / 9 * 16;
             full_tesseract = new TesseractProcessor();
             bool succeed = full_tesseract.Init(m_path, m_lang, 3);
             if (!succeed)
@@ -284,6 +286,7 @@ namespace SPS
         {
             Image<Bgr, byte> imgeOrigenal = cameraCapture.RetrieveBgrFrame();
             pictureBox_WC.Image = imgeOrigenal.Bitmap;
+            //imageBox1.Image = imgeOrigenal;
 
         }
         //Timenow
