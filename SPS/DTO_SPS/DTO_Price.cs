@@ -15,6 +15,22 @@ namespace DTO_SPS
         private double firstBlock;
         private double nextBlock;
         private int prakingID;
+        private int timeFirstBlock;
+        private string timeNextBlock;
+
+        public string MyTimeNextBlock
+        {
+            get { return timeNextBlock; }
+            set { timeNextBlock = value; }
+        }
+
+
+        public int MyTimeFirstBlock
+        {
+            get { return timeFirstBlock; }
+            set { timeFirstBlock = value; }
+        }
+
 
         public int MyParkingID
         {
@@ -77,6 +93,12 @@ namespace DTO_SPS
             this.firstBlock = firstBlock;
             this.nextBlock = nextBlock;
             this.prakingID = prakingID;
+        }
+
+        public DTO_Price(int priceID, int vehicleType, double daily, double monthly, double firstBlock, double nextBlock, int prakingID, int timeFirstBlock, int timeNextBlock) : this(priceID, vehicleType, daily, monthly, firstBlock, nextBlock, prakingID)
+        {
+            this.timeFirstBlock = timeFirstBlock;
+            this.timeNextBlock = timeNextBlock;
         }
     }
 }
