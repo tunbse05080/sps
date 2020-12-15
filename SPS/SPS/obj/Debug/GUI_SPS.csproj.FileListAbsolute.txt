@@ -114,3 +114,4 @@ D:\temp\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.CoreCompileInputs.cache
 D:\temp\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.CopyComplete
 D:\temp\sps\SPS\SPS\obj\Debug\SPS.exe
 D:\temp\sps\SPS\SPS\obj\Debug\SPS.pdb
+C:\Users\hanov\Downloads\Git\sps\SPS\SPS\obj\Debug\SPS.LoginForm.resources

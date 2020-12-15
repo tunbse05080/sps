@@ -48,6 +48,7 @@
     <Compile Include="DAL_ParkingPlace.cs" />
     <Compile Include="DAL_Price.cs" />
     <Compile Include="DAL_Transaction.cs" />
+    <Compile Include="DAL_User.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

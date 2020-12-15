@@ -48,6 +48,7 @@
     <Compile Include="BUS_ParkingPlace.cs" />
     <Compile Include="BUS_Price.cs" />
     <Compile Include="BUS_Transaction.cs" />
+    <Compile Include="BUS_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

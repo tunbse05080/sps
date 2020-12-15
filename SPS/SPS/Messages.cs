@@ -18,6 +18,14 @@ namespace SPS
         private string m09 = "Xe đang trong bãi";
         private string m10 = "Xe không có trong bãi";
         private string m11 = "Vé không đúng";
+        private string m12= "Tài khoản không đúng";
+
+        public string M12
+        {
+            get { return m12; }
+            set { m12 = value; }
+        }
+
 
         public string M11
         {
@@ -127,6 +135,10 @@ namespace SPS
             if (a == 11)
             {
                 return m11;
+            }
+            if (a == 12)
+            {
+                return m12;
             }
             else return "NONE";
         }

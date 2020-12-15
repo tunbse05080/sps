@@ -72,6 +72,7 @@
             this.btnOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "Xác nhận";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // txtUsername
             // 
@@ -97,6 +98,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(158, 95);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.PreventEnterBeep = true;
             this.txtPassword.Size = new System.Drawing.Size(217, 38);
             this.txtPassword.TabIndex = 5;
@@ -113,6 +115,7 @@
             this.Controls.Add(this.labelX1);
             this.Name = "LoginForm";
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
 
         }

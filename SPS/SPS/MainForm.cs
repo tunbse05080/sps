@@ -43,7 +43,8 @@ namespace SPS
         Messages mes = new Messages();
         public int CarFree { get; set; }
         public int MotorFree { get; set; }
-        private int ParkingID;
+        public int ParkingID { get; set; }
+        private int userID;
         private int GateID;
         private int CardID;
         private int TransID;
@@ -262,10 +263,16 @@ namespace SPS
         //Get info from LoginForm
         private void CallLogin()
         {
-            using (SettingForm form2 = new SettingForm())
+            using (LoginForm form2 = new LoginForm())
             {
+                form2.parkingID = ParkingID;
                 if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    userID = form2.userID;
+                    working = 1;
+                    btnLogin.Text = "Đăng xuất";
+                    btnCapture.Enabled = true;
+                    btnEnter.Enabled = true;
                 }
             }
         }
@@ -708,9 +715,9 @@ namespace SPS
         private void insertTransaction()
         {
             //Tao DTO
-            int userIID = 0;
+            //int userID = 0;
             //DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, "", lblLicense.Text, ticketType, 0, CardID, ParkingID, vehicleType);
-            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType, userIID);
+            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType, userID);
             // Them
             if (busTrans.insertTransaction(trans))
             {
@@ -727,8 +734,8 @@ namespace SPS
         private void updateTransaction()
         {
             //Tao DTO
-            int userOID = 0;
-            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, userOID);
+            //int userID = 0;
+            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, userID);
             // Sửa
             if (busTrans.updateTransaction(trans))
             {
@@ -1312,19 +1319,19 @@ namespace SPS
         {
             if (working == 0)
             {
-                working = 1;
-                btnLogin.Text = "Đăng xuất";
-                btnCapture.Enabled = true;
-                btnEnter.Enabled = true;
+                CallLogin();
                 return;
             }
             if (working == 1)
             {
-                working = 0;
-                btnCapture.Enabled = false;
-                btnEnter.Enabled = false;
-                btnLogin.Text = "Đăng nhập";
-                return;
+                if (MessageBox.Show(mes.mes(1), "Hỏi Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    working = 0;
+                    btnCapture.Enabled = false;
+                    btnEnter.Enabled = false;
+                    btnLogin.Text = "Đăng nhập";
+                    return;
+                }               
             }
         }
     }

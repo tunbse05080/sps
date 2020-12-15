@@ -78,7 +78,7 @@ namespace DAL_SPS
                 conn.Open();
 
                 // Query string
-                string SQL = string.Format("UPDATE [Transaction] SET TimeOutv = '{0}', TotalPrice = '{1}', UserOID = '{2}' WHERE TransactionID = {3}", trans.MyTimeOut, trans.Myprice,,trans.MyUserOID,trans.MyTransID);
+                string SQL = string.Format("UPDATE [Transaction] SET TimeOutv = '{0}', TotalPrice = '{1}', UserOID = '{2}' WHERE TransactionID = {3}", trans.MyTimeOut, trans.Myprice,trans.MyUserOID,trans.MyTransID);
 
                 // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
                 SqlCommand cmd = new SqlCommand(SQL, conn);
