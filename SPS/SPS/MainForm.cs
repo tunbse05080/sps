@@ -193,6 +193,11 @@ namespace SPS
 
         private void btnCapture_Click(object sender, EventArgs e)
         {
+            if(working == 0)
+            {
+                Error(13);
+                return;
+            }
             if (busPK.getMotorFree(ParkingID) == 0 && busPK.getCarFree(ParkingID) == 0)
             {
                 Error(7);
@@ -263,8 +268,8 @@ namespace SPS
         //Get info from LoginForm
         private void CallLogin()
         {
-            using (LoginForm form2 = new LoginForm())
-            {
+            LoginForm form2 = new LoginForm();
+            
                 form2.parkingID = ParkingID;
                 if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -274,7 +279,7 @@ namespace SPS
                     btnCapture.Enabled = true;
                     btnEnter.Enabled = true;
                 }
-            }
+            
         }
         //start webcam camera
         private void startCamera()
@@ -1207,7 +1212,11 @@ namespace SPS
         {
             if (txtCardNo.Text.Length == 10)
             {
-
+                if (working == 0)
+                {
+                    Error(13);
+                    return;
+                }
                 lblCardNo.Text = txtCardNo.Text;
                 txtCardNo.Clear();
                 txtCardNo.Focus();
@@ -1257,6 +1266,11 @@ namespace SPS
         //nhap bien so  xe bang  tay khi click nut Nhap
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            if (working == 0)
+            {
+                Error(13);
+                return;
+            }
             chkLicense = true;
             showInformation();
             manualEnter();

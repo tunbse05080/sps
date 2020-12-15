@@ -16,7 +16,7 @@ namespace SPS
         #region
         public int userID { get; set; }
         BUS_User busUser = new BUS_User();
-        public int parkingID { get; set; }
+        public int parkingID;
         Messages mes = new Messages();
         #endregion
         public LoginForm()
@@ -44,7 +44,7 @@ namespace SPS
             }
             else
             {
-                if (MessageBox.Show(mes.mes(12), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(mes.mes(13), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                 }
             }
@@ -53,6 +53,7 @@ namespace SPS
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
+           // txtUsername.Text = parkingID.ToString();
         }
     }
 }

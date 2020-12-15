@@ -45,7 +45,7 @@
             this.labelX1.Location = new System.Drawing.Point(13, 22);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(130, 39);
-            this.labelX1.TabIndex = 0;
+            this.labelX1.TabIndex = 3;
             this.labelX1.Text = "Tài khoản:";
             // 
             // labelX2
@@ -58,7 +58,7 @@
             this.labelX2.Location = new System.Drawing.Point(13, 95);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(130, 39);
-            this.labelX2.TabIndex = 1;
+            this.labelX2.TabIndex = 4;
             this.labelX2.Text = "Mật khẩu:";
             // 
             // btnOK
@@ -86,7 +86,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PreventEnterBeep = true;
             this.txtUsername.Size = new System.Drawing.Size(217, 38);
-            this.txtUsername.TabIndex = 4;
+            this.txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
@@ -101,7 +101,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.PreventEnterBeep = true;
             this.txtPassword.Size = new System.Drawing.Size(217, 38);
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 1;
             // 
             // LoginForm
             // 

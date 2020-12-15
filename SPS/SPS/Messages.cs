@@ -19,6 +19,14 @@ namespace SPS
         private string m10 = "Xe không có trong bãi";
         private string m11 = "Vé không đúng";
         private string m12= "Tài khoản không đúng";
+        private string m13 ="Bảo vệ chưa đăng nhập";
+
+        public string M13
+        {
+            get { return m13; }
+            set { m13= value; }
+        }
+
 
         public string M12
         {
