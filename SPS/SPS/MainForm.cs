@@ -22,6 +22,7 @@ using tesseract;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace SPS
 {
@@ -65,7 +66,7 @@ namespace SPS
         int vehicleType; //loai xe 0-xemay, 1-oto
         int ticketType; //loai ve 0-ve thang, 1-vengay/block
         int timeOfblock = 2; //thoi gian moi block (gio) 
-        int working=0; //trang thai lam viec.
+        int working = 0; //trang thai lam viec.
         string pictureLink; //duong dan hinh anh up len imageshark
         #endregion
 
@@ -112,7 +113,7 @@ namespace SPS
                 {
                     CAM.Stop();
                 }
-                if(cameraCapture != null)
+                if (cameraCapture != null)
                 {
                     cameraCapture.Stop();
                 }
@@ -460,15 +461,13 @@ namespace SPS
                         {
                             if (busPK.getMotorFree(ParkingID) > 0)
                             {
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
-
-                                insertImage();
                                 updateCard(1);
                                 updateMotoFree();
-
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                insertImage();
                             }
                             else
                             {
@@ -478,16 +477,14 @@ namespace SPS
                         else
                         {
                             if (busPK.getCarFree(ParkingID) > 0)
-                            {
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            {                                
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
-                                TransID = busTrans.getTransactionID(lblLicense.Text);
-
-                                insertImage();
+                                TransID = busTrans.getTransactionID(lblLicense.Text);                               
                                 updateCard(1);
                                 updateCarFree();
-
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                insertImage();
                             }
                             else
                             {
@@ -498,26 +495,26 @@ namespace SPS
                     else //cong  ra
                     {
                         if (vehicleType == 0)
-                        {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                        {                           
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
-                            updateTransaction();
-                            updateImage();
+                            updateTransaction();                            
                             updateCard(0);
                             updateMotoFree();
+                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            updateImage();
                         }
                         else
-                        {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                        {                            
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
-                            updateTransaction();
-                            updateImage();
+                            updateTransaction();                          
                             updateCard(0);
                             updateCarFree();
+                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            updateImage();
                         }
                     }
 
@@ -547,15 +544,19 @@ namespace SPS
                         {
                             if (busPK.getMotorFree(ParkingID) > 0)
                             {
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
-
-                                insertImage();
                                 updateCard(1);
                                 updateMotoFree();
-
+                                new Thread(() =>
+                                {
+                                    Thread.CurrentThread.IsBackground = true;
+                                    /* run your code here */
+                                    pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                    insertImage();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();                                
                             }
                             else
                             {
@@ -566,15 +567,13 @@ namespace SPS
                         {
                             if (busPK.getCarFree(ParkingID) > 0)
                             {
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
-
-                                insertImage();
                                 updateCard(1);
                                 updateCarFree();
-
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                insertImage();
                             }
                             else
                             {
@@ -586,25 +585,34 @@ namespace SPS
                     {
                         if (vehicleType == 0)
                         {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
-                            updateImage();
                             updateCard(0);
                             updateMotoFree();
+                            new Thread(() =>
+                            {
+                                Thread.CurrentThread.IsBackground = true;
+                                /* run your code here */
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                updateImage();
+                                //Console.WriteLine("Hello, world");
+                            }).Start();
+                            
                         }
                         else
                         {
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
-                            updateImage();
                             updateCard(0);
                             updateCarFree();
+                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                            updateImage();
                         }
                     }
 
@@ -691,11 +699,12 @@ namespace SPS
             // Them
             if (busTrans.insertTransaction(trans))
             {
-                MessageBox.Show("Thêm thành công");
+                //MessageBox.Show("Thêm thành công");
             }
             else
             {
                 MessageBox.Show("Thêm ko thành công");
+                Error(100);
             }
         }
 
@@ -707,11 +716,12 @@ namespace SPS
             // Sửa
             if (busTrans.updateTransaction(trans))
             {
-                MessageBox.Show("Sửa thành công");
+                //  MessageBox.Show("Sửa thành công");
             }
             else
             {
-                MessageBox.Show("Sửa ko thành công");
+                // MessageBox.Show("Sửa ko thành công");
+                Error(100);
             }
         }
 
@@ -721,11 +731,12 @@ namespace SPS
             DTO_Card card = new DTO_Card(CardID, status);
             if (busCard.updateCard(card))
             {
-                MessageBox.Show("Sửa thành công");
+                // MessageBox.Show("Sửa thành công");
             }
             else
             {
-                MessageBox.Show("Sửa ko thành công");
+                //MessageBox.Show("Sửa ko thành công");
+                Error(100);
             }
         }
 
@@ -738,11 +749,13 @@ namespace SPS
             // Them
             if (busImage.insertImage(image))
             {
-                MessageBox.Show("Thêm thành công");
+                //  MessageBox.Show("Thêm thành công");
+
             }
             else
             {
-                MessageBox.Show("Thêm ko thành công");
+                //   MessageBox.Show("Thêm ko thành công");
+                Error(100);
             }
         }
 
@@ -752,11 +765,12 @@ namespace SPS
             DTO_Image image = new DTO_Image(ImageID, pictureLink);
             if (busImage.updateImage(image))
             {
-                MessageBox.Show("Sửa thành công");
+                //  MessageBox.Show("Sửa thành công");
             }
             else
             {
-                MessageBox.Show("Sửa ko thành công");
+                //  MessageBox.Show("Sửa ko thành công");
+                Error(100);
             }
         }
 
@@ -774,13 +788,14 @@ namespace SPS
             }
             if (busPK.updateCarParking(parking))
             {
-                MessageBox.Show("Sửa thành công");
+                // MessageBox.Show("Sửa thành công");
                 lblCar.Text = busPK.getCarFree(ParkingID).ToString();
 
             }
             else
             {
-                MessageBox.Show("Sửa ko thành công");
+                // MessageBox.Show("Sửa ko thành công");
+                Error(100);
             }
         }
         private void updateMotoFree()
@@ -797,12 +812,13 @@ namespace SPS
             }
             if (busPK.updateMotoParking(parking))
             {
-                MessageBox.Show("Sửa thành công");
+                // MessageBox.Show("Sửa thành công");
                 lblMotor.Text = busPK.getMotorFree(ParkingID).ToString();
             }
             else
             {
-                MessageBox.Show("Sửa ko thành công");
+                //  MessageBox.Show("Sửa ko thành công");
+                Error(100);
             }
         }
 
@@ -1185,6 +1201,7 @@ namespace SPS
         //hien thi thong tin
         private void showInformation()
         {
+            checkLicense();
             lblLicense.Text = txtLicense1.Text + txtLicense2.Text;
             lblCardNumber.Text = lblCardNo.Text;
             if (GateID == 0)
@@ -1254,8 +1271,8 @@ namespace SPS
         }
         private void Passed(int a)
         {
-            //labelX11.BackColor = Color.Blue;
-            //lblCost.BackColor = Color.Blue;
+            labelX11.BackColor = Color.White;
+            lblCost.BackColor = Color.White;
             labelX11.Text = "Thông qua:";
             lblCost.Text = mes.mes(a);
         }
@@ -1285,7 +1302,7 @@ namespace SPS
                 btnEnter.Enabled = true;
                 return;
             }
-            if(working == 1)
+            if (working == 1)
             {
                 working = 0;
                 btnCapture.Enabled = false;
