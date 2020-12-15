@@ -699,8 +699,9 @@ namespace SPS
         private void insertTransaction()
         {
             //Tao DTO
+            int userIID = 0;
             //DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, "", lblLicense.Text, ticketType, 0, CardID, ParkingID, vehicleType);
-            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType);
+            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType, userIID);
             // Them
             if (busTrans.insertTransaction(trans))
             {
@@ -717,7 +718,8 @@ namespace SPS
         private void updateTransaction()
         {
             //Tao DTO
-            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price);
+            int userOID=0;
+            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, userOID);
             // Sửa
             if (busTrans.updateTransaction(trans))
             {

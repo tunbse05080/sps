@@ -12,7 +12,7 @@ namespace DAL_SPS
     {
         public DataTable getParkingPlace()
         {
-            SqlDataAdapter da = new SqlDataAdapter("select * from ParkingPlace", conn);
+            SqlDataAdapter da = new SqlDataAdapter("select * from ParkingPlace where StatusOfParkingPlace = 1", conn);
             DataTable dtParkingPlace = new DataTable();
             da.Fill(dtParkingPlace);
             return dtParkingPlace;

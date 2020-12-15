@@ -17,6 +17,22 @@ namespace DTO_SPS
         private int cardID;
         private int parkingID;
         private int vehicleType;
+        private int userIID;
+        private int userOID;
+
+        public int MyUserOID
+        {
+            get { return userOID; }
+            set { userOID = value; }
+        }
+
+
+        public int MyUserIID
+        {
+            get { return userIID; }
+            set { userIID = value; }
+        }
+
 
         /* ======== GETTER/SETTER ======== */
         public int MyVehicleType
@@ -86,7 +102,7 @@ namespace DTO_SPS
         {
         }
 
-        public DTO_Transaction(int transID, string timeIN, string timeOut, string license, int ticketType, double price, int cardID, int parkingID, int vehicleType)
+        public DTO_Transaction(int transID, string timeIN, string timeOut, string license, int ticketType, double price, int cardID, int parkingID, int vehicleType, int userIID, int userOID)
         {
             this.transID = transID;
             this.timeIN = timeIN;
@@ -97,9 +113,11 @@ namespace DTO_SPS
             this.cardID = cardID;
             this.parkingID = parkingID;
             this.vehicleType = vehicleType;
+            this.userIID = userIID;
+            this.userOID = userOID;
         }
 
-        public DTO_Transaction(int transID, string timeIN, string license, int ticketType, int cardID, int parkingID, int vehicleType)
+        public DTO_Transaction(int transID, string timeIN, string license, int ticketType, int cardID, int parkingID, int vehicleType, int userIID)
         {
             this.transID = transID;
             this.timeIN = timeIN;
@@ -108,16 +126,18 @@ namespace DTO_SPS
             this.cardID = cardID;
             this.parkingID = parkingID;
             this.vehicleType = vehicleType;
+            this.userIID = userIID;
         }
 
-        public DTO_Transaction(int transID, string timeOut, double price)
+        public DTO_Transaction(int transID, string timeOut, double price, int userOID)
         {
             this.transID = transID;
             this.timeOut = timeOut;
             this.price = price;
+            this.userOID = userOID;
         }
 
-        public DTO_Transaction(string timeIN, string license, int ticketType, int cardID, int parkingID, int vehicleType)
+        public DTO_Transaction(string timeIN, string license, int ticketType, int cardID, int parkingID, int vehicleType, int userIID)
         {
             this.timeIN = timeIN;
             this.license = license;
@@ -125,6 +145,7 @@ namespace DTO_SPS
             this.cardID = cardID;
             this.parkingID = parkingID;
             this.vehicleType = vehicleType;
+            this.userIID = userIID;
         }
     }
 }
