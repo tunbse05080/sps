@@ -44,7 +44,7 @@ namespace SPS
             }
             else
             {
-                if (MessageBox.Show(mes.mes(13), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(mes.mes(12), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                 }
             }

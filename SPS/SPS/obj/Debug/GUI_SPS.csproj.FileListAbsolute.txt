@@ -115,3 +115,31 @@ D:\temp\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.CopyComplete
 D:\temp\sps\SPS\SPS\obj\Debug\SPS.exe
 D:\temp\sps\SPS\SPS\obj\Debug\SPS.pdb
 C:\Users\hanov\Downloads\Git\sps\SPS\SPS\obj\Debug\SPS.LoginForm.resources
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\SPS.exe.config
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\SPS.exe
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\SPS.pdb
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\AForge.dll
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\AForge.Video.DirectShow.dll
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\AForge.Video.dll
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\BUS_SPS.dll
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\DTO_SPS.dll
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\DAL_SPS.dll
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\BUS_SPS.pdb
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\DTO_SPS.pdb
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\AForge.xml
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\AForge.Video.xml
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\AForge.Video.DirectShow.xml
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\DevComponents.DotNetBar2.xml
+E:\ki 9\sps\sps\SPS\SPS\bin\Debug\DAL_SPS.pdb
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\GUI_SPS.csprojAssemblyReference.cache
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\Interop.SpeechLib.dll
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.ResolveComReference.cache
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.LoginForm.resources
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.MainForm.resources
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.Properties.Resources.resources
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.SettingForm.resources
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.GenerateResource.cache
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.CoreCompileInputs.cache
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.CopyComplete
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.exe
+E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.pdb

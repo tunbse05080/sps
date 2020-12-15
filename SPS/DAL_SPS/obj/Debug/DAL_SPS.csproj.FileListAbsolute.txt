@@ -25,3 +25,12 @@ D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CoreCompileInputs.cache
 D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CopyComplete
 D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.dll
 D:\temp\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.pdb
+E:\ki 9\sps\sps\SPS\DAL_SPS\bin\Debug\DAL_SPS.dll
+E:\ki 9\sps\sps\SPS\DAL_SPS\bin\Debug\DAL_SPS.pdb
+E:\ki 9\sps\sps\SPS\DAL_SPS\bin\Debug\DTO_SPS.dll
+E:\ki 9\sps\sps\SPS\DAL_SPS\bin\Debug\DTO_SPS.pdb
+E:\ki 9\sps\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csprojAssemblyReference.cache
+E:\ki 9\sps\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CoreCompileInputs.cache
+E:\ki 9\sps\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.csproj.CopyComplete
+E:\ki 9\sps\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.dll
+E:\ki 9\sps\sps\SPS\DAL_SPS\obj\Debug\DAL_SPS.pdb

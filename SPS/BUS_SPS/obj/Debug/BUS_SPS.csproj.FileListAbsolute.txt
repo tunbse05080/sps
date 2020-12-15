@@ -31,3 +31,14 @@ D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CoreCompileInputs.cache
 D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CopyComplete
 D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.dll
 D:\temp\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.pdb
+E:\ki 9\sps\sps\SPS\BUS_SPS\bin\Debug\BUS_SPS.dll
+E:\ki 9\sps\sps\SPS\BUS_SPS\bin\Debug\BUS_SPS.pdb
+E:\ki 9\sps\sps\SPS\BUS_SPS\bin\Debug\DAL_SPS.dll
+E:\ki 9\sps\sps\SPS\BUS_SPS\bin\Debug\DTO_SPS.dll
+E:\ki 9\sps\sps\SPS\BUS_SPS\bin\Debug\DAL_SPS.pdb
+E:\ki 9\sps\sps\SPS\BUS_SPS\bin\Debug\DTO_SPS.pdb
+E:\ki 9\sps\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csprojAssemblyReference.cache
+E:\ki 9\sps\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CoreCompileInputs.cache
+E:\ki 9\sps\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.csproj.CopyComplete
+E:\ki 9\sps\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.dll
+E:\ki 9\sps\sps\SPS\BUS_SPS\obj\Debug\BUS_SPS.pdb
