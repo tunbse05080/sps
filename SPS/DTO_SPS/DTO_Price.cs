@@ -95,7 +95,7 @@ namespace DTO_SPS
             this.prakingID = prakingID;
         }
 
-        public DTO_Price(int priceID, int vehicleType, double daily, double monthly, double firstBlock, double nextBlock, int prakingID, int timeFirstBlock, int timeNextBlock) : this(priceID, vehicleType, daily, monthly, firstBlock, nextBlock, prakingID)
+        public DTO_Price(int priceID, int vehicleType, double daily, double monthly, double firstBlock, double nextBlock, int prakingID, int timeFirstBlock, string timeNextBlock) : this(priceID, vehicleType, daily, monthly, firstBlock, nextBlock, prakingID)
         {
             this.timeFirstBlock = timeFirstBlock;
             this.timeNextBlock = timeNextBlock;

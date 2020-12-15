@@ -65,7 +65,7 @@ namespace SPS
         bool expiredTicket = false; //ve thang het han
         int vehicleType; //loai xe 0-xemay, 1-oto
         int ticketType; //loai ve 0-ve thang, 1-vengay/block
-        int timeOfblock = 2; //thoi gian moi block (gio) 
+        //int timeOfblock = 2; //thoi gian moi block (gio) 
         int working = 0; //trang thai lam viec.
         string pictureLink; //duong dan hinh anh up len imageshark
         #endregion
@@ -638,9 +638,14 @@ namespace SPS
 
             }
             DateTime TimeOut = DateTime.Now;
+            //lay thong tin block
+            int timeFirstBlock = busPrice.gettimeFirstBlock(ParkingID, vehicleType);
+            int timeNextBlock = busPrice.gettimeNextBlock(ParkingID, vehicleType);
+            //tinh thoi gian gui xe
             int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
             int numberOfhours = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalHours));
-            int numberOfBlocks = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours) / Convert.ToDouble(timeOfblock))));
+            int numberOfBlocks = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours) / Convert.ToDouble(timeFirstBlock))));
+            //lay thong tin gia ve
             double dailyPrice = busPrice.getDailyPrice(ParkingID, vehicleType);
             double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, vehicleType);
             double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, vehicleType);

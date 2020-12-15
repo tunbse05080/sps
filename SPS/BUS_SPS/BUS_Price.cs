@@ -32,5 +32,13 @@ namespace BUS_SPS
         {
             return Convert.ToDouble(dalPrice.getPrice(parkingID, vehicleType).Rows[0][5].ToString());
         }
+        public int gettimeFirstBlock(int parkingID, int vehicleType)
+        {
+            return Convert.ToInt32(dalPrice.getPrice(parkingID, vehicleType).Rows[0][7].ToString());
+        }
+        public int gettimeNextBlock(int parkingID, int vehicleType)
+        {
+            return Convert.ToInt32(dalPrice.getPrice(parkingID, vehicleType).Rows[0][8].ToString());
+        }
     }
 }
