@@ -64,7 +64,8 @@ namespace SPS
         bool expiredTicket = false; //ve thang het han
         int vehicleType; //loai xe 0-xemay, 1-oto
         int ticketType; //loai ve 0-ve thang, 1-vengay/block
-        int timeOfblock = 2; //thoi gian moi block (gio)
+        int timeOfblock = 2; //thoi gian moi block (gio) 
+        int working=0; //trang thai lam viec.
         string pictureLink; //duong dan hinh anh up len imageshark
         #endregion
 
@@ -131,6 +132,12 @@ namespace SPS
             pictureBox1.Height = pictureBox1.Width / 16 * 9;
             //imageBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             //imageBox1.Width = imageBox1.Height / 9 * 16;
+            if (working == 0)
+            {
+                btnCapture.Enabled = false;
+                btnEnter.Enabled = false;
+                btnLogin.Text = "Đăng nhập";
+            }
             full_tesseract = new TesseractProcessor();
             bool succeed = full_tesseract.Init(m_path, m_lang, 3);
             if (!succeed)

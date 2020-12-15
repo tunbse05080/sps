@@ -49,13 +49,6 @@
             this.pictureBox_WC = new System.Windows.Forms.PictureBox();
             this.lblGate = new DevComponents.DotNetBar.LabelX();
             this.lblTime = new DevComponents.DotNetBar.LabelX();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCapture = new DevComponents.DotNetBar.ButtonX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.lblMotor = new DevComponents.DotNetBar.LabelX();
-            this.lblCar = new DevComponents.DotNetBar.LabelX();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEnter = new DevComponents.DotNetBar.ButtonX();
@@ -78,9 +71,18 @@
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
             this.lblCardNumber = new DevComponents.DotNetBar.LabelX();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.lblMotor = new DevComponents.DotNetBar.LabelX();
+            this.lblCar = new DevComponents.DotNetBar.LabelX();
+            this.btnCapture = new DevComponents.DotNetBar.ButtonX();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnLogin = new DevComponents.DotNetBar.ButtonX();
+            this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -89,13 +91,13 @@
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_WC)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -466,116 +468,6 @@
             this.lblTime.Text = "Thời gian";
             this.lblTime.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.labelX1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.labelX2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.labelX3, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.lblMotor, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblCar, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.btnCapture, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel12, 1, 3);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(883, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 5;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(373, 319);
-            this.tableLayoutPanel2.TabIndex = 4;
-            // 
-            // btnCapture
-            // 
-            this.btnCapture.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCapture.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCapture.Font = new System.Drawing.Font("Calibri", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapture.Location = new System.Drawing.Point(3, 257);
-            this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
-            this.btnCapture.Size = new System.Drawing.Size(180, 59);
-            this.btnCapture.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCapture.TabIndex = 3;
-            this.btnCapture.Text = "Chụp hình";
-            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
-            // 
-            // labelX1
-            // 
-            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX1.Location = new System.Drawing.Point(16, 29);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(167, 31);
-            this.labelX1.TabIndex = 1;
-            this.labelX1.Text = "Số chỗ trống";
-            // 
-            // labelX2
-            // 
-            this.labelX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX2.Location = new System.Drawing.Point(16, 92);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(167, 31);
-            this.labelX2.TabIndex = 2;
-            this.labelX2.Text = "Xe máy:";
-            // 
-            // labelX3
-            // 
-            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX3.Location = new System.Drawing.Point(16, 129);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(167, 31);
-            this.labelX3.TabIndex = 3;
-            this.labelX3.Text = "Ô tô:";
-            // 
-            // lblMotor
-            // 
-            this.lblMotor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            // 
-            // 
-            // 
-            this.lblMotor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblMotor.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMotor.Location = new System.Drawing.Point(189, 92);
-            this.lblMotor.Name = "lblMotor";
-            this.lblMotor.Size = new System.Drawing.Size(167, 31);
-            this.lblMotor.TabIndex = 4;
-            this.lblMotor.Text = "0";
-            // 
-            // lblCar
-            // 
-            // 
-            // 
-            // 
-            this.lblCar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar.Location = new System.Drawing.Point(189, 129);
-            this.lblCar.Name = "lblCar";
-            this.lblCar.Size = new System.Drawing.Size(167, 31);
-            this.lblCar.TabIndex = 5;
-            this.lblCar.Text = "0";
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -646,7 +538,7 @@
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(264, 39);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
@@ -955,40 +847,186 @@
             this.labelX17.TabIndex = 8;
             this.labelX17.Text = "Số thẻ:";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.labelX1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelX2, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.labelX3, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.lblMotor, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblCar, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.btnCapture, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel12, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnLogin, 1, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(883, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(373, 319);
+            this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // labelX1
+            // 
+            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX1.Location = new System.Drawing.Point(16, 29);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(167, 31);
+            this.labelX1.TabIndex = 1;
+            this.labelX1.Text = "Số chỗ trống";
+            // 
+            // labelX2
+            // 
+            this.labelX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX2.Location = new System.Drawing.Point(16, 76);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(167, 31);
+            this.labelX2.TabIndex = 2;
+            this.labelX2.Text = "Xe máy:";
+            // 
+            // labelX3
+            // 
+            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX3.Location = new System.Drawing.Point(16, 113);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(167, 31);
+            this.labelX3.TabIndex = 3;
+            this.labelX3.Text = "Ô tô:";
+            // 
+            // lblMotor
+            // 
+            this.lblMotor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            // 
+            // 
+            // 
+            this.lblMotor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblMotor.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMotor.Location = new System.Drawing.Point(189, 76);
+            this.lblMotor.Name = "lblMotor";
+            this.lblMotor.Size = new System.Drawing.Size(167, 31);
+            this.lblMotor.TabIndex = 4;
+            this.lblMotor.Text = "0";
+            // 
+            // lblCar
+            // 
+            // 
+            // 
+            // 
+            this.lblCar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCar.Location = new System.Drawing.Point(189, 113);
+            this.lblCar.Name = "lblCar";
+            this.lblCar.Size = new System.Drawing.Size(167, 31);
+            this.lblCar.TabIndex = 5;
+            this.lblCar.Text = "0";
+            // 
+            // btnCapture
+            // 
+            this.btnCapture.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCapture.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCapture.Font = new System.Drawing.Font("Calibri", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapture.Location = new System.Drawing.Point(3, 257);
+            this.btnCapture.Name = "btnCapture";
+            this.btnCapture.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
+            this.btnCapture.Size = new System.Drawing.Size(180, 59);
+            this.btnCapture.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCapture.TabIndex = 3;
+            this.btnCapture.Text = "Chụp hình";
+            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
+            // 
             // tableLayoutPanel12
             // 
+            this.tableLayoutPanel12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel12.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.tableLayoutPanel12.ColumnCount = 1;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel12.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(189, 192);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(189, 160);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 2;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(181, 57);
+            this.tableLayoutPanel12.RowCount = 3;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.44481F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.44482F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.11037F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(181, 89);
             this.tableLayoutPanel12.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "F5: Chụp";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 28);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 24);
+            this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "F10: Nhập";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "F1: Đăng nhập/Xuất";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnLogin.Font = new System.Drawing.Font("Calibri", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(190, 257);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F1);
+            this.btnLogin.Size = new System.Drawing.Size(180, 59);
+            this.btnLogin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnLogin.TabIndex = 7;
+            this.btnLogin.Text = "Đăng nhập";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 29);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "F5: Chụp hình";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -1010,7 +1048,6 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_WC)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
@@ -1018,6 +1055,7 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
             this.ResumeLayout(false);
@@ -1080,5 +1118,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.ButtonX btnLogin;
+        private System.Windows.Forms.Label label3;
     }
 }
