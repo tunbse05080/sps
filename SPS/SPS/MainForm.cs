@@ -259,7 +259,16 @@ namespace SPS
                 startStream();
             }
         }
-
+        //Get info from LoginForm
+        private void CallLogin()
+        {
+            using (SettingForm form2 = new SettingForm())
+            {
+                if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                }
+            }
+        }
         //start webcam camera
         private void startCamera()
         {
@@ -477,10 +486,10 @@ namespace SPS
                         else
                         {
                             if (busPK.getCarFree(ParkingID) > 0)
-                            {                                
+                            {
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
-                                TransID = busTrans.getTransactionID(lblLicense.Text);                               
+                                TransID = busTrans.getTransactionID(lblLicense.Text);
                                 updateCard(1);
                                 updateCarFree();
                                 pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
@@ -495,22 +504,22 @@ namespace SPS
                     else //cong  ra
                     {
                         if (vehicleType == 0)
-                        {                           
+                        {
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
-                            updateTransaction();                            
+                            updateTransaction();
                             updateCard(0);
                             updateMotoFree();
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                             updateImage();
                         }
                         else
-                        {                            
+                        {
                             TransID = busTrans.getTransactionID(lblLicense.Text);
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
-                            updateTransaction();                          
+                            updateTransaction();
                             updateCard(0);
                             updateCarFree();
                             pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
@@ -556,7 +565,7 @@ namespace SPS
                                     pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                     insertImage();
                                     //Console.WriteLine("Hello, world");
-                                }).Start();                                
+                                }).Start();
                             }
                             else
                             {
@@ -600,7 +609,7 @@ namespace SPS
                                 updateImage();
                                 //Console.WriteLine("Hello, world");
                             }).Start();
-                            
+
                         }
                         else
                         {
@@ -718,7 +727,7 @@ namespace SPS
         private void updateTransaction()
         {
             //Tao DTO
-            int userOID=0;
+            int userOID = 0;
             DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, userOID);
             // Sửa
             if (busTrans.updateTransaction(trans))
