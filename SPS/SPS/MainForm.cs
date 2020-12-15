@@ -644,7 +644,7 @@ namespace SPS
             //tinh thoi gian gui xe
             int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
             int numberOfhours = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalHours));
-            int numberOfBlocks = Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours) / Convert.ToDouble(timeFirstBlock))));
+            int numberOfBlocks = ((numberOfhours - timeFirstBlock) > 0) ? Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours - timeFirstBlock) / Convert.ToDouble(timeFirstBlock)))) : 1;
             //lay thong tin gia ve
             double dailyPrice = busPrice.getDailyPrice(ParkingID, vehicleType);
             double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, vehicleType);
