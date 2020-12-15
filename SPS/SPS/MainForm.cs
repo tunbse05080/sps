@@ -1274,5 +1274,25 @@ namespace SPS
             labelX11.Text = "Số tiền:";
             lblCost.Text = "VND";
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (working == 0)
+            {
+                working = 1;
+                btnLogin.Text = "Đăng xuất";
+                btnCapture.Enabled = true;
+                btnEnter.Enabled = true;
+                return;
+            }
+            if(working == 1)
+            {
+                working = 0;
+                btnCapture.Enabled = false;
+                btnEnter.Enabled = false;
+                btnLogin.Text = "Đăng nhập";
+                return;
+            }
+        }
     }
 }
