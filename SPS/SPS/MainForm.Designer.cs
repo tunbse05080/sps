@@ -104,7 +104,8 @@
             this.toolStripComboBox1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1350, 39);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(2025, 39);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -134,7 +135,7 @@
             this.toolStripComboBox1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripComboBox1.Margin = new System.Windows.Forms.Padding(1, 0, 20, 0);
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 39);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(180, 39);
             // 
             // groupPanel1
             // 
@@ -145,8 +146,9 @@
             this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupPanel1.Location = new System.Drawing.Point(0, 39);
+            this.groupPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(1350, 690);
+            this.groupPanel1.Size = new System.Drawing.Size(2025, 1083);
             // 
             // 
             // 
@@ -196,14 +198,15 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel10, 2, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(9, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(14, 5);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1326, 624);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1989, 981);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -219,14 +222,14 @@
             this.tableLayoutPanel4.Controls.Add(this.labelX6, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.txtCardNo, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 2);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 415);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 653);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(464, 209);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(696, 328);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // tableLayoutPanel6
@@ -236,16 +239,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.Controls.Add(this.lblTimeOut, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblTimeIn, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(162, 82);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(243, 130);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(302, 127);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(453, 198);
             this.tableLayoutPanel6.TabIndex = 6;
             // 
             // lblTimeOut
@@ -259,10 +262,10 @@
             // 
             this.lblTimeOut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblTimeOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeOut.Location = new System.Drawing.Point(0, 63);
+            this.lblTimeOut.Location = new System.Drawing.Point(0, 99);
             this.lblTimeOut.Margin = new System.Windows.Forms.Padding(0);
             this.lblTimeOut.Name = "lblTimeOut";
-            this.lblTimeOut.Size = new System.Drawing.Size(302, 64);
+            this.lblTimeOut.Size = new System.Drawing.Size(453, 99);
             this.lblTimeOut.TabIndex = 1;
             this.lblTimeOut.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -280,7 +283,7 @@
             this.lblTimeIn.Location = new System.Drawing.Point(0, 0);
             this.lblTimeIn.Margin = new System.Windows.Forms.Padding(0);
             this.lblTimeIn.Name = "lblTimeIn";
-            this.lblTimeIn.Size = new System.Drawing.Size(302, 63);
+            this.lblTimeIn.Size = new System.Drawing.Size(453, 99);
             this.lblTimeIn.TabIndex = 0;
             // 
             // labelX5
@@ -294,9 +297,10 @@
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX5.Location = new System.Drawing.Point(165, 3);
+            this.labelX5.Location = new System.Drawing.Point(247, 5);
+            this.labelX5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(296, 35);
+            this.labelX5.Size = new System.Drawing.Size(445, 55);
             this.labelX5.TabIndex = 2;
             this.labelX5.Text = "Biển số:";
             this.labelX5.TextAlignment = System.Drawing.StringAlignment.Far;
@@ -312,9 +316,10 @@
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX6.Location = new System.Drawing.Point(165, 44);
+            this.labelX6.Location = new System.Drawing.Point(247, 70);
+            this.labelX6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(296, 35);
+            this.labelX6.Size = new System.Drawing.Size(445, 55);
             this.labelX6.TabIndex = 3;
             this.labelX6.Text = "Số thẻ:";
             this.labelX6.TextAlignment = System.Drawing.StringAlignment.Far;
@@ -325,9 +330,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCardNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCardNo.Location = new System.Drawing.Point(3, 44);
+            this.txtCardNo.Location = new System.Drawing.Point(4, 70);
+            this.txtCardNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCardNo.Name = "txtCardNo";
-            this.txtCardNo.Size = new System.Drawing.Size(156, 35);
+            this.txtCardNo.Size = new System.Drawing.Size(235, 48);
             this.txtCardNo.TabIndex = 0;
             this.txtCardNo.TextChanged += new System.EventHandler(this.txtCardNo_TextChanged);
             // 
@@ -338,17 +344,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.Controls.Add(this.labelX8, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.labelX7, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 82);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 130);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(162, 127);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(243, 198);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // labelX8
@@ -362,10 +368,10 @@
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX8.Location = new System.Drawing.Point(0, 63);
+            this.labelX8.Location = new System.Drawing.Point(0, 99);
             this.labelX8.Margin = new System.Windows.Forms.Padding(0);
             this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(162, 64);
+            this.labelX8.Size = new System.Drawing.Size(243, 99);
             this.labelX8.TabIndex = 1;
             this.labelX8.Text = "Thời gian ra:";
             this.labelX8.TextLineAlignment = System.Drawing.StringAlignment.Near;
@@ -384,7 +390,7 @@
             this.labelX7.Location = new System.Drawing.Point(0, 0);
             this.labelX7.Margin = new System.Windows.Forms.Padding(0);
             this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(162, 63);
+            this.labelX7.Size = new System.Drawing.Size(243, 99);
             this.labelX7.TabIndex = 0;
             this.labelX7.Text = "Thời gian vào:";
             // 
@@ -400,10 +406,10 @@
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelX4.ForeColor = System.Drawing.Color.Blue;
-            this.labelX4.Location = new System.Drawing.Point(928, 346);
+            this.labelX4.Location = new System.Drawing.Point(1392, 545);
             this.labelX4.Margin = new System.Windows.Forms.Padding(0);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(398, 69);
+            this.labelX4.Size = new System.Drawing.Size(597, 108);
             this.labelX4.TabIndex = 5;
             this.labelX4.Text = "Thông tin xe";
             this.labelX4.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -411,18 +417,20 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(467, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(700, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(458, 340);
+            this.pictureBox1.Size = new System.Drawing.Size(688, 523);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox_WC
             // 
             this.pictureBox_WC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_WC.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox_WC.Location = new System.Drawing.Point(4, 11);
+            this.pictureBox_WC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox_WC.Name = "pictureBox_WC";
-            this.pictureBox_WC.Size = new System.Drawing.Size(458, 340);
+            this.pictureBox_WC.Size = new System.Drawing.Size(688, 523);
             this.pictureBox_WC.TabIndex = 0;
             this.pictureBox_WC.TabStop = false;
             // 
@@ -436,9 +444,10 @@
             // 
             this.lblGate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblGate.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGate.Location = new System.Drawing.Point(3, 349);
+            this.lblGate.Location = new System.Drawing.Point(4, 550);
+            this.lblGate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblGate.Name = "lblGate";
-            this.lblGate.Size = new System.Drawing.Size(458, 63);
+            this.lblGate.Size = new System.Drawing.Size(688, 98);
             this.lblGate.TabIndex = 2;
             this.lblGate.Text = "Cổng";
             this.lblGate.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -454,9 +463,10 @@
             this.lblTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblTime.Location = new System.Drawing.Point(467, 349);
+            this.lblTime.Location = new System.Drawing.Point(700, 550);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(458, 63);
+            this.lblTime.Size = new System.Drawing.Size(688, 98);
             this.lblTime.TabIndex = 3;
             this.lblTime.Text = "Thời gian";
             this.lblTime.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -475,14 +485,15 @@
             this.tableLayoutPanel2.Controls.Add(this.labelX3, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.lblMotor, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblCar, 1, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(931, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1396, 5);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 340);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(589, 535);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // btnCapture
@@ -491,9 +502,10 @@
             this.btnCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCapture.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCapture.Font = new System.Drawing.Font("Calibri", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapture.Location = new System.Drawing.Point(3, 278);
+            this.btnCapture.Location = new System.Drawing.Point(4, 439);
+            this.btnCapture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Size = new System.Drawing.Size(190, 59);
+            this.btnCapture.Size = new System.Drawing.Size(285, 91);
             this.btnCapture.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCapture.TabIndex = 0;
             this.btnCapture.Text = "Chụp hình";
@@ -507,9 +519,10 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX1.Location = new System.Drawing.Point(26, 51);
+            this.labelX1.Location = new System.Drawing.Point(40, 80);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(167, 31);
+            this.labelX1.Size = new System.Drawing.Size(250, 48);
             this.labelX1.TabIndex = 1;
             this.labelX1.Text = "Số chỗ trống";
             // 
@@ -521,9 +534,10 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX2.Location = new System.Drawing.Point(26, 136);
+            this.labelX2.Location = new System.Drawing.Point(40, 213);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(167, 31);
+            this.labelX2.Size = new System.Drawing.Size(250, 48);
             this.labelX2.TabIndex = 2;
             this.labelX2.Text = "Xe máy:";
             // 
@@ -535,9 +549,10 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX3.Location = new System.Drawing.Point(26, 173);
+            this.labelX3.Location = new System.Drawing.Point(40, 271);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(167, 31);
+            this.labelX3.Size = new System.Drawing.Size(250, 48);
             this.labelX3.TabIndex = 3;
             this.labelX3.Text = "Ô tô:";
             // 
@@ -549,9 +564,10 @@
             // 
             this.lblMotor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblMotor.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMotor.Location = new System.Drawing.Point(199, 136);
+            this.lblMotor.Location = new System.Drawing.Point(298, 213);
+            this.lblMotor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblMotor.Name = "lblMotor";
-            this.lblMotor.Size = new System.Drawing.Size(167, 31);
+            this.lblMotor.Size = new System.Drawing.Size(250, 48);
             this.lblMotor.TabIndex = 4;
             this.lblMotor.Text = "0";
             // 
@@ -562,9 +578,10 @@
             // 
             this.lblCar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar.Location = new System.Drawing.Point(199, 173);
+            this.lblCar.Location = new System.Drawing.Point(298, 271);
+            this.lblCar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblCar.Name = "lblCar";
-            this.lblCar.Size = new System.Drawing.Size(167, 31);
+            this.lblCar.Size = new System.Drawing.Size(250, 48);
             this.lblCar.TabIndex = 5;
             this.lblCar.Text = "0";
             // 
@@ -575,18 +592,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel8, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel7, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel9, 0, 2);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(464, 415);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(696, 653);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(464, 209);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(696, 328);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // tableLayoutPanel8
@@ -604,7 +621,7 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(464, 41);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(696, 65);
             this.tableLayoutPanel8.TabIndex = 6;
             // 
             // btnEnter
@@ -614,9 +631,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnter.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnEnter.Font = new System.Drawing.Font("Calibri", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnter.Location = new System.Drawing.Point(327, 3);
+            this.btnEnter.Location = new System.Drawing.Point(491, 5);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(134, 35);
+            this.btnEnter.Size = new System.Drawing.Size(201, 55);
             this.btnEnter.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEnter.TabIndex = 0;
             this.btnEnter.Text = "Nhập";
@@ -637,8 +655,8 @@
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(278, 41);
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(417, 65);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // txtLicense2
@@ -647,10 +665,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLicense2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicense2.Location = new System.Drawing.Point(111, 0);
+            this.txtLicense2.Location = new System.Drawing.Point(166, 0);
             this.txtLicense2.Margin = new System.Windows.Forms.Padding(0);
             this.txtLicense2.Name = "txtLicense2";
-            this.txtLicense2.Size = new System.Drawing.Size(167, 35);
+            this.txtLicense2.Size = new System.Drawing.Size(251, 48);
             this.txtLicense2.TabIndex = 2;
             // 
             // txtLicense1
@@ -662,7 +680,7 @@
             this.txtLicense1.Location = new System.Drawing.Point(0, 0);
             this.txtLicense1.Margin = new System.Windows.Forms.Padding(0);
             this.txtLicense1.Name = "txtLicense1";
-            this.txtLicense1.Size = new System.Drawing.Size(111, 35);
+            this.txtLicense1.Size = new System.Drawing.Size(166, 48);
             this.txtLicense1.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -674,12 +692,12 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel7.Controls.Add(this.lblCardNo, 0, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 41);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 65);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(464, 41);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(696, 65);
             this.tableLayoutPanel7.TabIndex = 5;
             // 
             // lblCardNo
@@ -692,9 +710,10 @@
             // 
             this.lblCardNo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblCardNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCardNo.Location = new System.Drawing.Point(3, 3);
+            this.lblCardNo.Location = new System.Drawing.Point(4, 5);
+            this.lblCardNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblCardNo.Name = "lblCardNo";
-            this.lblCardNo.Size = new System.Drawing.Size(272, 35);
+            this.lblCardNo.Size = new System.Drawing.Size(409, 55);
             this.lblCardNo.TabIndex = 4;
             this.lblCardNo.Text = "0";
             // 
@@ -708,12 +727,12 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel9.Controls.Add(this.lblCost, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.labelX11, 0, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 82);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 130);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(464, 127);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(696, 198);
             this.tableLayoutPanel9.TabIndex = 7;
             // 
             // lblCost
@@ -727,10 +746,10 @@
             // 
             this.lblCost.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(185, 0);
+            this.lblCost.Location = new System.Drawing.Point(278, 0);
             this.lblCost.Margin = new System.Windows.Forms.Padding(0);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(279, 127);
+            this.lblCost.Size = new System.Drawing.Size(418, 198);
             this.lblCost.TabIndex = 2;
             this.lblCost.Text = "VND";
             // 
@@ -748,7 +767,7 @@
             this.labelX11.Location = new System.Drawing.Point(0, 0);
             this.labelX11.Margin = new System.Windows.Forms.Padding(0);
             this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(185, 127);
+            this.labelX11.Size = new System.Drawing.Size(278, 198);
             this.labelX11.TabIndex = 1;
             this.labelX11.Text = "Số tiền:";
             this.labelX11.TextAlignment = System.Drawing.StringAlignment.Far;
@@ -772,7 +791,7 @@
             this.tableLayoutPanel10.Controls.Add(this.labelX15, 0, 3);
             this.tableLayoutPanel10.Controls.Add(this.lblCardNumber, 1, 4);
             this.tableLayoutPanel10.Controls.Add(this.labelX17, 0, 4);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(928, 415);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(1392, 653);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 5;
@@ -781,7 +800,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(398, 209);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(597, 328);
             this.tableLayoutPanel10.TabIndex = 8;
             // 
             // lblName
@@ -794,9 +813,10 @@
             // 
             this.lblName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(162, 126);
+            this.lblName.Location = new System.Drawing.Point(242, 200);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(233, 35);
+            this.lblName.Size = new System.Drawing.Size(351, 55);
             this.lblName.TabIndex = 7;
             // 
             // lblVehicle
@@ -809,9 +829,10 @@
             // 
             this.lblVehicle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVehicle.Location = new System.Drawing.Point(162, 85);
+            this.lblVehicle.Location = new System.Drawing.Point(242, 135);
+            this.lblVehicle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblVehicle.Name = "lblVehicle";
-            this.lblVehicle.Size = new System.Drawing.Size(233, 35);
+            this.lblVehicle.Size = new System.Drawing.Size(351, 55);
             this.lblVehicle.TabIndex = 6;
             this.lblVehicle.Text = "loại xe";
             // 
@@ -825,9 +846,10 @@
             // 
             this.lblLicense.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLicense.Location = new System.Drawing.Point(162, 44);
+            this.lblLicense.Location = new System.Drawing.Point(242, 70);
+            this.lblLicense.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblLicense.Name = "lblLicense";
-            this.lblLicense.Size = new System.Drawing.Size(233, 35);
+            this.lblLicense.Size = new System.Drawing.Size(351, 55);
             this.lblLicense.TabIndex = 5;
             this.lblLicense.Text = "biển số";
             // 
@@ -841,9 +863,10 @@
             // 
             this.lblTicket.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTicket.Location = new System.Drawing.Point(162, 3);
+            this.lblTicket.Location = new System.Drawing.Point(242, 5);
+            this.lblTicket.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblTicket.Name = "lblTicket";
-            this.lblTicket.Size = new System.Drawing.Size(233, 35);
+            this.lblTicket.Size = new System.Drawing.Size(351, 55);
             this.lblTicket.TabIndex = 4;
             // 
             // labelX12
@@ -856,10 +879,10 @@
             // 
             this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX12.Location = new System.Drawing.Point(20, 3);
-            this.labelX12.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.labelX12.Location = new System.Drawing.Point(30, 5);
+            this.labelX12.Margin = new System.Windows.Forms.Padding(30, 5, 4, 5);
             this.labelX12.Name = "labelX12";
-            this.labelX12.Size = new System.Drawing.Size(136, 35);
+            this.labelX12.Size = new System.Drawing.Size(204, 55);
             this.labelX12.TabIndex = 0;
             this.labelX12.Text = "Loại vé:";
             // 
@@ -873,10 +896,10 @@
             // 
             this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX13.Location = new System.Drawing.Point(20, 44);
-            this.labelX13.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.labelX13.Location = new System.Drawing.Point(30, 70);
+            this.labelX13.Margin = new System.Windows.Forms.Padding(30, 5, 4, 5);
             this.labelX13.Name = "labelX13";
-            this.labelX13.Size = new System.Drawing.Size(136, 35);
+            this.labelX13.Size = new System.Drawing.Size(204, 55);
             this.labelX13.TabIndex = 1;
             this.labelX13.Text = "Biển số:";
             // 
@@ -890,10 +913,10 @@
             // 
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX14.Location = new System.Drawing.Point(20, 85);
-            this.labelX14.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.labelX14.Location = new System.Drawing.Point(30, 135);
+            this.labelX14.Margin = new System.Windows.Forms.Padding(30, 5, 4, 5);
             this.labelX14.Name = "labelX14";
-            this.labelX14.Size = new System.Drawing.Size(136, 35);
+            this.labelX14.Size = new System.Drawing.Size(204, 55);
             this.labelX14.TabIndex = 2;
             this.labelX14.Text = "Loại xe:";
             // 
@@ -907,10 +930,10 @@
             // 
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX15.Location = new System.Drawing.Point(20, 126);
-            this.labelX15.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.labelX15.Location = new System.Drawing.Point(30, 200);
+            this.labelX15.Margin = new System.Windows.Forms.Padding(30, 5, 4, 5);
             this.labelX15.Name = "labelX15";
-            this.labelX15.Size = new System.Drawing.Size(136, 35);
+            this.labelX15.Size = new System.Drawing.Size(204, 55);
             this.labelX15.TabIndex = 3;
             this.labelX15.Text = "Tên chủ xe:";
             // 
@@ -924,9 +947,10 @@
             // 
             this.lblCardNumber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblCardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCardNumber.Location = new System.Drawing.Point(162, 167);
+            this.lblCardNumber.Location = new System.Drawing.Point(242, 265);
+            this.lblCardNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblCardNumber.Name = "lblCardNumber";
-            this.lblCardNumber.Size = new System.Drawing.Size(233, 39);
+            this.lblCardNumber.Size = new System.Drawing.Size(351, 58);
             this.lblCardNumber.TabIndex = 9;
             // 
             // labelX17
@@ -939,20 +963,21 @@
             // 
             this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX17.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX17.Location = new System.Drawing.Point(20, 167);
-            this.labelX17.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.labelX17.Location = new System.Drawing.Point(30, 265);
+            this.labelX17.Margin = new System.Windows.Forms.Padding(30, 5, 4, 5);
             this.labelX17.Name = "labelX17";
-            this.labelX17.Size = new System.Drawing.Size(136, 39);
+            this.labelX17.Size = new System.Drawing.Size(204, 58);
             this.labelX17.TabIndex = 8;
             this.labelX17.Text = "Số thẻ:";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(2025, 1122);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);

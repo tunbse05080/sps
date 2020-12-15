@@ -111,6 +111,10 @@ namespace SPS
                 {
                     CAM.Stop();
                 }
+                if(cameraCapture != null)
+                {
+                    cameraCapture.Stop();
+                }
                 Application.Exit();
             }
             txtCardNo.Focus();
@@ -125,6 +129,8 @@ namespace SPS
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox_WC.Height = pictureBox_WC.Width / 16 * 9;
             pictureBox1.Height = pictureBox1.Width / 16 * 9;
+            //imageBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            //imageBox1.Width = imageBox1.Height / 9 * 16;
             full_tesseract = new TesseractProcessor();
             bool succeed = full_tesseract.Init(m_path, m_lang, 3);
             if (!succeed)
@@ -267,14 +273,22 @@ namespace SPS
         //start Camera IP
         private void startStream()
         {
-            cameraCapture = new Emgu.CV.Capture("rtsp://admin:GXGPNW@192.168.1.16:554");
+            if (cameraCapture != null)
+            {
+                cameraCapture.Stop();
+            }
+            cameraCapture = new Emgu.CV.Capture("rtsp://admin:DQQHRY@192.168.31.88:554");
+            //cameraCapture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FPS, 15);
             cameraCapture.ImageGrabbed += ProcessFrame;
             cameraCapture.Start();
         }
         private void ProcessFrame(object sender, EventArgs arg)
         {
-            Image<Bgr, byte> imgeOrigenal = cameraCapture.RetrieveBgrFrame();
-            pictureBox_WC.Image = imgeOrigenal.Bitmap;
+            //Image<Bgr, Byte> imgeOrigenal = new Image<Bgr, Byte>(cameraCapture.RetrieveBgrFrame().ToBitmap());
+            Image<Bgr, byte> imgeOrigenal = cameraCapture.RetrieveBgrFrame(0);
+            // imgeOrigenal = cameraCapture.QueryFrame();
+            pictureBox_WC.Image = imgeOrigenal.ToBitmap();
+            //imageBox1.Image = imgeOrigenal;
 
         }
         //Timenow
