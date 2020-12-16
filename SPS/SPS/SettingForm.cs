@@ -30,7 +30,7 @@ namespace SPS
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             ParkingName = comboBoxEx1.Text;
             ParkingID = Convert.ToInt32(comboBoxEx1.SelectedValue);
-            updateParking(comboBoxEx1.SelectedIndex);
+            updateParking(ParkingID);
             if (rbtIn.Checked == true)
             {
                 SelectedGate = 0;
@@ -74,7 +74,7 @@ namespace SPS
             var parkingID = Properties.Settings.Default.ParkingPlace;
             if (busPK.checkParking(parkingID))
             {
-                comboBoxEx1.SelectedIndex = Properties.Settings.Default.ParkingPlace;
+                comboBoxEx1.SelectedValue = parkingID.ToString();
             }       
         }
         private void updateParking(int value)

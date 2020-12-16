@@ -58,5 +58,17 @@ namespace SPS.Properties {
                 this["ParkingPlace"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Parking {
+            get {
+                return ((string)(this["Parking"]));
+            }
+            set {
+                this["Parking"] = value;
+            }
+        }
     }
 }

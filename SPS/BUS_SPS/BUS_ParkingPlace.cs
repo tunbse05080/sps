@@ -27,6 +27,11 @@ namespace BUS_SPS
         {
             return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][6].ToString());
         }
+        public string getParkingName(int parkingID)
+        {
+            return dalParkingPlace.getParkingPlacebyID(parkingID).Rows[0][1].ToString();
+        }
+
         public bool checkParking(int parkingID) //kiem tra parkingID co status = 1 co ton tai khong
         {
             return dalParkingPlace.getParkingPlace().AsEnumerable().Any(row => parkingID == row.Field<Int32>("ParkingPlaceID"));
