@@ -60,5 +60,23 @@ namespace SPS
         {
             this.Close(); 
         }
+        private void getGate()
+        {
+            var gate = Properties.Settings.Default.Gate;
+            if(gate == 0)
+            {
+                rbtIn.Checked = true;
+                rbtOut.Checked = false;
+            }
+            else
+            {
+                rbtIn.Checked = false;
+                rbtOut.Checked = true;
+            }
+        }
+        private void updateGate(int value)
+        {
+
+        }
     }
 }

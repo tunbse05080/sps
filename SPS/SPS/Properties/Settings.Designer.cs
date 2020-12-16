@@ -23,24 +23,39 @@ namespace SPS.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WIN-K0VP4O5HLMC;Initial Catalog=BIENSOXE;Integrated Security=True")]
-        public string BIENSOXEConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Gate {
             get {
-                return ((string)(this["BIENSOXEConnectionString"]));
+                return ((int)(this["Gate"]));
+            }
+            set {
+                this["Gate"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=spsdata.cmuuiywkgmhz.ap-southeast-1.rds.amazonaws.com,1433;Initial Ca" +
-            "talog=BIENSOXE;User ID=sps;Password=12345678")]
-        public string BIENSOXEConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Method {
             get {
-                return ((string)(this["BIENSOXEConnectionString1"]));
+                return ((int)(this["Method"]));
+            }
+            set {
+                this["Method"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ParkingPlace {
+            get {
+                return ((int)(this["ParkingPlace"]));
+            }
+            set {
+                this["ParkingPlace"] = value;
             }
         }
     }
