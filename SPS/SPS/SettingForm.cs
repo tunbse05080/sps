@@ -22,9 +22,7 @@ namespace SPS
         public SettingForm()
         {
             InitializeComponent();
-            comboBoxEx1.DataSource = busPK.getParkingPlace();
-            comboBoxEx1.DisplayMember = busPK.getParkingPlace().Columns[1].ToString();
-            comboBoxEx1.ValueMember = busPK.getParkingPlace().Columns[0].ToString();
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -32,6 +30,7 @@ namespace SPS
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             ParkingName = comboBoxEx1.Text;
             ParkingID = Convert.ToInt32(comboBoxEx1.SelectedValue);
+            updateParking(comboBoxEx1.SelectedIndex);
             if (rbtIn.Checked == true)
             {
                 SelectedGate = 0;
@@ -60,6 +59,7 @@ namespace SPS
             this.TopMost = true;
             getGate();
             getMethod();
+            getParking();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -72,9 +72,9 @@ namespace SPS
             comboBoxEx1.DisplayMember = busPK.getParkingPlace().Columns[1].ToString();
             comboBoxEx1.ValueMember = busPK.getParkingPlace().Columns[0].ToString();
             var parkingID = Properties.Settings.Default.ParkingPlace;
-            if (busPK.getParkingStatus(parkingID) == 1)
-            {               
-                
+            if (busPK.checkParking(parkingID))
+            {
+                comboBoxEx1.SelectedIndex = Properties.Settings.Default.ParkingPlace;
             }       
         }
         private void updateParking(int value)
