@@ -555,6 +555,7 @@ namespace SPS
                         if (vehicleType == 0)
                         {
                             TransID = busTrans.getTransactionID(lblLicense.Text);
+                            lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyTransID(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
@@ -580,6 +581,7 @@ namespace SPS
                         else
                         {
                             TransID = busTrans.getTransactionID(lblLicense.Text);
+                            lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyTransID(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
@@ -1145,7 +1147,7 @@ namespace SPS
                 }
                 if (GateID == 1)
                 {
-                    lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyTransID(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
+                    //lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyTransID(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
                     lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                 }
                 if (checkxe == true)
