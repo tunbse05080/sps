@@ -60,6 +60,23 @@ namespace SPS
         {
             this.Close(); 
         }
+        private void getMethod()
+        {
+            var method = Properties.Settings.Default.Method;
+            if (method == 0)
+            {
+                swbtnEnter.Value = false;
+            }
+            else
+            {
+                swbtnEnter.Value = true;
+            }
+        }
+        private void updateMethod(int value)
+        {
+            Properties.Settings.Default.Method = value;
+            Properties.Settings.Default.Save();
+        }
         private void getGate()
         {
             var gate = Properties.Settings.Default.Gate;
@@ -76,7 +93,8 @@ namespace SPS
         }
         private void updateGate(int value)
         {
-
+            Properties.Settings.Default.Gate = value;
+            Properties.Settings.Default.Save();
         }
     }
 }
