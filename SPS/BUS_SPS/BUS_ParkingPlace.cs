@@ -15,6 +15,10 @@ namespace BUS_SPS
         {
             return dalParkingPlace.getParkingPlace();
         }
+        public int getParkingStatus(int parkingID)
+        {
+            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(parkingID).Rows[0][7].ToString());
+        }
         public int getCarFree(int ParkingID)
         {
             return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][5].ToString());
