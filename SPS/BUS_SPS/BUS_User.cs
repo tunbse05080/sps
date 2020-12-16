@@ -24,6 +24,10 @@ namespace BUS_SPS
         {
             return dalUser.getUserbyUsername(username).Rows[0][3].ToString();
         }
+        public string getName(int userID)
+        {
+            return dalUser.getUserbyUserID(userID).Rows[0][1].ToString();
+        }
         public bool checkUser(string username,int parkingID) //kiem tra user co duoc phep dang nhap khong
         {
             return dalUser.getUserbyParkingID(parkingID).AsEnumerable().Any(row => username == row.Field<String>("UserName"));

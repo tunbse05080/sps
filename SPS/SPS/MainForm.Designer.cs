@@ -83,6 +83,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new DevComponents.DotNetBar.ButtonX();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.lblSecureName = new DevComponents.DotNetBar.LabelX();
             this.toolStrip1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -99,6 +102,7 @@
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -863,6 +867,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnCapture, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel12, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnLogin, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel13, 0, 3);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(883, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
@@ -1029,6 +1034,53 @@
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel13.Controls.Add(this.lblSecureName, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.labelX9, 0, 0);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 160);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(180, 89);
+            this.tableLayoutPanel13.TabIndex = 8;
+            // 
+            // labelX9
+            // 
+            this.labelX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX9.Location = new System.Drawing.Point(3, 15);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(116, 26);
+            this.labelX9.TabIndex = 0;
+            this.labelX9.Text = "Tên bảo vệ:";
+            // 
+            // lblSecureName
+            // 
+            this.lblSecureName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.lblSecureName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblSecureName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecureName.Location = new System.Drawing.Point(3, 47);
+            this.lblSecureName.Name = "lblSecureName";
+            this.lblSecureName.Size = new System.Drawing.Size(174, 26);
+            this.lblSecureName.TabIndex = 1;
+            this.lblSecureName.Text = "_ _ _";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1059,6 +1111,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1121,5 +1174,8 @@
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.ButtonX btnLogin;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private DevComponents.DotNetBar.LabelX lblSecureName;
+        private DevComponents.DotNetBar.LabelX labelX9;
     }
 }

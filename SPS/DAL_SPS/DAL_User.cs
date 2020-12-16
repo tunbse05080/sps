@@ -33,6 +33,12 @@ namespace DAL_SPS
             da.Fill(dtUser);
             return dtUser;
         }
-
+        public DataTable getUserbyUserID(int userID)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from [User] where UserID = " + userID + "", conn);
+            DataTable dtUser = new DataTable();
+            da.Fill(dtUser);
+            return dtUser;
+        }
     }
 }

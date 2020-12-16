@@ -40,6 +40,7 @@ namespace SPS
         BUS_Transaction busTrans = new BUS_Transaction();
         BUS_Image busImage = new BUS_Image();
         BUS_Price busPrice = new BUS_Price();
+        BUS_User busUser = new BUS_User();
         Messages mes = new Messages();
         public int CarFree { get; set; }
         public int MotorFree { get; set; }
@@ -1332,9 +1333,11 @@ namespace SPS
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            txtCardNo.Focus();
             if (working == 0)
             {
                 CallLogin();
+                lblSecureName.Text = busUser.getName(userID);
                 return;
             }
             if (working == 1)
@@ -1345,6 +1348,7 @@ namespace SPS
                     btnCapture.Enabled = false;
                     btnEnter.Enabled = false;
                     btnLogin.Text = "Đăng nhập";
+                    lblSecureName.Text = "_ _ _";
                     return;
                 }               
             }

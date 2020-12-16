@@ -18,7 +18,7 @@ namespace SPS
         private string m09 = "Xe đang trong bãi";
         private string m10 = "Xe không có trong bãi";
         private string m11 = "Vé không đúng";
-        private string m12= "Tài khoản không đúng";
+        private string m12= "Tài khoản hoặc mật khẩu không đúng";
         private string m13 ="Bảo vệ chưa đăng nhập";
 
         public string M13

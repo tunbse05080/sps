@@ -22,7 +22,9 @@ namespace SPS
         public SettingForm()
         {
             InitializeComponent();
-            
+            comboBoxEx1.DataSource = busPK.getParkingPlace();
+            comboBoxEx1.DisplayMember = busPK.getParkingPlace().Columns[1].ToString();
+            comboBoxEx1.ValueMember = busPK.getParkingPlace().Columns[0].ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -66,11 +68,19 @@ namespace SPS
         }
         private void getParking()
         {
-            var parkingID = Properties.Settings.Default.ParkingPlace;
-            
             comboBoxEx1.DataSource = busPK.getParkingPlace();
             comboBoxEx1.DisplayMember = busPK.getParkingPlace().Columns[1].ToString();
             comboBoxEx1.ValueMember = busPK.getParkingPlace().Columns[0].ToString();
+            var parkingID = Properties.Settings.Default.ParkingPlace;
+            if (busPK.getParkingStatus(parkingID) == 1)
+            {               
+                
+            }       
+        }
+        private void updateParking(int value)
+        {
+            Properties.Settings.Default.ParkingPlace = value;
+            Properties.Settings.Default.Save();
         }
         private void getMethod()
         {
