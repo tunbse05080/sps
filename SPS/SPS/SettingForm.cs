@@ -35,18 +35,22 @@ namespace SPS
             if (rbtIn.Checked == true)
             {
                 SelectedGate = 0;
+                updateGate(0);
             }
             else
             {
                 SelectedGate = 1;
+                updateGate(1);
             }
             if (swbtnEnter.Value == true)
             {
                 EnterMethod = 1;
+                updateMethod(1);
             }
             else
             {
                 EnterMethod = 0;
+                updateMethod(0);
             }
             this.Close();
         }
@@ -54,6 +58,8 @@ namespace SPS
         private void SettingForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
+            getGate();
+            getMethod();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
