@@ -26,7 +26,16 @@ namespace SPS
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            
+            buttonOK();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+           // txtUsername.Text = parkingID.ToString();
+        }
+        private void buttonOK()
+        {
             if (busUser.checkUser(txtUsername.Text, parkingID) == true)
             {
                 if (busUser.getPassword(txtUsername.Text).Equals(txtPassword.Text))
@@ -48,12 +57,6 @@ namespace SPS
                 {
                 }
             }
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            this.TopMost = true;
-           // txtUsername.Text = parkingID.ToString();
         }
     }
 }

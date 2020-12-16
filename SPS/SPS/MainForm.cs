@@ -1215,6 +1215,7 @@ namespace SPS
                 if (working == 0)
                 {
                     Error(13);
+                    txtCardNo.Clear();
                     return;
                 }
                 lblCardNo.Text = txtCardNo.Text;

@@ -105,6 +105,7 @@
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 215);
@@ -116,6 +117,7 @@
             this.Name = "LoginForm";
             this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.LoginForm_Load);
+//            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);
             this.ResumeLayout(false);
 
         }
