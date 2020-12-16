@@ -194,7 +194,7 @@ namespace SPS
 
         private void btnCapture_Click(object sender, EventArgs e)
         {
-            if(working == 0)
+            if (working == 0)
             {
                 Error(13);
                 return;
@@ -238,24 +238,24 @@ namespace SPS
         {
             SettingForm form2 = new SettingForm();
             form2.working = working;
-                if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                GateID = form2.SelectedGate;
+                ParkingID = form2.ParkingID;
+                enterMethod = form2.EnterMethod;
+                if (GateID == 0)
                 {
-                    GateID = form2.SelectedGate;
-                    ParkingID = form2.ParkingID;
-                    enterMethod = form2.EnterMethod;
-                    if (GateID == 0)
-                    {
-                        lblGate.Text = "Cổng vào";
-                    }
-                    else
-                    {
-                        lblGate.Text = "Cổng ra";
-                    }
-                    groupPanel1.Text = "Bãi đỗ xe " + form2.ParkingName;
-                    lblCar.Text = busPK.getCarFree(ParkingID).ToString();
-                    lblMotor.Text = busPK.getMotorFree(ParkingID).ToString();
+                    lblGate.Text = "Cổng vào";
                 }
-            
+                else
+                {
+                    lblGate.Text = "Cổng ra";
+                }
+                groupPanel1.Text = "Bãi đỗ xe " + form2.ParkingName;
+                lblCar.Text = busPK.getCarFree(ParkingID).ToString();
+                lblMotor.Text = busPK.getMotorFree(ParkingID).ToString();
+            }
+
             StartTimer();
             if (CAMS.Count > 0)
             {
@@ -265,23 +265,24 @@ namespace SPS
             {
                 startStream();
             }
+            reset();
         }
         //Get info from LoginForm
         private void CallLogin()
         {
             LoginForm form2 = new LoginForm();
-            
-                form2.parkingID = ParkingID;
-                if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    userID = form2.userID;
-                    working = 1;
-                    btnLogin.Text = "Đăng xuất";
-                    btnCapture.Enabled = true;
-                    btnEnter.Enabled = true;
+
+            form2.parkingID = ParkingID;
+            if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                userID = form2.userID;
+                working = 1;
+                btnLogin.Text = "Đăng xuất";
+                btnCapture.Enabled = true;
+                btnEnter.Enabled = true;
                 lblSecureName.Text = busUser.getName(userID);
             }
-            
+
         }
         //start webcam camera
         private void startCamera()
@@ -377,7 +378,7 @@ namespace SPS
                 chkCard = false;
                 return;
             }
-            else if(GateID == 1 && (busCard.getCardStatus(lblCardNo.Text) == 0 || busCard.getCardStatus(lblCardNo.Text) == 1))
+            else if (GateID == 1 && (busCard.getCardStatus(lblCardNo.Text) == 0 || busCard.getCardStatus(lblCardNo.Text) == 1))
             {
                 Error(11);
                 chkCard = false;
@@ -451,17 +452,18 @@ namespace SPS
             expiredTicket = false;
             if (busTicket.checkLicense(lblLicense.Text) == true)
             {
+                lblTicket.Text = "Vé tháng";
                 if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text))
                 {
-                    lblTicket.Text = "Vé tháng";
+
                     Error(11);
                     return;
                 }
-                lblTicket.Text = "Vé tháng";
+
                 ticketType = 0;
 
                 lblName.Text = busTicket.getName(lblLicense.Text);
-                if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) < DateTime.Now)
+                if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) < DateTime.Now || DateTime.Parse(busTicket.getStartDate(lblLicense.Text)) > DateTime.Now)
                 {
                     //lblTimeOut.Text = busTicket.getExpiryDate(txtLicense.Text);
                     chkLicense = true; //ve thang het han, tinh tien nhu ve ngay, block
@@ -518,7 +520,7 @@ namespace SPS
                                     insertImage();
                                     //Console.WriteLine("Hello, world");
                                 }).Start();
-                                
+
                             }
                             else
                             {
@@ -542,7 +544,7 @@ namespace SPS
                                     insertImage();
                                     //Console.WriteLine("Hello, world");
                                 }).Start();
-                                
+
                             }
                             else
                             {
@@ -559,11 +561,11 @@ namespace SPS
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
-                            if(ticketType == 1)
+                            if (ticketType == 1)
                             {
                                 updateCard(0);
                             }
-                            if(ticketType == 0)
+                            if (ticketType == 0)
                             {
                                 updateCard(1);
                             }
@@ -576,7 +578,7 @@ namespace SPS
                                 updateImage();
                                 //Console.WriteLine("Hello, world");
                             }).Start();
-                            
+
                         }
                         else
                         {
@@ -602,7 +604,7 @@ namespace SPS
                                 updateImage();
                                 //Console.WriteLine("Hello, world");
                             }).Start();
-                            
+
                         }
                     }
 
@@ -668,7 +670,7 @@ namespace SPS
                                     insertImage();
                                     //Console.WriteLine("Hello, world");
                                 }).Start();
-                                
+
                             }
                             else
                             {
@@ -694,6 +696,8 @@ namespace SPS
                                 updateCard(1);
                             }
                             updateMotoFree();
+                            lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyLicense(lblLicense.Text)).ToString("hh:mm:ss tt dd/MM/yyyy");
+                            lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                             new Thread(() =>
                             {
                                 Thread.CurrentThread.IsBackground = true;
@@ -720,6 +724,8 @@ namespace SPS
                                 updateCard(1);
                             }
                             updateCarFree();
+                            lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyLicense(lblLicense.Text)).ToString("hh:mm:ss tt dd/MM/yyyy");
+                            lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                             new Thread(() =>
                             {
                                 Thread.CurrentThread.IsBackground = true;
@@ -728,7 +734,7 @@ namespace SPS
                                 updateImage();
                                 //Console.WriteLine("Hello, world");
                             }).Start();
-                            
+
                         }
                     }
 
@@ -778,13 +784,13 @@ namespace SPS
             if (ticketType == 1 || expiredTicket == true)
             {
                 price = (Convert.ToInt32(dailyPrice) == 0) ? firstBlockPrice + (numberOfBlocks - 1) * nextBlockPrice : numberOfDays * dailyPrice;
-                lblTotalTime.Text = (Convert.ToInt32(dailyPrice) == 0) ? numberOfBlocks.ToString()+ " block" : numberOfDays.ToString() + " ngày";
+                lblTotalTime.Text = (Convert.ToInt32(dailyPrice) == 0) ? numberOfBlocks.ToString() + " block" : numberOfDays.ToString() + " ngày";
             }
             labelX11.BackColor = Color.Yellow;
             lblCost.BackColor = Color.Yellow;
             labelX11.Text = "Số tiền:";
             lblCost.Text = price.ToString() + "VND";
-            
+
         }
 
         //upload anh len imageshack
@@ -1328,16 +1334,20 @@ namespace SPS
                 {
                     Error(7);
                 }
-                else
+                else if (enterMethod == 0)
                 {
                     autoCapture();
+                }
+                else
+                {
+                    GetVehicleInfo();
                 }
             }
         }
         //hien thi thong tin
         private void showInformation()
         {
-            checkLicense();
+            //checkLicense();
             lblLicense.Text = txtLicense1.Text + txtLicense2.Text;
             lblCardNumber.Text = lblCardNo.Text;
             if (GateID == 0)
@@ -1345,11 +1355,7 @@ namespace SPS
                 lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                 //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
             }
-            if (GateID == 1)
-            {
-                lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyLicense(lblLicense.Text)).ToString("hh:mm:ss tt dd/MM/yyyy");
-                lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
-            }
+
             if (txtLicense1.Text.Length == 3)
             {
                 lblVehicle.Text = "Xe Ôtô";
@@ -1365,6 +1371,12 @@ namespace SPS
                 lblVehicle.Text = "";
                 vehicleType = 0;
             }
+
+            //if (GateID == 1)
+            //{
+            //    lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyLicense(lblLicense.Text)).ToString("hh:mm:ss tt dd/MM/yyyy");
+            //    lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
+            //}
         }
 
         //nhap bien so  xe bang  tay khi click nut Nhap
@@ -1375,7 +1387,7 @@ namespace SPS
                 Error(13);
                 return;
             }
-            chkLicense = true;
+            //chkLicense = true;
             showInformation();
             manualEnter();
             txtCardNo.Focus();
@@ -1400,6 +1412,9 @@ namespace SPS
             //lblCardNumber.Text = "";
             txtLicense1.Text = "";
             txtLicense2.Text = "";
+            lblTotalTime.Text = "";
+            lblTimeIn.Text = "";
+            lblTimeOut.Text = "";
         }
 
         //Thong bao
@@ -1439,7 +1454,7 @@ namespace SPS
             if (working == 0)
             {
                 CallLogin();
-                
+
                 return;
             }
             if (working == 1)
@@ -1452,7 +1467,7 @@ namespace SPS
                     btnLogin.Text = "Đăng nhập";
                     lblSecureName.Text = "_ _ _";
                     return;
-                }               
+                }
             }
         }
     }

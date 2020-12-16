@@ -20,25 +20,22 @@ namespace BUS_SPS
         {
             return Convert.ToInt32(dalPrice.getPrice(parkingID,vehicleType).Rows[0][2].ToString());
         }
-        public double getMonthlyPrice(int parkingID, int vehicleType)
+
+        public double getFirstBlockPrice(int parkingID, int vehicleType)
         {
             return Convert.ToDouble(dalPrice.getPrice(parkingID, vehicleType).Rows[0][3].ToString());
         }
-        public double getFirstBlockPrice(int parkingID, int vehicleType)
+        public double getNextBlockPrice(int parkingID, int vehicleType)
         {
             return Convert.ToDouble(dalPrice.getPrice(parkingID, vehicleType).Rows[0][4].ToString());
         }
-        public double getNextBlockPrice(int parkingID, int vehicleType)
-        {
-            return Convert.ToDouble(dalPrice.getPrice(parkingID, vehicleType).Rows[0][5].ToString());
-        }
         public int gettimeFirstBlock(int parkingID, int vehicleType)
         {
-            return Convert.ToInt32(dalPrice.getPrice(parkingID, vehicleType).Rows[0][7].ToString());
+            return Convert.ToInt32(dalPrice.getPrice(parkingID, vehicleType).Rows[0][6].ToString());
         }
         public int gettimeNextBlock(int parkingID, int vehicleType)
         {
-            return Convert.ToInt32(dalPrice.getPrice(parkingID, vehicleType).Rows[0][8].ToString());
+            return Convert.ToInt32(dalPrice.getPrice(parkingID, vehicleType).Rows[0][7].ToString());
         }
     }
 }

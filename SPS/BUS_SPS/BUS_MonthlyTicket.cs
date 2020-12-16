@@ -37,5 +37,10 @@ namespace BUS_SPS
              return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString();
           //  return DateTime.ParseExact(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
+        public string getStartDate(string license) //thong tin ngay bat dau cua ve thang
+        {
+            return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][7].ToString();
+            //  return DateTime.ParseExact(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        }
     }
 }
