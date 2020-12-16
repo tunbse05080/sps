@@ -62,10 +62,14 @@ namespace SPS
             getMethod();
             if(working == 0)
             {
-                comboBoxEx1.Enabled = true;
+                
                 getParking();
-            }else if( working == 1)
+                comboBoxEx1.Enabled = true;
+            }
+            else if( working == 1)
             {
+                
+                getParking();
                 comboBoxEx1.Enabled = false;
             }
             
@@ -77,6 +81,7 @@ namespace SPS
         }
         private void getParking()
         {
+            comboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEx1.DataSource = busPK.getParkingPlace();
             comboBoxEx1.DisplayMember = busPK.getParkingPlace().Columns[1].ToString();
             comboBoxEx1.ValueMember = busPK.getParkingPlace().Columns[0].ToString();
