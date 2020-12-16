@@ -86,6 +86,8 @@
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.lblSecureName = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.lblTotalTime = new DevComponents.DotNetBar.LabelX();
             this.toolStrip1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -247,15 +249,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.lblTotalTime, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.lblTimeOut, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.lblTimeIn, 0, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(154, 78);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowCount = 3;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(286, 118);
             this.tableLayoutPanel6.TabIndex = 6;
             // 
@@ -270,10 +273,10 @@
             // 
             this.lblTimeOut.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblTimeOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeOut.Location = new System.Drawing.Point(0, 59);
+            this.lblTimeOut.Location = new System.Drawing.Point(0, 39);
             this.lblTimeOut.Margin = new System.Windows.Forms.Padding(0);
             this.lblTimeOut.Name = "lblTimeOut";
-            this.lblTimeOut.Size = new System.Drawing.Size(286, 59);
+            this.lblTimeOut.Size = new System.Drawing.Size(286, 39);
             this.lblTimeOut.TabIndex = 1;
             this.lblTimeOut.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
@@ -291,7 +294,7 @@
             this.lblTimeIn.Location = new System.Drawing.Point(0, 0);
             this.lblTimeIn.Margin = new System.Windows.Forms.Padding(0);
             this.lblTimeIn.Name = "lblTimeIn";
-            this.lblTimeIn.Size = new System.Drawing.Size(286, 59);
+            this.lblTimeIn.Size = new System.Drawing.Size(286, 39);
             this.lblTimeIn.TabIndex = 0;
             // 
             // labelX5
@@ -349,16 +352,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.labelX10, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.labelX8, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.labelX7, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 78);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(154, 118);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
@@ -373,10 +376,10 @@
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX8.Location = new System.Drawing.Point(0, 59);
+            this.labelX8.Location = new System.Drawing.Point(0, 39);
             this.labelX8.Margin = new System.Windows.Forms.Padding(0);
             this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(154, 59);
+            this.labelX8.Size = new System.Drawing.Size(154, 39);
             this.labelX8.TabIndex = 1;
             this.labelX8.Text = "Thời gian ra:";
             this.labelX8.TextLineAlignment = System.Drawing.StringAlignment.Near;
@@ -395,7 +398,7 @@
             this.labelX7.Location = new System.Drawing.Point(0, 0);
             this.labelX7.Margin = new System.Windows.Forms.Padding(0);
             this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(154, 59);
+            this.labelX7.Size = new System.Drawing.Size(154, 39);
             this.labelX7.TabIndex = 0;
             this.labelX7.Text = "Thời gian vào:";
             // 
@@ -1081,6 +1084,43 @@
             this.labelX9.TabIndex = 0;
             this.labelX9.Text = "Tên bảo vệ:";
             // 
+            // labelX10
+            // 
+            this.labelX10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.Location = new System.Drawing.Point(0, 78);
+            this.labelX10.Margin = new System.Windows.Forms.Padding(0);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(154, 40);
+            this.labelX10.TabIndex = 2;
+            this.labelX10.Text = "Tổng thời gian:";
+            this.labelX10.TextLineAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // lblTotalTime
+            // 
+            this.lblTotalTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalTime.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            // 
+            // 
+            // 
+            this.lblTotalTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblTotalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTime.Location = new System.Drawing.Point(0, 78);
+            this.lblTotalTime.Margin = new System.Windows.Forms.Padding(0);
+            this.lblTotalTime.Name = "lblTotalTime";
+            this.lblTotalTime.Size = new System.Drawing.Size(286, 40);
+            this.lblTotalTime.TabIndex = 2;
+            this.lblTotalTime.TextLineAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1177,5 +1217,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private DevComponents.DotNetBar.LabelX lblSecureName;
         private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.DotNetBar.LabelX lblTotalTime;
+        private DevComponents.DotNetBar.LabelX labelX10;
     }
 }

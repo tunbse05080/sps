@@ -349,7 +349,7 @@ namespace SPS
 
         }
 
-        //kiem tra card
+        //kiem tra card 0-chua su dung, 1-da dang ky ve thang,2-hong,3-khoa,4-dang su dung
         private void checkCard()
         {
 
@@ -357,16 +357,25 @@ namespace SPS
             {
                 Error(2);
                 chkCard = false;
+                return;
             }
             else if (GateID == 0 && busCard.getCardStatus(lblCardNo.Text) == 1)
             {
                 Error(3);
                 chkCard = false;
+                return;
             }
-            else if (GateID == 0 && busCard.getCardStatus(lblCardNo.Text) == 2)
+            else if (busCard.getCardStatus(lblCardNo.Text) == 3)
             {
                 Error(4);
                 chkCard = false;
+                return;
+            }
+            else if(GateID == 1 && busCard.getCardStatus(lblCardNo.Text) == 0)
+            {
+                Error(4);
+                chkCard = false;
+                return;
             }
             else
             {
@@ -696,6 +705,7 @@ namespace SPS
             lblCost.BackColor = Color.Yellow;
             labelX11.Text = "Số tiền:";
             lblCost.Text = price.ToString() + "VND";
+            lblTotalTime
         }
 
         //upload anh len imageshack
