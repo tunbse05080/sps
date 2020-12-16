@@ -279,7 +279,8 @@ namespace SPS
                     btnLogin.Text = "Đăng xuất";
                     btnCapture.Enabled = true;
                     btnEnter.Enabled = true;
-                }
+                lblSecureName.Text = busUser.getName(userID);
+            }
             
         }
         //start webcam camera
@@ -488,8 +489,15 @@ namespace SPS
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
                                 updateCard(1);
                                 updateMotoFree();
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                                insertImage();
+                                new Thread(() =>
+                                {
+                                    Thread.CurrentThread.IsBackground = true;
+                                    /* run your code here */
+                                    pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                    insertImage();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();
+                                
                             }
                             else
                             {
@@ -663,12 +671,17 @@ namespace SPS
             //lay thong tin block
             int timeFirstBlock = busPrice.gettimeFirstBlock(ParkingID, vehicleType);
             int timeNextBlock = busPrice.gettimeNextBlock(ParkingID, vehicleType);
+
             //tinh thoi gian gui xe
             int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
             int numberOfhours = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalHours));
-            int numberOfBlocks = ((numberOfhours - timeFirstBlock) > 0) ? Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours - timeFirstBlock) / Convert.ToDouble(timeFirstBlock)))) : 1;
+            int numberOfBlocks = 0;
             //lay thong tin gia ve
             double dailyPrice = busPrice.getDailyPrice(ParkingID, vehicleType);
+            if (Convert.ToInt32(dailyPrice) == 0)
+            {
+                numberOfBlocks = ((numberOfhours - timeFirstBlock) > 0) ? Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours - timeFirstBlock) / Convert.ToDouble(timeNextBlock)))) : 1;
+            }
             double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, vehicleType);
             double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, vehicleType);
             if (ticketType == 0 && expiredTicket == false)
@@ -1337,7 +1350,7 @@ namespace SPS
             if (working == 0)
             {
                 CallLogin();
-                lblSecureName.Text = busUser.getName(userID);
+                
                 return;
             }
             if (working == 1)

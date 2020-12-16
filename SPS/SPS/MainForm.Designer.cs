@@ -84,8 +84,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new DevComponents.DotNetBar.ButtonX();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.lblSecureName = new DevComponents.DotNetBar.LabelX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.toolStrip1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -1052,20 +1052,6 @@
             this.tableLayoutPanel13.Size = new System.Drawing.Size(180, 89);
             this.tableLayoutPanel13.TabIndex = 8;
             // 
-            // labelX9
-            // 
-            this.labelX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX9.Location = new System.Drawing.Point(3, 15);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(116, 26);
-            this.labelX9.TabIndex = 0;
-            this.labelX9.Text = "Tên bảo vệ:";
-            // 
             // lblSecureName
             // 
             this.lblSecureName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1080,6 +1066,20 @@
             this.lblSecureName.Size = new System.Drawing.Size(174, 26);
             this.lblSecureName.TabIndex = 1;
             this.lblSecureName.Text = "_ _ _";
+            // 
+            // labelX9
+            // 
+            this.labelX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX9.Location = new System.Drawing.Point(3, 15);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(116, 26);
+            this.labelX9.TabIndex = 0;
+            this.labelX9.Text = "Tên bảo vệ:";
             // 
             // MainForm
             // 
