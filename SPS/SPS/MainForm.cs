@@ -359,7 +359,7 @@ namespace SPS
                 chkCard = false;
                 return;
             }
-            else if (GateID == 0 && busCard.getCardStatus(lblCardNo.Text) == 1)
+            else if (GateID == 0 && busCard.getCardStatus(lblCardNo.Text) == 4)
             {
                 Error(3);
                 chkCard = false;
@@ -371,9 +371,15 @@ namespace SPS
                 chkCard = false;
                 return;
             }
-            else if(GateID == 1 && busCard.getCardStatus(lblCardNo.Text) == 0)
+            else if (busCard.getCardStatus(lblCardNo.Text) == 2)
             {
                 Error(4);
+                chkCard = false;
+                return;
+            }
+            else if(GateID == 1 && (busCard.getCardStatus(lblCardNo.Text) == 0 || busCard.getCardStatus(lblCardNo.Text) == 1))
+            {
+                Error(11);
                 chkCard = false;
                 return;
             }

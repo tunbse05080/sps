@@ -10,7 +10,7 @@ namespace SPS
         private string m01 = "Bạn có chắc chắn muốn thoát không?";
         private string m02 = "Thẻ không hợp lệ";
         private string m03 = "Thẻ đang sử dụng";
-        private string m04 = "Thẻ bị khóa";
+        private string m04 = "Thẻ bị khóa/hỏng";
         private string m05 = "Tính tiền như vé ngày/block";
         private string m06 = "Cho xe đi qua";
         private string m07 = "Bãi đỗ xe đã đầy";
