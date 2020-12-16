@@ -508,7 +508,7 @@ namespace SPS
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
-                                updateCard(1);
+                                updateCard(4);
                                 updateMotoFree();
                                 new Thread(() =>
                                 {
@@ -532,10 +532,17 @@ namespace SPS
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
-                                updateCard(1);
+                                updateCard(4);
                                 updateCarFree();
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                                insertImage();
+                                new Thread(() =>
+                                {
+                                    Thread.CurrentThread.IsBackground = true;
+                                    /* run your code here */
+                                    pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                    insertImage();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();
+                                
                             }
                             else
                             {
@@ -551,10 +558,24 @@ namespace SPS
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
-                            updateCard(0);
+                            if(ticketType == 1)
+                            {
+                                updateCard(0);
+                            }
+                            if(ticketType == 0)
+                            {
+                                updateCard(1);
+                            }
                             updateMotoFree();
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                            updateImage();
+                            new Thread(() =>
+                            {
+                                Thread.CurrentThread.IsBackground = true;
+                                /* run your code here */
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                updateImage();
+                                //Console.WriteLine("Hello, world");
+                            }).Start();
+                            
                         }
                         else
                         {
@@ -562,10 +583,24 @@ namespace SPS
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
-                            updateCard(0);
+                            if (ticketType == 1)
+                            {
+                                updateCard(0);
+                            }
+                            if (ticketType == 0)
+                            {
+                                updateCard(1);
+                            }
                             updateCarFree();
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                            updateImage();
+                            new Thread(() =>
+                            {
+                                Thread.CurrentThread.IsBackground = true;
+                                /* run your code here */
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                updateImage();
+                                //Console.WriteLine("Hello, world");
+                            }).Start();
+                            
                         }
                     }
 
@@ -598,7 +633,7 @@ namespace SPS
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
-                                updateCard(1);
+                                updateCard(4);
                                 updateMotoFree();
                                 new Thread(() =>
                                 {
@@ -621,10 +656,17 @@ namespace SPS
                                 //lblTimeOut.Text = pictureLink;
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
-                                updateCard(1);
+                                updateCard(4);
                                 updateCarFree();
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                                insertImage();
+                                new Thread(() =>
+                                {
+                                    Thread.CurrentThread.IsBackground = true;
+                                    /* run your code here */
+                                    pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                    insertImage();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();
+                                
                             }
                             else
                             {
@@ -641,7 +683,14 @@ namespace SPS
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
-                            updateCard(0);
+                            if (ticketType == 1)
+                            {
+                                updateCard(0);
+                            }
+                            if (ticketType == 0)
+                            {
+                                updateCard(1);
+                            }
                             updateMotoFree();
                             new Thread(() =>
                             {
@@ -660,10 +709,24 @@ namespace SPS
                             ImageID = busImage.getImageID(TransID);
                             totalPrice();
                             updateTransaction();
-                            updateCard(0);
+                            if (ticketType == 1)
+                            {
+                                updateCard(0);
+                            }
+                            if (ticketType == 0)
+                            {
+                                updateCard(1);
+                            }
                             updateCarFree();
-                            pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
-                            updateImage();
+                            new Thread(() =>
+                            {
+                                Thread.CurrentThread.IsBackground = true;
+                                /* run your code here */
+                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                updateImage();
+                                //Console.WriteLine("Hello, world");
+                            }).Start();
+                            
                         }
                     }
 

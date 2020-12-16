@@ -36,12 +36,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTotalTime = new DevComponents.DotNetBar.LabelX();
             this.lblTimeOut = new DevComponents.DotNetBar.LabelX();
             this.lblTimeIn = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.txtCardNo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -86,8 +88,6 @@
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.lblSecureName = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.lblTotalTime = new DevComponents.DotNetBar.LabelX();
             this.toolStrip1.SuspendLayout();
             this.groupPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -262,6 +262,24 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(286, 118);
             this.tableLayoutPanel6.TabIndex = 6;
             // 
+            // lblTotalTime
+            // 
+            this.lblTotalTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalTime.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            // 
+            // 
+            // 
+            this.lblTotalTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblTotalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTime.Location = new System.Drawing.Point(0, 78);
+            this.lblTotalTime.Margin = new System.Windows.Forms.Padding(0);
+            this.lblTotalTime.Name = "lblTotalTime";
+            this.lblTotalTime.Size = new System.Drawing.Size(286, 40);
+            this.lblTotalTime.TabIndex = 2;
+            this.lblTotalTime.TextLineAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // lblTimeOut
             // 
             this.lblTimeOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -364,6 +382,25 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(154, 118);
             this.tableLayoutPanel5.TabIndex = 5;
+            // 
+            // labelX10
+            // 
+            this.labelX10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX10.Location = new System.Drawing.Point(0, 78);
+            this.labelX10.Margin = new System.Windows.Forms.Padding(0);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(154, 40);
+            this.labelX10.TabIndex = 2;
+            this.labelX10.Text = "Tổng thời gian:";
+            this.labelX10.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
             // labelX8
             // 
@@ -1083,43 +1120,6 @@
             this.labelX9.Size = new System.Drawing.Size(116, 26);
             this.labelX9.TabIndex = 0;
             this.labelX9.Text = "Tên bảo vệ:";
-            // 
-            // labelX10
-            // 
-            this.labelX10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX10.Location = new System.Drawing.Point(0, 78);
-            this.labelX10.Margin = new System.Windows.Forms.Padding(0);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(154, 40);
-            this.labelX10.TabIndex = 2;
-            this.labelX10.Text = "Tổng thời gian:";
-            this.labelX10.TextLineAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // lblTotalTime
-            // 
-            this.lblTotalTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalTime.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            // 
-            // 
-            // 
-            this.lblTotalTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblTotalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalTime.Location = new System.Drawing.Point(0, 78);
-            this.lblTotalTime.Margin = new System.Windows.Forms.Padding(0);
-            this.lblTotalTime.Name = "lblTotalTime";
-            this.lblTotalTime.Size = new System.Drawing.Size(286, 40);
-            this.lblTotalTime.TabIndex = 2;
-            this.lblTotalTime.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
             // MainForm
             // 
