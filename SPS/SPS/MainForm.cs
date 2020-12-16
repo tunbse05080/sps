@@ -236,8 +236,8 @@ namespace SPS
         //Get info from Setting
         private void CallSetting()
         {
-            using (SettingForm form2 = new SettingForm())
-            {
+            SettingForm form2 = new SettingForm();
+            form2.working = working;
                 if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     GateID = form2.SelectedGate;
@@ -255,7 +255,7 @@ namespace SPS
                     lblCar.Text = busPK.getCarFree(ParkingID).ToString();
                     lblMotor.Text = busPK.getMotorFree(ParkingID).ToString();
                 }
-            }
+            
             StartTimer();
             if (CAMS.Count > 0)
             {
@@ -423,7 +423,7 @@ namespace SPS
                 else
                 {
                     TransID = busTrans.getTransactionID(lblLicense.Text);
-                    if (GateID == 1 && busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID))
+                    if (GateID == 1 && (busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID)))
                     {
                         chkLicense = false;
                         Error(11);
@@ -451,6 +451,12 @@ namespace SPS
             expiredTicket = false;
             if (busTicket.checkLicense(lblLicense.Text) == true)
             {
+                if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text))
+                {
+                    lblTicket.Text = "Vé tháng";
+                    Error(11);
+                    return;
+                }
                 lblTicket.Text = "Vé tháng";
                 ticketType = 0;
 
@@ -695,23 +701,25 @@ namespace SPS
             double dailyPrice = busPrice.getDailyPrice(ParkingID, vehicleType);
             if (Convert.ToInt32(dailyPrice) == 0)
             {
-                numberOfBlocks = ((numberOfhours - timeFirstBlock) > 0) ? Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours - timeFirstBlock) / Convert.ToDouble(timeNextBlock)))) : 1;
+                numberOfBlocks = ((numberOfhours - timeFirstBlock) > 0) ? 1 + Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours - timeFirstBlock) / Convert.ToDouble(timeNextBlock)))) : 1;
             }
             double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, vehicleType);
             double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, vehicleType);
             if (ticketType == 0 && expiredTicket == false)
             {
                 price = 0;
+                lblTotalTime.Text = numberOfDays.ToString() + " ngày";
             }
             if (ticketType == 1 || expiredTicket == true)
             {
                 price = (Convert.ToInt32(dailyPrice) == 0) ? firstBlockPrice + (numberOfBlocks - 1) * nextBlockPrice : numberOfDays * dailyPrice;
+                lblTotalTime.Text = (Convert.ToInt32(dailyPrice) == 0) ? numberOfBlocks.ToString()+ " block" : numberOfDays.ToString() + " ngày";
             }
             labelX11.BackColor = Color.Yellow;
             lblCost.BackColor = Color.Yellow;
             labelX11.Text = "Số tiền:";
             lblCost.Text = price.ToString() + "VND";
-            lblTotalTime
+            
         }
 
         //upload anh len imageshack

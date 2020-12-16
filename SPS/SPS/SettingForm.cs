@@ -17,6 +17,7 @@ namespace SPS
         public string ParkingName { get; set; }
         public int ParkingID { get; set; }
         public int EnterMethod { get; set; }
+        public int working { get; set; }
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         #endregion
         public SettingForm()
@@ -59,7 +60,15 @@ namespace SPS
             this.TopMost = true;
             getGate();
             getMethod();
-            getParking();
+            if(working == 0)
+            {
+                comboBoxEx1.Enabled = true;
+                getParking();
+            }else if( working == 1)
+            {
+                comboBoxEx1.Enabled = false;
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
