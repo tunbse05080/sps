@@ -316,8 +316,6 @@ namespace SPS
             try
             {
                 cameraCapture = new dess::Emgu.CV.Capture("rtsp://admin:DQQHRY@192.168.31.88:554");
-
-                //cameraCapture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FPS, 15);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameWidth, 1280);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameHeight, 720);
                 cameraCapture.ImageGrabbed += ProcessFrame;
