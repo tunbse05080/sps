@@ -175,7 +175,7 @@
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
             this.Name = "SettingForm";
-            this.Text = "SettingForm";
+            this.Text = "Cài đặt";
             this.Load += new System.EventHandler(this.SettingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -20,6 +20,14 @@ namespace SPS
         private string m11 = "Vé không đúng";
         private string m12= "Tài khoản hoặc mật khẩu không đúng";
         private string m13 ="Bảo vệ chưa đăng nhập";
+        private string m14 = "Thoát tài khoản";
+
+        public string M14
+        {
+            get { return m14; }
+            set { m14 = value; }
+        }
+
 
         public string M13
         {
@@ -151,6 +159,10 @@ namespace SPS
             if (a == 13)
             {
                 return m13;
+            }
+            if (a == 14)
+            {
+                return m14;
             }
             else return "NONE";
         }

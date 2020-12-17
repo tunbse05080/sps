@@ -134,6 +134,7 @@ namespace SPS
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox_WC.Height = pictureBox_WC.Width / 16 * 9;
             pictureBox1.Height = pictureBox1.Width / 16 * 9;
+            toolStripComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             //imageBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             //imageBox1.Width = imageBox1.Height / 9 * 16;
             if (working == 0)
@@ -1493,7 +1494,7 @@ namespace SPS
             }
             if (working == 1)
             {
-                if (MessageBox.Show(mes.mes(1), "Hỏi Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(mes.mes(14), "Hỏi đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     working = 0;
                     btnCapture.Enabled = false;
