@@ -1,4 +1,5 @@
-﻿using System;
+﻿extern alias dess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +33,7 @@ namespace SPS
         private VideoCaptureDevice CAM;
         private Bitmap BMP;
         private FilterInfoCollection CAMS;
-        Emgu.CV.Capture cameraCapture;
+        dess::Emgu.CV.Capture cameraCapture;
         System.Windows.Forms.Timer tmr = null;
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         BUS_Card busCard = new BUS_Card();
@@ -64,7 +65,7 @@ namespace SPS
         private const string m_lang = "eng";
         bool chkCard = true;
         bool chkLicense = true;
-        bool expiredTicket = false; //ve thang het han
+        bool expiredTicket = false; //ve thang het han hoac ve thang khong dung bai
         int vehicleType; //loai xe 0-xemay, 1-oto
         int ticketType; //loai ve 0-ve thang, 1-vengay/block
         //int timeOfblock = 2; //thoi gian moi block (gio) 
@@ -309,19 +310,44 @@ namespace SPS
             {
                 cameraCapture.Stop();
             }
-            cameraCapture = new Emgu.CV.Capture("rtsp://admin:DQQHRY@192.168.31.88:554");
-            //cameraCapture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FPS, 15);
-            cameraCapture.ImageGrabbed += ProcessFrame;
-            cameraCapture.Start();
+            try
+            {
+                cameraCapture = new dess::Emgu.CV.Capture("rtsp://admin:DQQHRY@192.168.31.88:554");
+
+                //cameraCapture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FPS, 15);
+                cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameWidth, 1280);
+                cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameHeight, 720);
+                cameraCapture.ImageGrabbed += ProcessFrame;
+                cameraCapture.Start();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         private void ProcessFrame(object sender, EventArgs arg)
         {
-            //Image<Bgr, Byte> imgeOrigenal = new Image<Bgr, Byte>(cameraCapture.RetrieveBgrFrame().ToBitmap());
-            Image<Bgr, byte> imgeOrigenal = cameraCapture.RetrieveBgrFrame(0);
-            // imgeOrigenal = cameraCapture.QueryFrame();
-            pictureBox_WC.Image = imgeOrigenal.ToBitmap();
-            //imageBox1.Image = imgeOrigenal;
+            dess::Emgu.CV.Mat image = new dess::Emgu.CV.Mat();
+            dess::Emgu.CV.Mat frame_copy = new dess::Emgu.CV.Mat();
+            cameraCapture.Retrieve(image);
+            frame_copy = image;
+            pictureBox_WC.Image = frame_copy.ToImage<dess::Emgu.CV.Structure.Bgr, byte>().Bitmap;
+            FreeMemory(image);
 
+        }
+        private void FreeMemory(dess::Emgu.CV.Mat image)
+        {
+            using (image)
+            {
+                using (image.Bitmap)
+                {
+
+                }
+            }
+//image.Bitmap.Dispose();
+//image.Dispose()
+;
         }
         //Timenow
         private void StartTimer()
@@ -452,16 +478,24 @@ namespace SPS
             expiredTicket = false;
             if (busTicket.checkLicense(lblLicense.Text) == true)
             {
-                lblTicket.Text = "Vé tháng";
+                
                 if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text))
                 {
 
                     Error(11);
                     return;
                 }
-
+                if (busTicket.getParkingIDbyLicense(lblLicense.Text) != ParkingID) //ve thang gui khong dung bai, tinh nhu ve ngay
+                {
+                    chkLicense = true;
+                    expiredTicket = true;
+                    lblTicket.Text = "Vé tháng không đúng bãi";
+                    lblTicket.BackColor = Color.Yellow;
+                    Warning(5);
+                    return;
+                }
+                lblTicket.Text = "Vé tháng";
                 ticketType = 0;
-
                 lblName.Text = busTicket.getName(lblLicense.Text);
                 if (DateTime.Parse(busTicket.getExpiryDate(lblLicense.Text)) < DateTime.Now || DateTime.Parse(busTicket.getStartDate(lblLicense.Text)) > DateTime.Now)
                 {
@@ -1436,7 +1470,7 @@ namespace SPS
         {
             labelX11.BackColor = Color.Yellow;
             lblCost.BackColor = Color.Yellow;
-            labelX11.Text = "Vé tháng hết hạn:";
+            labelX11.Text = "Cảnh báo:";
             lblCost.Text = mes.mes(a);
         }
         private void cleanError()

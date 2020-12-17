@@ -28,6 +28,10 @@ namespace BUS_SPS
         {
             return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][1].ToString();
         }
+        public int getParkingIDbyLicense(string license) //thong tin bai do xe ung voi bien so
+        {
+            return Convert.ToInt32(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][10].ToString());
+        }
         public int getCardIDbyLicense(string license) //thong tin the
         {
             return Convert.ToInt32(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][9].ToString());

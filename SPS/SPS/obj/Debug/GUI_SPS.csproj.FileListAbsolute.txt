@@ -143,3 +143,29 @@ E:\ki 9\sps\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.CoreCompileInputs.cache
 E:\ki 9\sps\sps\SPS\SPS\obj\Debug\GUI_SPS.csproj.CopyComplete
 E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.exe
 E:\ki 9\sps\sps\SPS\SPS\obj\Debug\SPS.pdb
+D:\Temp\sps\SPS\SPS\bin\Debug\Emgu.CV.UI.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\Emgu.CV.UI.GL.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\Emgu.CV.World.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\OpenTK.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\OpenTK.GLControl.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\ZedGraph.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\Emgu.CV.UI.xml
+D:\Temp\sps\SPS\SPS\bin\Debug\Emgu.CV.UI.GL.xml
+D:\Temp\sps\SPS\SPS\bin\Debug\Emgu.CV.World.xml
+D:\Temp\sps\SPS\SPS\bin\Debug\OpenTK.xml
+D:\Temp\sps\SPS\SPS\bin\Debug\OpenTK.GLControl.xml
+D:\Temp\sps\SPS\SPS\bin\Debug\ZedGraph.xml
+D:\Temp\sps\SPS\SPS\bin\Debug\de\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\es\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\fr\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\hu\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\it\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\ja\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\pt\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\ru\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\sk\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\sv\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\tr\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\Temp\sps\SPS\SPS\obj\Debug\SPS.LoginForm.resources

@@ -17,6 +17,10 @@ namespace DTO_SPS
         private string regisdate;
         private string Exdate;
         private int cardID;
+        private int parkingID;
+
+
+
         //private int parkingID;
 
         /* ======== GETTER/SETTER ======== */
@@ -25,7 +29,11 @@ namespace DTO_SPS
         //    get { return parkingID; }
         //    set { parkingID = value; }
         //}
-
+        public int MyParkingID
+        {
+            get { return parkingID; }
+            set { parkingID = value; }
+        }
         public int MyCardID
         {
             get { return cardID; }

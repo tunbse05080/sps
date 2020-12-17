@@ -661,8 +661,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel9.Controls.Add(this.lblCost, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.labelX11, 0, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 122);
@@ -684,10 +684,10 @@
             // 
             this.lblCost.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(264, 0);
+            this.lblCost.Location = new System.Drawing.Point(198, 0);
             this.lblCost.Margin = new System.Windows.Forms.Padding(0);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(396, 186);
+            this.lblCost.Size = new System.Drawing.Size(462, 186);
             this.lblCost.TabIndex = 2;
             this.lblCost.Text = "VND";
             // 
@@ -705,7 +705,7 @@
             this.labelX11.Location = new System.Drawing.Point(0, 0);
             this.labelX11.Margin = new System.Windows.Forms.Padding(0);
             this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(264, 186);
+            this.labelX11.Size = new System.Drawing.Size(198, 186);
             this.labelX11.TabIndex = 1;
             this.labelX11.Text = "Số tiền:";
             this.labelX11.TextAlignment = System.Drawing.StringAlignment.Far;
