@@ -73,6 +73,7 @@ namespace SPS
         //int timeOfblock = 2; //thoi gian moi block (gio) 
         int working = 0; //trang thai lam viec.
         string pictureLink; //duong dan hinh anh up len imageshark
+        private string url; //duong dan stream
         #endregion
 
         public MainForm()
@@ -324,7 +325,22 @@ namespace SPS
             }
             catch (Exception)
             {
+                string message = "Không tìm thấy camera. Kết nối với camera!";
+                string caption = "Không tìm thấy camera";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
 
+                // Displays the MessageBox.
+
+                result = MessageBox.Show(this, message, caption, buttons);
+
+                if (result == DialogResult.Yes)
+                {
+
+                    // Closes the parent form.
+                    Application.Exit();
+
+                }
                 throw;
             }
         }
@@ -333,10 +349,34 @@ namespace SPS
             dess::Emgu.CV.Mat image = new dess::Emgu.CV.Mat();
             dess::Emgu.CV.Mat frame_copy = new dess::Emgu.CV.Mat();
             cameraCapture.Retrieve(image);
-            frame_copy = image;
-            pictureBox_WC.Image = frame_copy.ToImage<dess::Emgu.CV.Structure.Bgr, byte>().Bitmap;
-            FreeMemory(image);
+            if (image != null)
+            {
+                frame_copy = image;
+                pictureBox_WC.Image = frame_copy.ToImage<dess::Emgu.CV.Structure.Bgr, byte>().Bitmap;
+                FreeMemory(image);
+            }
+            else
+            {
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                // get response
+                WebResponse resp = req.GetResponse();
+                //get stream
+                Stream stream = resp.GetResponseStream();
+                if (!stream.CanRead)
+                {
+                    //try reconnecting the camera
+                    captureButtonClick(null, null); //pause
+                    cameraCapture.Dispose();//get rid
+                    captureButtonClick(null, null); //reconnect
+                }
+            }
 
+
+        }
+        private void captureButtonClick(object sender, EventArgs e)
+        {
+            url = "rtsp://admin:DQQHRY@192.168.31.88:554"; //add this
+                                                           //... the rest of the code
         }
         private void FreeMemory(dess::Emgu.CV.Mat image)
         {
@@ -368,7 +408,7 @@ namespace SPS
         //capture photo
         private void CapturePhoto()
         {
-            pictureBox1.Image = FixedSize(pictureBox_WC.Image,533,300);
+            pictureBox1.Image = FixedSize(pictureBox_WC.Image, 533, 300);
             if (System.IO.File.Exists(m_path + "aa.bmp")) //xoa file aa.bmp neu file da ton tai
             {
                 System.IO.File.Delete(m_path + "aa.bmp");
@@ -560,7 +600,7 @@ namespace SPS
             expiredTicket = false;
             if (busTicket.checkLicense(lblLicense.Text) == true)
             {
-                
+
                 if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text))
                 {
 
@@ -599,10 +639,19 @@ namespace SPS
             }
             else if (busTicket.checkLicense(lblLicense.Text) == false)
             {
-                lblTicket.Text = "Vé ngày/block";
-                ticketType = 1;
-                chkLicense = true;
-                Passed(6);
+                if (busCard.getCardStatus(lblCardNo.Text) == 1) //dung ve thang nhung xe chua dang ky ve thang
+                {
+                    chkLicense = false;
+                    Error(15);
+                    return;
+                }
+                else
+                {
+                    lblTicket.Text = "Vé ngày/block";
+                    ticketType = 1;
+                    chkLicense = true;
+                    Passed(6);
+                }               
             }
         }
 
@@ -623,7 +672,7 @@ namespace SPS
                         {
                             if (busPK.getMotorFree(ParkingID) > 0)
                             {
-                                //lblTimeOut.Text = pictureLink;
+                                lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
                                 updateCard(4);
@@ -647,7 +696,7 @@ namespace SPS
                         {
                             if (busPK.getCarFree(ParkingID) > 0)
                             {
-                                //lblTimeOut.Text = pictureLink;
+                                lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
                                 updateCard(4);
@@ -750,7 +799,7 @@ namespace SPS
                         {
                             if (busPK.getMotorFree(ParkingID) > 0)
                             {
-                                //lblTimeOut.Text = pictureLink;
+                                lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
                                 updateCard(4);
@@ -773,7 +822,7 @@ namespace SPS
                         {
                             if (busPK.getCarFree(ParkingID) > 0)
                             {
-                                //lblTimeOut.Text = pictureLink;
+                                lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
                                 insertTransaction();
                                 TransID = busTrans.getTransactionID(lblLicense.Text);
                                 updateCard(4);
@@ -1262,16 +1311,16 @@ namespace SPS
                 #region hienthi
 
                 lblCardNumber.Text = lblCardNo.Text;
-                if (GateID == 0)
-                {
-                    lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
-                    //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
-                }
-                if (GateID == 1)
-                {
-                    //lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyTransID(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
-                    lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
-                }
+                //if (GateID == 0)
+                //{
+                //    lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
+                //    //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
+                //}
+                //if (GateID == 1)
+                //{
+                //    //lblTimeIn.Text = DateTime.Parse(busTrans.getTimeInbyTransID(TransID)).ToString("hh:mm:ss tt dd/MM/yyyy");
+                //    lblTimeOut.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
+                //}
                 if (checkxe == true)
                 {
                     lblVehicle.Text = "Xe Ôtô";
@@ -1466,11 +1515,11 @@ namespace SPS
             //checkLicense();
             lblLicense.Text = txtLicense1.Text + txtLicense2.Text;
             lblCardNumber.Text = lblCardNo.Text;
-            if (GateID == 0)
-            {
-                lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
-                //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
-            }
+            //if (GateID == 0)
+            //{
+            //    lblTimeIn.Text = DateTime.Now.ToString("hh:mm:ss tt dd/MM/yyyy");
+            //    //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
+            //}
 
             if (txtLicense1.Text.Length == 3)
             {

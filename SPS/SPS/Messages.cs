@@ -17,10 +17,18 @@ namespace SPS
         private string m08 = "Biển số không đúng";
         private string m09 = "Xe đang trong bãi";
         private string m10 = "Xe không có trong bãi";
-        private string m11 = "Vé không đúng";
+        private string m11 = "Vé không đúng xe";
         private string m12= "Tài khoản hoặc mật khẩu không đúng";
         private string m13 ="Bảo vệ chưa đăng nhập";
         private string m14 = "Thoát tài khoản";
+        private string m15 = "Xe chưa đăng ký vé tháng";
+
+        public string M15
+        {
+            get { return m15; }
+            set { m15 = value; }
+        }
+
 
         public string M14
         {
@@ -163,6 +171,10 @@ namespace SPS
             if (a == 14)
             {
                 return m14;
+            }
+            if (a == 15)
+            {
+                return m15;
             }
             else return "NONE";
         }
