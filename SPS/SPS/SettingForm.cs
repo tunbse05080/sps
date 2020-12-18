@@ -132,5 +132,20 @@ namespace SPS
             Properties.Settings.Default.Gate = value;
             Properties.Settings.Default.Save();
         }
+        private void SettingForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D1)
+            {
+                rbtIn.Checked = true;
+            }
+            if (e.KeyCode == Keys.D2)
+            {
+                rbtOut.Checked = true;
+            }
+            if (e.KeyCode == Keys.D3)
+            {
+                swbtnEnter.Value = !swbtnEnter.Value;
+            }
+        }
     }
 }

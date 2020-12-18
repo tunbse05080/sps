@@ -1635,5 +1635,10 @@ namespace SPS
                 }
             }
         }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e) //su kien phim tat
+        {
+
+        }
     }
 }

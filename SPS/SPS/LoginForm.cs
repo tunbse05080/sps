@@ -58,5 +58,19 @@ namespace SPS
                 }
             }
         }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                txtUsername.Select();
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                txtPassword.Select();
+            }
+        }
+
+        
     }
 }
