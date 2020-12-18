@@ -10,8 +10,6 @@ namespace DTO_SPS
     {
         private int userID;
         private string name;
-        private string username;
-        private string password;
         private string dateOfBirth;
         private int gender;
         private string address;
@@ -20,9 +18,16 @@ namespace DTO_SPS
         private string email;
         private string contractSigning;
         private string contractExp;
-        private int role;
         private int parkingID;
         private int status;
+        private int accoutID;
+
+        public int MyAccountID
+        {
+            get { return accoutID; }
+            set { accoutID = value; }
+        }
+
 
         public int MyStatus
         {
@@ -35,13 +40,6 @@ namespace DTO_SPS
         {
             get { return parkingID; }
             set { parkingID = value; }
-        }
-
-
-        public int MyRole
-        {
-            get { return role; }
-            set { role = value; }
         }
 
 
@@ -101,19 +99,6 @@ namespace DTO_SPS
         }
 
 
-        public string MyPassword
-        {
-            get { return password; }
-            set { password = value; }
-        }
-
-
-        public string MyUsername
-        {
-            get { return username; }
-            set { username = value; }
-        }
-
         public string MyName
         {
             get { return name; }
@@ -131,12 +116,10 @@ namespace DTO_SPS
         {
         }
 
-        public DTO_User(int userID, string name, string username, string password, string dateOfBirth, int gender, string address, string identify, string phone, string email, string contractSigning, string contractExp, int role, int parkingID, int status)
+        public DTO_User(int userID, string name, string dateOfBirth, int gender, string address, string identify, string phone, string email, string contractSigning, string contractExp, int parkingID, int status, int accoutID)
         {
             this.userID = userID;
             this.name = name;
-            this.username = username;
-            this.password = password;
             this.dateOfBirth = dateOfBirth;
             this.gender = gender;
             this.address = address;
@@ -145,9 +128,9 @@ namespace DTO_SPS
             this.email = email;
             this.contractSigning = contractSigning;
             this.contractExp = contractExp;
-            this.role = role;
             this.parkingID = parkingID;
             this.status = status;
+            this.accoutID = accoutID;
         }
     }
 }

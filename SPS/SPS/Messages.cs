@@ -18,7 +18,7 @@ namespace SPS
         private string m09 = "Xe đang trong bãi";
         private string m10 = "Xe không có trong bãi";
         private string m11 = "Vé không đúng xe";
-        private string m12= "Tài khoản hoặc mật khẩu không đúng";
+        private string m12= "Tài khoản/mật khẩu không đúng, hoặc không hợp lệ";
         private string m13 ="Bảo vệ chưa đăng nhập";
         private string m14 = "Thoát tài khoản";
         private string m15 = "Xe chưa đăng ký vé tháng";

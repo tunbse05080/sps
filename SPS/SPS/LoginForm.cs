@@ -14,8 +14,10 @@ namespace SPS
     public partial class LoginForm : Form
     {
         #region
+        public int accountID { get; set; }
         public int userID { get; set; }
         BUS_User busUser = new BUS_User();
+        BUS_Account busAccount = new BUS_Account();
         public int parkingID;
         Messages mes = new Messages();
         #endregion
@@ -32,17 +34,26 @@ namespace SPS
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
-           // txtUsername.Text = parkingID.ToString();
+            // txtUsername.Text = parkingID.ToString();
         }
         private void buttonOK()
         {
-            if (busUser.checkUser(txtUsername.Text, parkingID) == true)
+            if (busAccount.checkAccount(txtUsername.Text)) //kiem tra account co ton tai, va co la bao ve hay khong
             {
-                if (busUser.getPassword(txtUsername.Text).Equals(txtPassword.Text))
+                if (busAccount.getPassword(txtUsername.Text).Equals(txtPassword.Text)) //kiem tra mat khau
                 {
-                    userID = busUser.getUserID(txtUsername.Text);
-                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                    this.Close();
+                    accountID = busAccount.getAccountID(txtUsername.Text);
+                    if (busUser.checkUser(accountID, parkingID)) //kiem tra bao ve co dung bai do xe khong
+                    {
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        if (MessageBox.Show(mes.mes(12), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                        }
+                    }
                 }
                 else
                 {
@@ -57,9 +68,30 @@ namespace SPS
                 {
                 }
             }
+            //if (busUser.checkUser(txtUsername.Text, parkingID) == true)
+            //{
+            //    if (busUser.getPassword(txtUsername.Text).Equals(txtPassword.Text))
+            //    {
+            //        userID = busUser.getUserID(txtUsername.Text);
+            //        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            //        this.Close();
+            //    }
+            //    else
+            //    {
+            //        if (MessageBox.Show(mes.mes(12), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
+            //        {
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    if (MessageBox.Show(mes.mes(12), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //    }
+            //}
         }
 
-        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e) //cai dat phim tat
         {
             if (e.KeyCode == Keys.F1)
             {
@@ -71,6 +103,6 @@ namespace SPS
             }
         }
 
-        
+
     }
 }

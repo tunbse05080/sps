@@ -16,21 +16,21 @@ namespace BUS_SPS
         {
             return dalUser.getUser();
         }
-        public int getUserID(string username)
+        public int getUserID(int accountID)
         {
-            return Convert.ToInt32(dalUser.getUserbyUsername(username).Rows[0][0].ToString());
+            return Convert.ToInt32(dalUser.getUserbyAccountID(accountID).Rows[0][0].ToString());
         }
-        public string getPassword(string username)
-        {
-            return dalUser.getUserbyUsername(username).Rows[0][3].ToString();
-        }
-        public string getName(int userID)
+        public string getNamebyUserID(int userID)
         {
             return dalUser.getUserbyUserID(userID).Rows[0][1].ToString();
         }
-        public bool checkUser(string username,int parkingID) //kiem tra user co duoc phep dang nhap khong
+        public string getNamebyAccountID(int accountID)
         {
-            return dalUser.getUserbyParkingID(parkingID).AsEnumerable().Any(row => username == row.Field<String>("UserName"));
+            return dalUser.getUserbyAccountID(accountID).Rows[0][1].ToString();
+        }
+        public bool checkUser(int accountID,int parkingID) //kiem tra user co dung bai do xe khong
+        {
+            return dalUser.getUserbyParkingID(parkingID).AsEnumerable().Any(row => accountID == row.Field<int>("AccountID"));
         }
     }
 }

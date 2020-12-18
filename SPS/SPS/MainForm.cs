@@ -48,7 +48,8 @@ namespace SPS
         public int CarFree { get; set; }
         public int MotorFree { get; set; }
         public int ParkingID { get; set; }
-        private int userID;
+        private int accountID;
+        //private int userID;
         private int GateID;
         private int CardID;
         private int TransID;
@@ -280,12 +281,13 @@ namespace SPS
             form2.parkingID = ParkingID;
             if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                userID = form2.userID;
+                accountID = form2.accountID;
+                //userID = form2.userID;
                 working = 1;
                 btnLogin.Text = "Đăng xuất";
                 btnCapture.Enabled = true;
                 btnEnter.Enabled = true;
-                lblSecureName.Text = busUser.getName(userID);
+                lblSecureName.Text = busUser.getNamebyAccountID(accountID);
             }
 
         }
@@ -996,7 +998,7 @@ namespace SPS
             //Tao DTO
             //int userID = 0;
             //DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, "", lblLicense.Text, ticketType, 0, CardID, ParkingID, vehicleType);
-            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType, userID);
+            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType, accountID);
             // Them
             if (busTrans.insertTransaction(trans))
             {
@@ -1014,7 +1016,7 @@ namespace SPS
         {
             //Tao DTO
             //int userID = 0;
-            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, userID);
+            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, accountID);
             // Sửa
             if (busTrans.updateTransaction(trans))
             {
