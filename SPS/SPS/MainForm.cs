@@ -72,7 +72,7 @@ namespace SPS
         int vehicleType; //loai xe 0-xemay, 1-oto
         int ticketType; //loai ve 0-ve thang, 1-vengay/block
         //int timeOfblock = 2; //thoi gian moi block (gio) 
-        int working = 0; //trang thai lam viec.
+        int working = 0; //trang thai lam viec.0-khong lam viec, 1-lamviec
         string pictureLink; //duong dan hinh anh up len imageshark
         private string url; //duong dan stream
         #endregion
@@ -124,6 +124,10 @@ namespace SPS
                 {
                     cameraCapture.Stop();
                 }
+                if (working == 1)
+                {
+                    updateCard(1);
+                }               
                 Application.Exit();
             }
             txtCardNo.Focus();
@@ -139,6 +143,8 @@ namespace SPS
             pictureBox_WC.Height = pictureBox_WC.Width / 16 * 9;
             pictureBox1.Height = pictureBox1.Width / 16 * 9;
             toolStripComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtLicense1.CharacterCasing = CharacterCasing.Upper;
+            txtLicense2.CharacterCasing = CharacterCasing.Upper;
             //imageBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             //imageBox1.Width = imageBox1.Height / 9 * 16;
             if (working == 0)
@@ -1650,10 +1656,30 @@ namespace SPS
                 }
             }
         }
-
+        int a = 0;
         private void MainForm_KeyDown(object sender, KeyEventArgs e) //su kien phim tat
-        {
-
+        {           
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (a==0)
+                {
+                    txtLicense1.Select();
+                    txtLicense1.BackColor = Color.Yellow;
+                    txtLicense2.BackColor = Color.White;
+                    a = 1;
+                }
+                else
+                {
+                    txtLicense2.Select();
+                    txtLicense2.BackColor = Color.Yellow;
+                    txtLicense1.BackColor = Color.White;
+                    a = 0;
+                }
+            }
+            if(e.KeyCode == Keys.Space)
+            {
+                txtCardNo.Select();
+            }
         }
     }
 }

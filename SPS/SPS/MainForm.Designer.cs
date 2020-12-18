@@ -592,6 +592,7 @@
             this.txtLicense2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLicense2.Location = new System.Drawing.Point(105, 0);
             this.txtLicense2.Margin = new System.Windows.Forms.Padding(0);
+            this.txtLicense2.MaxLength = 5;
             this.txtLicense2.Name = "txtLicense2";
             this.txtLicense2.Size = new System.Drawing.Size(159, 35);
             this.txtLicense2.TabIndex = 2;
@@ -604,6 +605,7 @@
             this.txtLicense1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLicense1.Location = new System.Drawing.Point(0, 0);
             this.txtLicense1.Margin = new System.Windows.Forms.Padding(0);
+            this.txtLicense1.MaxLength = 4;
             this.txtLicense1.Name = "txtLicense1";
             this.txtLicense1.Size = new System.Drawing.Size(105, 35);
             this.txtLicense1.TabIndex = 1;
