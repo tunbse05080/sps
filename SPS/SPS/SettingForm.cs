@@ -23,7 +23,7 @@ namespace SPS
         public SettingForm()
         {
             InitializeComponent();
-            
+            comboBoxEx1.LostFocus += new EventHandler(comboBoxEx1_LostFocus);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -61,20 +61,21 @@ namespace SPS
             getGate();
             getMethod();
             if(working == 0)
-            {
-                
+            {               
                 getParking();
                 comboBoxEx1.Enabled = true;
             }
-            else if( working == 1)
-            {
-                
+            else if(working == 1)
+            {                
                 getParking();
                 comboBoxEx1.Enabled = false;
             }
-            
+            comboBoxEx1.Select();          
         }
-
+        private void comboBoxEx1_LostFocus(object sender, EventArgs e)
+        {
+            comboBoxEx1.Select();
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close(); 
@@ -147,5 +148,6 @@ namespace SPS
                 swbtnEnter.Value = !swbtnEnter.Value;
             }
         }
+
     }
 }
