@@ -12,6 +12,14 @@ namespace DTO_SPS
         private string username;
         private string password;
         private int roleID;
+        private int status;
+
+        public int Mystatus
+        {
+            get { return status; }
+            set { status = value; }
+        }
+
 
         public int MyRoleID
         {
@@ -44,12 +52,13 @@ namespace DTO_SPS
         {
         }
 
-        public DTO_Account(int accountID, string username, string password, int roleID)
+        public DTO_Account(int accountID, string username, string password, int roleID, int status)
         {
             this.accountID = accountID;
             this.username = username;
             this.password = password;
             this.roleID = roleID;
+            this.status = status;
         }
     }
 }

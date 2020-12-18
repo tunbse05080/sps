@@ -38,7 +38,7 @@ namespace SPS
         }
         private void buttonOK()
         {
-            if (busAccount.checkAccount(txtUsername.Text)) //kiem tra account co ton tai, va co la bao ve hay khong
+            if (busAccount.checkAccount(txtUsername.Text)) //kiem tra account co ton tai khong, co bi khoa khong va co phai bao ve khong
             {
                 if (busAccount.getPassword(txtUsername.Text).Equals(txtPassword.Text)) //kiem tra mat khau
                 {
@@ -68,27 +68,6 @@ namespace SPS
                 {
                 }
             }
-            //if (busUser.checkUser(txtUsername.Text, parkingID) == true)
-            //{
-            //    if (busUser.getPassword(txtUsername.Text).Equals(txtPassword.Text))
-            //    {
-            //        userID = busUser.getUserID(txtUsername.Text);
-            //        this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            //        this.Close();
-            //    }
-            //    else
-            //    {
-            //        if (MessageBox.Show(mes.mes(12), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
-            //        {
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    if (MessageBox.Show(mes.mes(12), "Kiểm tra tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.Yes)
-            //    {
-            //    }
-            //}
         }
 
         private void LoginForm_KeyDown(object sender, KeyEventArgs e) //cai dat phim tat

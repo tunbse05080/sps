@@ -277,13 +277,13 @@ namespace SPS
         private void CallLogin()
         {
             LoginForm form2 = new LoginForm();
-
             form2.parkingID = ParkingID;
             if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 accountID = form2.accountID;
                 //userID = form2.userID;
                 working = 1;
+                updateUser(0);
                 btnLogin.Text = "Đăng xuất";
                 btnCapture.Enabled = true;
                 btnEnter.Enabled = true;
@@ -1043,7 +1043,19 @@ namespace SPS
                 Error(100);
             }
         }
+        //update bang user
+        private void updateUser(int status)
+        {
+            DTO_User user = new DTO_User(accountID, status);
+            if (busUser.updateUser(user))
+            {
 
+            }
+            else
+            {
+                Error(100);
+            }
+        }
         //insert bang Image
         private void insertImage()
         {
@@ -1629,6 +1641,7 @@ namespace SPS
                 if (MessageBox.Show(mes.mes(14), "Hỏi đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     working = 0;
+                    updateUser(1);
                     btnCapture.Enabled = false;
                     btnEnter.Enabled = false;
                     btnLogin.Text = "Đăng nhập";

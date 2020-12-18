@@ -32,5 +32,9 @@ namespace BUS_SPS
         {
             return dalUser.getUserbyParkingID(parkingID).AsEnumerable().Any(row => accountID == row.Field<int>("AccountID"));
         }
+        public bool updateUser(DTO_User user)
+        {
+            return dalUser.updateUser(user);
+        }
     }
 }

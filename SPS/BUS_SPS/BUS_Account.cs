@@ -24,7 +24,7 @@ namespace BUS_SPS
         {
             return dalAccount.getAccountbyUsername(username).Rows[0][2].ToString();
         }
-        public bool checkAccount(string username) //kiem tra account co phai bao ve khong, va co ton tai khong
+        public bool checkAccount(string username) //kiem tra account co ton tai khong, co bi khoa khong va co phai bao ve khong
         {
             return dalAccount.getAccount().AsEnumerable().Any(row => username == row.Field<String>("UserName"));
         }

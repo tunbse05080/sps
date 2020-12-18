@@ -19,7 +19,7 @@ namespace DAL_SPS
             return dtUser;
         }
 
-        public DataTable getUserbyParkingID(int parkingID)
+        public DataTable getUserbyParkingID(int parkingID) //status 0-dang lam viec, 1-khong lam viec
         {
             SqlDataAdapter da = new SqlDataAdapter("select * from [User] where StatusOfWork = 1 and ParkingPlaceID = "+ parkingID + "", conn);
             DataTable dtUser = new DataTable();
@@ -39,6 +39,29 @@ namespace DAL_SPS
             DataTable dtUser = new DataTable();
             da.Fill(dtUser);
             return dtUser;
+        }
+        public bool updateUser(DTO_User user) //update bang Card
+        {
+            try
+            {
+                // Ket noi
+                conn.Open();
+                // Query string
+                string SQL = string.Format("UPDATE [User] SET StatusOfwork = '{0}' WHERE AccountID = {1}", user.MyStatus, user.MyAccountID);
+                SqlCommand cmd = new SqlCommand(SQL, conn);
+                // Query và kiểm tra
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+                // Dong ket noi
+                conn.Close();
+            }
+            return false;
         }
     }
 }

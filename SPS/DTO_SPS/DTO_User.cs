@@ -16,11 +16,9 @@ namespace DTO_SPS
         private string identify;
         private string phone;
         private string email;
-        private string contractSigning;
-        private string contractExp;
         private int parkingID;
-        private int status;
         private int accoutID;
+        private int status;
 
         public int MyAccountID
         {
@@ -41,21 +39,6 @@ namespace DTO_SPS
             get { return parkingID; }
             set { parkingID = value; }
         }
-
-
-        public string MycontractExp
-        {
-            get { return contractExp; }
-            set { contractExp = value; }
-        }
-
-
-        public string MycontractSigning
-        {
-            get { return contractSigning; }
-            set { contractSigning = value; }
-        }
-
 
         public string MyEmail
         {
@@ -116,7 +99,7 @@ namespace DTO_SPS
         {
         }
 
-        public DTO_User(int userID, string name, string dateOfBirth, int gender, string address, string identify, string phone, string email, string contractSigning, string contractExp, int parkingID, int status, int accoutID)
+        public DTO_User(int userID, string name, string dateOfBirth, int gender, string address, string identify, string phone, string email, int parkingID, int accoutID, int status)
         {
             this.userID = userID;
             this.name = name;
@@ -126,11 +109,15 @@ namespace DTO_SPS
             this.identify = identify;
             this.phone = phone;
             this.email = email;
-            this.contractSigning = contractSigning;
-            this.contractExp = contractExp;
             this.parkingID = parkingID;
-            this.status = status;
             this.accoutID = accoutID;
+            this.status = status;
+        }
+
+        public DTO_User(int accoutID, int status)
+        {
+            this.accoutID = accoutID;
+            this.status = status;
         }
     }
 }
