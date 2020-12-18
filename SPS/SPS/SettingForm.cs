@@ -134,15 +134,15 @@ namespace SPS
         }
         private void SettingForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.D1)
+            if (e.KeyCode == Keys.F1)
             {
                 rbtIn.Checked = true;
             }
-            if (e.KeyCode == Keys.D2)
+            if (e.KeyCode == Keys.F2)
             {
                 rbtOut.Checked = true;
             }
-            if (e.KeyCode == Keys.D3)
+            if (e.KeyCode == Keys.F3)
             {
                 swbtnEnter.Value = !swbtnEnter.Value;
             }
