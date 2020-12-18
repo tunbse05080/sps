@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_Account.cs" />
     <Compile Include="DAL_Card.cs" />
     <Compile Include="DAL_Image.cs" />
     <Compile Include="DAL_MonthlyTicket.cs" />
