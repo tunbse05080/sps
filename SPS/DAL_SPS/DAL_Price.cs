@@ -20,7 +20,7 @@ namespace DAL_SPS
         }
         public DataTable getPrice(int parkingID, int vehicleType)
         {
-            SqlDataAdapter da = new SqlDataAdapter("select * from Price where ParkingPlaceID = " + parkingID + " AND TypeOfvehicle = "+ vehicleType + " AND TimeOfApply < GETDATE()", conn);
+            SqlDataAdapter da = new SqlDataAdapter("select * from Price where ParkingPlaceID = " + parkingID + " AND TypeOfvehicle = "+ vehicleType + " AND TimeOfApply <= GETDATE()", conn);
             DataTable dtPrice = new DataTable();
             da.Fill(dtPrice);
             return dtPrice;

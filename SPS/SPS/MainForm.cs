@@ -244,7 +244,7 @@ namespace SPS
             txtCardNo.Focus();
         }
 
-
+        
         //Get info from Setting
         private void CallSetting()
         {
