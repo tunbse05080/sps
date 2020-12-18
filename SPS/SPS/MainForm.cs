@@ -1681,5 +1681,11 @@ namespace SPS
                 txtCardNo.Select();
             }
         }
+
+        private void txtCardNo_Leave(object sender, EventArgs e) //sau thoi gian 20s tu dong focus vao txtCardNo
+        {
+            System.Threading.Thread.Sleep(20000);
+            txtCardNo.Select();
+        }
     }
 }

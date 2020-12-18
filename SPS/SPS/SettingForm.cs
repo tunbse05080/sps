@@ -149,5 +149,9 @@ namespace SPS
             }
         }
 
+        private void comboBoxEx1_Leave(object sender, EventArgs e)
+        {
+            comboBoxEx1.Select();
+        }
     }
 }
