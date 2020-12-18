@@ -126,7 +126,7 @@ namespace SPS
                 }
                 if (working == 1)
                 {
-                    updateCard(1);
+                    updateUser(1);
                 }               
                 Application.Exit();
             }
