@@ -278,7 +278,7 @@
             this.lblTotalTime.Name = "lblTotalTime";
             this.lblTotalTime.Size = new System.Drawing.Size(286, 40);
             this.lblTotalTime.TabIndex = 2;
-            this.lblTotalTime.TextLineAlignment = System.Drawing.StringAlignment.Near;
+            this.lblTotalTime.TextLineAlignment = System.Drawing.StringAlignment.Far;
             // 
             // lblTimeOut
             // 
@@ -296,7 +296,6 @@
             this.lblTimeOut.Name = "lblTimeOut";
             this.lblTimeOut.Size = new System.Drawing.Size(286, 39);
             this.lblTimeOut.TabIndex = 1;
-            this.lblTimeOut.TextLineAlignment = System.Drawing.StringAlignment.Near;
             // 
             // lblTimeIn
             // 
