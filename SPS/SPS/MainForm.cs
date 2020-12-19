@@ -127,6 +127,7 @@ namespace SPS
                 if (working == 1)
                 {
                     updateUser(1);
+                    updateAccountID(0);
                 }               
                 Application.Exit();
             }
@@ -290,6 +291,7 @@ namespace SPS
                 //userID = form2.userID;
                 working = 1;
                 updateUser(0);
+                updateAccountID(accountID);
                 btnLogin.Text = "Đăng xuất";
                 btnCapture.Enabled = true;
                 btnEnter.Enabled = true;
@@ -1648,6 +1650,7 @@ namespace SPS
                 {
                     working = 0;
                     updateUser(1);
+                    updateAccountID(0); //dang xuat, luu accountID la 0
                     btnCapture.Enabled = false;
                     btnEnter.Enabled = false;
                     btnLogin.Text = "Đăng nhập";
@@ -1686,6 +1689,20 @@ namespace SPS
         {
             System.Threading.Thread.Sleep(20000);
             txtCardNo.Select();
+        }
+        private void getAccountID() //lay thong tin accountID tu lan hoat dong truoc, neu accountID khac 0, dang xuat account
+        {
+            var accID = Properties.Settings.Default.AccountID;
+            if (accID != 0)
+            {
+                accountID = accID;
+                updateUser(1);
+            }
+        }
+        private void updateAccountID(int value) //luu accountID cua nhan vien dang lam viec
+        {
+            Properties.Settings.Default.AccountID = value;
+            Properties.Settings.Default.Save();
         }
     }
 }

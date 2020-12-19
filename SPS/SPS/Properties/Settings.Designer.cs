@@ -58,5 +58,29 @@ namespace SPS.Properties {
                 this["ParkingPlace"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AccountID {
+            get {
+                return ((int)(this["AccountID"]));
+            }
+            set {
+                this["AccountID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string rtsp {
+            get {
+                return ((string)(this["rtsp"]));
+            }
+            set {
+                this["rtsp"] = value;
+            }
+        }
     }
 }
