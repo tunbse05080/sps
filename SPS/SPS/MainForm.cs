@@ -31,7 +31,7 @@ namespace SPS
 {
     public partial class MainForm : Form
     {
-        #region
+        #region khai bao
         private VideoCaptureDevice CAM;
         private Bitmap BMP;
         private FilterInfoCollection CAMS;
@@ -112,28 +112,7 @@ namespace SPS
             txtCardNo.Focus();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show(mes.mes(1), "Hỏi Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (CAM != null && CAM.IsRunning)
-                {
-                    CAM.Stop();
-                }
-                if (cameraCapture != null)
-                {
-                    cameraCapture.Stop();
-                }
-                if (working == 1)
-                {
-                    updateUser(1);
-                    updateAccountID(0);
-                }               
-                Application.Exit();
-            }
-            txtCardNo.Focus();
-        }
-
+        #region Load Form
         private void MainForm_Load(object sender, EventArgs e)
         {
             //this.TopMost = true;
@@ -148,6 +127,7 @@ namespace SPS
             txtLicense2.CharacterCasing = CharacterCasing.Upper;
             //imageBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             //imageBox1.Width = imageBox1.Height / 9 * 16;
+            getAccountID();
             if (working == 0)
             {
                 btnCapture.Enabled = false;
@@ -198,13 +178,35 @@ namespace SPS
             CallSetting();
             txtCardNo.Focus();
         }
+        #endregion
 
+        #region Button Click
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(mes.mes(1), "Hỏi Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (CAM != null && CAM.IsRunning)
+                {
+                    CAM.Stop();
+                }
+                if (cameraCapture != null)
+                {
+                    cameraCapture.Stop();
+                }
+                if (working == 1)
+                {
+                    updateUser(1);
+                    updateAccountID(0);
+                }
+                Application.Exit();
+            }
+            txtCardNo.Focus();
+        }
         private void btnSetting_Click(object sender, EventArgs e)
         {
             CallSetting();
             txtCardNo.Focus();
         }
-
         private void btnCapture_Click(object sender, EventArgs e)
         {
             if (working == 0)
@@ -244,8 +246,22 @@ namespace SPS
             }
             txtCardNo.Focus();
         }
+        //nhap bien so  xe bang  tay khi click nut Nhap
+        private void btnEnter_Click(object sender, EventArgs e)
+        {
+            if (working == 0)
+            {
+                Error(13);
+                return;
+            }
+            //chkLicense = true;
+            showInformation();
+            manualEnter();
+            txtCardNo.Focus();
+        }
+        #endregion
 
-        
+        #region Call Setting, Login
         //Get info from Setting
         private void CallSetting()
         {
@@ -299,6 +315,9 @@ namespace SPS
             }
 
         }
+        #endregion
+
+        #region Start Camera, Stream
         //start webcam camera
         private void startCamera()
         {
@@ -401,6 +420,8 @@ namespace SPS
 //image.Dispose()
 ;
         }
+        #endregion
+
         //Timenow
         private void StartTimer()
         {
@@ -661,7 +682,7 @@ namespace SPS
                     ticketType = 1;
                     chkLicense = true;
                     Passed(6);
-                }               
+                }
             }
         }
 
@@ -1566,20 +1587,6 @@ namespace SPS
             //}
         }
 
-        //nhap bien so  xe bang  tay khi click nut Nhap
-        private void btnEnter_Click(object sender, EventArgs e)
-        {
-            if (working == 0)
-            {
-                Error(13);
-                return;
-            }
-            //chkLicense = true;
-            showInformation();
-            manualEnter();
-            txtCardNo.Focus();
-        }
-
         //xoa thong tin xe dang hien thi
         public void reset()
         {
@@ -1661,10 +1668,10 @@ namespace SPS
         }
         int a = 0;
         private void MainForm_KeyDown(object sender, KeyEventArgs e) //su kien phim tat
-        {           
+        {
             if (e.KeyCode == Keys.Enter)
             {
-                if (a==0)
+                if (a == 0)
                 {
                     txtLicense1.Select();
                     txtLicense1.BackColor = Color.Yellow;
@@ -1679,17 +1686,17 @@ namespace SPS
                     a = 0;
                 }
             }
-            if(e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Space)
             {
                 txtCardNo.Select();
             }
         }
 
-        private void txtCardNo_Leave(object sender, EventArgs e) //sau thoi gian 20s tu dong focus vao txtCardNo
-        {
-            System.Threading.Thread.Sleep(20000);
-            txtCardNo.Select();
-        }
+        //private void txtCardNo_Leave(object sender, EventArgs e) //sau thoi gian 20s tu dong focus vao txtCardNo
+        //{
+        //    System.Threading.Thread.Sleep(20000);
+        //    txtCardNo.Select();
+        //}
         private void getAccountID() //lay thong tin accountID tu lan hoat dong truoc, neu accountID khac 0, dang xuat account
         {
             var accID = Properties.Settings.Default.AccountID;

@@ -63,6 +63,16 @@ namespace SPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon64 {
+            get {
+                object obj = ResourceManager.GetObject("icon64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_automatic_80 {
             get {
                 object obj = ResourceManager.GetObject("icons8-automatic-80", resourceCulture);
