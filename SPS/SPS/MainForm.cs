@@ -75,12 +75,15 @@ namespace SPS
         int working = 0; //trang thai lam viec.0-khong lam viec, 1-lamviec
         string pictureLink; //duong dan hinh anh up len imageshark
         private string url; //duong dan stream
+        private int cameraMethod; // 0 - dung webcam, 1 - dung camera IP
+        private string cameraLink;
         #endregion
 
         public MainForm()
         {
             InitializeComponent();
             CAMS = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            
             if (CAMS.Count > 0)
             {
                 foreach (FilterInfo info in CAMS)
@@ -91,23 +94,23 @@ namespace SPS
             }
             else
             {
-                toolStripComboBox1.Text = "Không tìm thấy camera";
-                string message = "Không tìm thấy camera. Kết nối với camera!";
-                string caption = "Không tìm thấy camera";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
+                //toolStripComboBox1.Text = "Không tìm thấy camera";
+                //string message = "Không tìm thấy camera. Kết nối với camera!";
+                //string caption = "Không tìm thấy camera";
+                //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                //DialogResult result;
 
-                // Displays the MessageBox.
+                //// Displays the MessageBox.
 
-                result = MessageBox.Show(this, message, caption, buttons);
+                //result = MessageBox.Show(this, message, caption, buttons);
 
-                if (result == DialogResult.Yes)
-                {
+                //if (result == DialogResult.Yes)
+                //{
 
-                    // Closes the parent form.
-                    Application.Exit();
+                //    // Closes the parent form.
+                //    Application.Exit();
 
-                }
+                //}
             }
             txtCardNo.Focus();
         }
@@ -272,6 +275,8 @@ namespace SPS
                 GateID = form2.SelectedGate;
                 ParkingID = form2.ParkingID;
                 enterMethod = form2.EnterMethod;
+                cameraMethod = form2.cameraMethod;
+                cameraLink = form2.cameraLink;
                 if (GateID == 0)
                 {
                     lblGate.Text = "Cổng vào";
@@ -286,14 +291,17 @@ namespace SPS
             }
 
             StartTimer();
-            if (CAMS.Count > 0)
+            if (cameraMethod == 0)
             {
-                startCamera();
+                if (CAMS.Count > 0)
+                {
+                    startCamera();
+                }
             }
             else
             {
                 startStream();
-            }
+            }            
             reset();
         }
         //Get info from LoginForm
@@ -345,7 +353,7 @@ namespace SPS
             }
             try
             {
-                cameraCapture = new dess::Emgu.CV.Capture("rtsp://admin:DQQHRY@192.168.31.88:554");
+                cameraCapture = new dess::Emgu.CV.Capture(cameraLink);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameWidth, 1280);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameHeight, 720);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.Fps, 15);
@@ -1689,6 +1697,9 @@ namespace SPS
             if (e.KeyCode == Keys.Space)
             {
                 txtCardNo.Select();
+                txtLicense2.BackColor = Color.White;
+                txtLicense1.BackColor = Color.White;
+
             }
         }
 

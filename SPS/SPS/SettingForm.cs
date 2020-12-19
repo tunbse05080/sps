@@ -18,12 +18,14 @@ namespace SPS
         public int ParkingID { get; set; }
         public int EnterMethod { get; set; }
         public int working { get; set; }
+        public string cameraLink { get; set; }
+        public int cameraMethod { get; set; } //0 - No, 1 - Yes
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
         #endregion
         public SettingForm()
         {
             InitializeComponent();
-            comboBoxEx1.LostFocus += new EventHandler(comboBoxEx1_LostFocus);
+            //comboBoxEx1.LostFocus += new EventHandler(comboBoxEx1_LostFocus);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -52,6 +54,18 @@ namespace SPS
                 EnterMethod = 0;
                 updateMethod(0);
             }
+            if(chkCameraIP.Checked == true)
+            {
+                cameraMethod = 1;
+                cameraLink = txtStream.Text;
+                updateCameraMethod(1);
+                updateCameraStream(txtStream.Text);
+            }
+            else
+            {
+                cameraMethod = 0;
+                updateCameraMethod(0);
+            }
             this.Close();
         }
 
@@ -60,15 +74,27 @@ namespace SPS
             this.TopMost = true;
             getGate();
             getMethod();
+            getCameraMethod();
+            getCameraStream();
             if(working == 0)
             {               
                 getParking();
                 comboBoxEx1.Enabled = true;
+                chkCameraIP.Enabled = true;
             }
             else if(working == 1)
             {                
                 getParking();
                 comboBoxEx1.Enabled = false;
+                chkCameraIP.Enabled = false;
+            }
+            if (chkCameraIP.Checked == false)
+            {
+                txtStream.Enabled = false;
+            }
+            else
+            {
+                txtStream.Enabled = true;
             }
             comboBoxEx1.Select();          
         }
@@ -76,6 +102,8 @@ namespace SPS
         {
             this.Close(); 
         }
+
+        //get bai do xe
         private void getParking()
         {
             comboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -93,6 +121,8 @@ namespace SPS
             Properties.Settings.Default.ParkingPlace = value;
             Properties.Settings.Default.Save();
         }
+
+        //phuong thuc Nhap bang tay / tu dong
         private void getMethod()
         {
             var method = Properties.Settings.Default.Method;
@@ -110,6 +140,8 @@ namespace SPS
             Properties.Settings.Default.Method = value;
             Properties.Settings.Default.Save();
         }
+
+        //get thong tin cong
         private void getGate()
         {
             var gate = Properties.Settings.Default.Gate;
@@ -129,6 +161,38 @@ namespace SPS
             Properties.Settings.Default.Gate = value;
             Properties.Settings.Default.Save();
         }
+
+        //get link camera 
+        private void getCameraStream()
+        {
+            var streamLink = Properties.Settings.Default.rtsp;
+            txtStream.Text = streamLink;
+            cameraLink = streamLink;
+        }
+        private void updateCameraStream(string value)
+        {
+            Properties.Settings.Default.rtsp = value;
+            Properties.Settings.Default.Save();
+        }
+        private void getCameraMethod()
+        {
+            var camMethod = Properties.Settings.Default.cameraIP;
+            if (camMethod == 0)
+            {
+                chkCameraIP.Checked = false;
+            }
+            else
+            {
+                chkCameraIP.Checked = true;
+            }
+        }
+        private void updateCameraMethod(int value)
+        {
+            Properties.Settings.Default.cameraIP = value;
+            Properties.Settings.Default.Save();
+        }
+
+        //su kien phim tat
         private void SettingForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -143,6 +207,10 @@ namespace SPS
             {
                 swbtnEnter.Value = !swbtnEnter.Value;
             }
+            if (e.KeyCode == Keys.F5)
+            {
+                chkCameraIP.Checked = !chkCameraIP.Checked;
+            }
             if (e.KeyCode == Keys.Up||e.KeyCode ==Keys.Down)
             {
                 comboBoxEx1.Select();
@@ -156,14 +224,26 @@ namespace SPS
                 }
             }
         }
+
+        private void chkCameraIP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCameraIP.Checked == false)
+            {
+                txtStream.Enabled = false;
+            }
+            else
+            {
+                txtStream.Enabled = true;
+            }
+        }
         //giu focus o combobox
         //private void comboBoxEx1_Leave(object sender, EventArgs e)
         //{
         //    comboBoxEx1.Select();
         //}
-        private void comboBoxEx1_LostFocus(object sender, EventArgs e)
-        {
-            comboBoxEx1.Select();
-        }
+        //private void comboBoxEx1_LostFocus(object sender, EventArgs e)
+        //{
+        //    comboBoxEx1.Select();
+        //}
     }
 }

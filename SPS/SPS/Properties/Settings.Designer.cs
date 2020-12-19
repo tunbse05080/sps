@@ -82,5 +82,17 @@ namespace SPS.Properties {
                 this["rtsp"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int cameraIP {
+            get {
+                return ((int)(this["cameraIP"]));
+            }
+            set {
+                this["cameraIP"] = value;
+            }
+        }
     }
 }
