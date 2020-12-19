@@ -72,10 +72,6 @@ namespace SPS
             }
             comboBoxEx1.Select();          
         }
-        private void comboBoxEx1_LostFocus(object sender, EventArgs e)
-        {
-            comboBoxEx1.Select();
-        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close(); 
@@ -147,9 +143,25 @@ namespace SPS
             {
                 swbtnEnter.Value = !swbtnEnter.Value;
             }
+            if (e.KeyCode == Keys.Up||e.KeyCode ==Keys.Down)
+            {
+                comboBoxEx1.Select();
+                if(rbtIn.Checked == true)
+                {
+                    rbtIn.Checked = true;
+                }
+                if (rbtOut.Checked == true)
+                {
+                    rbtOut.Checked = true;
+                }
+            }
         }
-
-        private void comboBoxEx1_Leave(object sender, EventArgs e)
+        //giu focus o combobox
+        //private void comboBoxEx1_Leave(object sender, EventArgs e)
+        //{
+        //    comboBoxEx1.Select();
+        //}
+        private void comboBoxEx1_LostFocus(object sender, EventArgs e)
         {
             comboBoxEx1.Select();
         }

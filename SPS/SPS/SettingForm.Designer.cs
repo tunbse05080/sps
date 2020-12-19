@@ -85,7 +85,7 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(245, 39);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 4;
-            this.comboBoxEx1.Leave += new System.EventHandler(this.comboBoxEx1_Leave);
+  //          this.comboBoxEx1.Leave += new System.EventHandler(this.comboBoxEx1_Leave);
             // 
             // rbtIn
             // 
