@@ -17,7 +17,11 @@ namespace BUS_SPS
         }
         public bool checkCard(string cardnumber) //kiem tra Card co ton tai trong he thong khong
         {
-            return dalCard.getCard().AsEnumerable().Any(row => cardnumber == row.Field<String>("CardNumber"));
+            if (dalCard.getCard() != null && dalCard.getCard().Rows.Count > 0)
+            {
+                return dalCard.getCard().AsEnumerable().Any(row => cardnumber == row.Field<String>("CardNumber"));
+            }
+            return false;
         }
         public DataTable getCardNumber(string cardnumber)
         {
@@ -25,15 +29,27 @@ namespace BUS_SPS
         }
         public int getCardStatus(string cardnumber)
         {
-            return Convert.ToInt32(dalCard.getCardbyCardNumber(cardnumber).Rows[0][3].ToString());
+            if (dalCard.getCardbyCardNumber(cardnumber) != null && dalCard.getCardbyCardNumber(cardnumber).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalCard.getCardbyCardNumber(cardnumber).Rows[0][3].ToString());
+            }
+            return 0; 
         }
         public int getCardStatusbyID(int cardID)
         {
-            return Convert.ToInt32(dalCard.getCardbyCardID(cardID).Rows[0][3].ToString());
+            if (dalCard.getCardbyCardID(cardID) != null && dalCard.getCardbyCardID(cardID).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalCard.getCardbyCardID(cardID).Rows[0][3].ToString());
+            }
+            return 0;
         }
         public int getCardID(string cardnumber)
         {
-            return Convert.ToInt32(dalCard.getCardbyCardNumber(cardnumber).Rows[0][0].ToString());
+            if (dalCard.getCardbyCardNumber(cardnumber) != null && dalCard.getCardbyCardNumber(cardnumber).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalCard.getCardbyCardNumber(cardnumber).Rows[0][0].ToString());
+            }
+            return 0; 
         }
         public bool updateCard(DTO_Card card)
         {

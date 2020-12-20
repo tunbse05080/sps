@@ -18,11 +18,19 @@ namespace BUS_SPS
         }
         public int getAccountID(string username) //lay accoutID tu username
         {
-            return Convert.ToInt32(dalAccount.getAccountbyUsername(username).Rows[0][0].ToString());
+            if (dalAccount.getAccountbyUsername(username) != null && dalAccount.getAccountbyUsername(username).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalAccount.getAccountbyUsername(username).Rows[0][0].ToString());
+            }
+            return 0;
         }
         public string getPassword(string username)
         {
-            return dalAccount.getAccountbyUsername(username).Rows[0][2].ToString();
+            if (dalAccount.getAccountbyUsername(username) != null && dalAccount.getAccountbyUsername(username).Rows.Count > 0)
+            {
+                return dalAccount.getAccountbyUsername(username).Rows[0][2].ToString();
+            }
+            return "";
         }
         public bool checkAccount(string username) //kiem tra account co ton tai khong, co bi khoa khong va co phai bao ve khong
         {

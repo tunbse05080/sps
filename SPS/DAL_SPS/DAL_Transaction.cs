@@ -21,7 +21,7 @@ namespace DAL_SPS
 
         public DataTable getTransactionOrdebyTimeIn(string license)
         {
-            SqlDataAdapter da = new SqlDataAdapter("select * from [Transaction] where LicensePlates = '" + license + "' ORDER BY TimeIn DESC", conn);
+            SqlDataAdapter da = new SqlDataAdapter("select TOP(1) * from [Transaction] where LicensePlates = '" + license + "' ORDER BY TimeIn DESC", conn);
             DataTable dtTrans = new DataTable();
             da.Fill(dtTrans);
             return dtTrans;
@@ -47,7 +47,7 @@ namespace DAL_SPS
                 // Ket noi
                 conn.Open();
 
-                // Query string - vì mình để Transaction ID là identity (giá trị tự tăng dần) nên ko cần fải insert ID
+                // Query string - vì mình để Transaction ID là identity (giá trị tự tăng dần) nên ko cần phải insert ID
                 string SQL = string.Format("INSERT INTO [Transaction](TimeIn, LicensePlates, TypeOfTicket, CardID, ParkingPlaceID, TypeOfVerhicleTran, UserIID) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}')", trans.MyTimeIN, trans.MyLicense, trans.MyTicketType,trans.MyCardID,trans.MyParkingID,trans.MyVehicleType,trans.MyUserIID);
 
                 // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).

@@ -49,7 +49,7 @@ namespace SPS
         public int MotorFree { get; set; }
         public int ParkingID { get; set; }
         private int accountID;
-        //private int userID;
+        private int userID;
         private int GateID;
         private int CardID;
         private int TransID;
@@ -312,7 +312,7 @@ namespace SPS
             if (form2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 accountID = form2.accountID;
-                //userID = form2.userID;
+                userID = form2.userID;
                 working = 1;
                 updateUser(0);
                 updateAccountID(accountID);
@@ -537,6 +537,7 @@ namespace SPS
 
             return destImage;
         }
+
         //kiem tra card 0-chua su dung, 1-da dang ky ve thang,2-hong,3-khoa,4-dang su dung
         private void checkCard()
         {
@@ -1035,7 +1036,7 @@ namespace SPS
             //Tao DTO
             //int userID = 0;
             //DTO_Transaction trans = new DTO_Transaction(0, lblTimeIn.Text, "", lblLicense.Text, ticketType, 0, CardID, ParkingID, vehicleType);
-            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType, accountID);
+            DTO_Transaction trans = new DTO_Transaction(0, DateTime.Now.ToString(), lblLicense.Text, ticketType, CardID, ParkingID, vehicleType, userID);
             // Them
             if (busTrans.insertTransaction(trans))
             {
@@ -1043,7 +1044,7 @@ namespace SPS
             }
             else
             {
-                MessageBox.Show("Thêm ko thành công");
+                MessageBox.Show("Thêm transaction ko thành công");
                 Error(100);
             }
         }
@@ -1053,7 +1054,7 @@ namespace SPS
         {
             //Tao DTO
             //int userID = 0;
-            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, accountID);
+            DTO_Transaction trans = new DTO_Transaction(TransID, DateTime.Now.ToString(), price, userID);
             // Sửa
             if (busTrans.updateTransaction(trans))
             {
@@ -1061,7 +1062,7 @@ namespace SPS
             }
             else
             {
-                // MessageBox.Show("Sửa ko thành công");
+                 MessageBox.Show("Sửa transaction ko thành công");
                 Error(100);
             }
         }

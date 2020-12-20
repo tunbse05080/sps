@@ -31,9 +31,9 @@ namespace DAL_SPS
             {
                 // Ket noi
                 conn.Open();
-                // Query string - vì mình để Image ID là identity (giá trị tự tăng dần) nên ko cần fải insert ID
+                // Query string - vì mình để Image ID là identity (giá trị tự tăng dần) nên ko cần phải insert ID
                 string SQL = string.Format("INSERT INTO Image(LinkImageIN, TransactionID) VALUES ('{0}', '{1}')", image.MyLinkIn,image.MyTransID);
-                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
+                // Command (mặc định command type = text nên chúng ta khỏi phải làm gì nhiều).
                 SqlCommand cmd = new SqlCommand(SQL, conn);
                 // Query và kiểm tra
                 if (cmd.ExecuteNonQuery() > 0)
@@ -58,7 +58,7 @@ namespace DAL_SPS
                 conn.Open();
                 // Query string
                 string SQL = string.Format("UPDATE Image SET LinkImageOut = '{0}' WHERE ImageID = {1}", image.MyLinkOut,image.MyImageID);
-                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
+                // Command (mặc định command type = text nên chúng ta khỏi phải làm gì nhiều).
                 SqlCommand cmd = new SqlCommand(SQL, conn);
                 // Query và kiểm tra
                 if (cmd.ExecuteNonQuery() > 0)

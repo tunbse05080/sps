@@ -18,19 +18,35 @@ namespace BUS_SPS
         }
         public int getUserID(int accountID)
         {
-            return Convert.ToInt32(dalUser.getUserbyAccountID(accountID).Rows[0][0].ToString());
+            if (dalUser.getUserbyAccountID(accountID) != null && dalUser.getUserbyAccountID(accountID).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalUser.getUserbyAccountID(accountID).Rows[0][0].ToString());
+            }
+            return 0;
         }
         public string getNamebyUserID(int userID)
         {
-            return dalUser.getUserbyUserID(userID).Rows[0][1].ToString();
+            if (dalUser.getUserbyUserID(userID) != null && dalUser.getUserbyUserID(userID).Rows.Count > 0)
+            {
+                return dalUser.getUserbyUserID(userID).Rows[0][1].ToString();
+            }
+            return "";
         }
         public string getNamebyAccountID(int accountID)
         {
-            return dalUser.getUserbyAccountID(accountID).Rows[0][1].ToString();
+            if (dalUser.getUserbyAccountID(accountID) != null && dalUser.getUserbyAccountID(accountID).Rows.Count > 0)
+            {
+                return dalUser.getUserbyAccountID(accountID).Rows[0][1].ToString();
+            }
+            return "";
         }
         public bool checkUser(int accountID,int parkingID) //kiem tra user co dung bai do xe khong
         {
-            return dalUser.getUserbyParkingID(parkingID).AsEnumerable().Any(row => accountID == row.Field<int>("AccountID"));
+            if (dalUser.getUserbyParkingID(parkingID) != null && dalUser.getUserbyParkingID(parkingID).Rows.Count > 0)
+            {
+                return dalUser.getUserbyParkingID(parkingID).AsEnumerable().Any(row => accountID == row.Field<int>("AccountID"));
+            }
+            return false;
         }
         public bool updateUser(DTO_User user)
         {

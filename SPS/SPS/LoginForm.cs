@@ -45,6 +45,7 @@ namespace SPS
                     accountID = busAccount.getAccountID(txtUsername.Text);
                     if (busUser.checkUser(accountID, parkingID)) //kiem tra bao ve co dung bai do xe khong
                     {
+                        userID = busUser.getUserID(accountID);
                         this.DialogResult = System.Windows.Forms.DialogResult.OK;
                         this.Close();
                     }

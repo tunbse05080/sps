@@ -18,7 +18,11 @@ namespace BUS_SPS
         }
         public bool checkLicense(string license) //kiem tra bien so xe co dang ky ve thang khong
         {
-            return dalTicket.getMonthlyTicket().AsEnumerable().Any(row => license == row.Field<String>("LicensePlates"));
+            if (dalTicket.getMonthlyTicket() != null && dalTicket.getMonthlyTicket().Rows.Count > 0)
+            {
+                return dalTicket.getMonthlyTicket().AsEnumerable().Any(row => license == row.Field<String>("LicensePlates"));
+            }
+            return false;
         }
         public DataTable getMonthlyTicket(string license)
         {
@@ -26,24 +30,44 @@ namespace BUS_SPS
         }
         public string getName(string license) //thong tin ten chu xe
         {
-            return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][1].ToString();
+            if (dalTicket.getMonthlyTicketbyLicense(license) != null && dalTicket.getMonthlyTicketbyLicense(license).Rows.Count > 0)
+            {
+                return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][1].ToString();
+            }
+            return ""; 
         }
         public int getParkingIDbyLicense(string license) //thong tin bai do xe ung voi bien so
         {
-            return Convert.ToInt32(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][10].ToString());
+            if (dalTicket.getMonthlyTicketbyLicense(license) != null && dalTicket.getMonthlyTicketbyLicense(license).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][10].ToString());
+            }
+            return 0;
         }
         public int getCardIDbyLicense(string license) //thong tin the
         {
-            return Convert.ToInt32(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][9].ToString());
+            if (dalTicket.getMonthlyTicketbyLicense(license) != null && dalTicket.getMonthlyTicketbyLicense(license).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][9].ToString());
+            }
+            return 0;
         }
         public string getExpiryDate(string license) //thong tin ngay het han cua ve thang
         {
-             return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString();
+            if (dalTicket.getMonthlyTicketbyLicense(license) != null && dalTicket.getMonthlyTicketbyLicense(license).Rows.Count > 0)
+            {
+                return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString();
+            }
+            return ""; 
           //  return DateTime.ParseExact(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
         public string getStartDate(string license) //thong tin ngay bat dau cua ve thang
         {
-            return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][7].ToString();
+            if (dalTicket.getMonthlyTicketbyLicense(license) != null && dalTicket.getMonthlyTicketbyLicense(license).Rows.Count > 0)
+            {
+                return dalTicket.getMonthlyTicketbyLicense(license).Rows[0][7].ToString();
+            }
+            return "";
             //  return DateTime.ParseExact(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
     }

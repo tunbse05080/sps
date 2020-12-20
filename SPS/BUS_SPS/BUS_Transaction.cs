@@ -18,11 +18,19 @@ namespace BUS_SPS
         }
         public bool checkLicense(string license) //kiem tra bien so xe co trong danh sach transaction khong
         {
-            return dalTrans.getTransaction().AsEnumerable().Any(row => license == row.Field<String>("LicensePlates"));
+            if (dalTrans.getTransaction() != null && dalTrans.getTransaction().Rows.Count > 0)
+            {
+                return dalTrans.getTransaction().AsEnumerable().Any(row => license == row.Field<String>("LicensePlates"));
+            }
+            return false;
         }
         public string checkLicenseTimeOut(string license) //thoi gian ra cua xe (neu = NULL : xe van con trong bai xe)
         {
-            return dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][2].ToString();
+            if (dalTrans.getTransactionOrdebyTimeIn(license) != null && dalTrans.getTransactionOrdebyTimeIn(license).Rows.Count > 0)
+            {
+                return dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][2].ToString();
+            }
+            return "";
         }
         public bool insertTransaction(DTO_Transaction trans)
         {
@@ -34,25 +42,45 @@ namespace BUS_SPS
         }
         public int getTransactionID(string license)
         {
-            return Convert.ToInt32(dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][0].ToString());
+            if (dalTrans.getTransactionOrdebyTimeIn(license) != null && dalTrans.getTransactionOrdebyTimeIn(license).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][0].ToString());
+            }
+            return 0; 
         }
         public int getCardID(int trans)
         {
-            return Convert.ToInt32(dalTrans.getTransactionbyID(trans).Rows[0][6].ToString());
+            if (dalTrans.getTransactionbyID(trans) != null && dalTrans.getTransactionbyID(trans).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalTrans.getTransactionbyID(trans).Rows[0][6].ToString());
+            }
+            return 0;
         }
         public int getParkingID(int trans)
         {
-            return Convert.ToInt32(dalTrans.getTransactionbyID(trans).Rows[0][7].ToString());
+            if (dalTrans.getTransactionbyID(trans) != null && dalTrans.getTransactionbyID(trans).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalTrans.getTransactionbyID(trans).Rows[0][7].ToString());
+            }
+            return 0;
         }
 
         public string getTimeInbyTransID(int transID) //thong tin thoi gian vao
         {
-            return dalTrans.getTransactionbyID(transID).Rows[0][1].ToString();
+            if (dalTrans.getTransactionbyID(transID) != null && dalTrans.getTransactionbyID(transID).Rows.Count > 0)
+            {
+                return dalTrans.getTransactionbyID(transID).Rows[0][1].ToString();
+            }
+            return "";
             //  return DateTime.ParseExact(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
         public string getTimeInbyLicense(string license) //thong tin thoi gian vao
         {
-            return dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][1].ToString();
+            if (dalTrans.getTransactionOrdebyTimeIn(license) != null && dalTrans.getTransactionOrdebyTimeIn(license).Rows.Count > 0)
+            {
+                return dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][1].ToString();
+            }
+            return ""; 
             //  return DateTime.ParseExact(dalTicket.getMonthlyTicketbyLicense(license).Rows[0][8].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
     }

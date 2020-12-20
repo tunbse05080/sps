@@ -18,7 +18,11 @@ namespace BUS_SPS
         }
         public int getImageID(int transID)
         {
-            return Convert.ToInt32(dalImage.getImagebyTransID(transID).Rows[0][0].ToString());
+            if (dalImage.getImagebyTransID(transID) != null && dalImage.getImagebyTransID(transID).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalImage.getImagebyTransID(transID).Rows[0][0].ToString());
+            }
+            return 0;
         }
         public bool insertImage(DTO_Image image)
         {

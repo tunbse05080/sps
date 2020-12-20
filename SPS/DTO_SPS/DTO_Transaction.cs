@@ -136,16 +136,5 @@ namespace DTO_SPS
             this.price = price;
             this.userOID = userOID;
         }
-
-        public DTO_Transaction(string timeIN, string license, int ticketType, int cardID, int parkingID, int vehicleType, int userIID)
-        {
-            this.timeIN = timeIN;
-            this.license = license;
-            this.ticketType = ticketType;
-            this.cardID = cardID;
-            this.parkingID = parkingID;
-            this.vehicleType = vehicleType;
-            this.userIID = userIID;
-        }
     }
 }

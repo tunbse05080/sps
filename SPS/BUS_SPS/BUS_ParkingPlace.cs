@@ -17,24 +17,44 @@ namespace BUS_SPS
         }
         public int getParkingStatus(int parkingID)
         {
-            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(parkingID).Rows[0][7].ToString());
+            if (dalParkingPlace.getParkingPlacebyID(parkingID) != null && dalParkingPlace.getParkingPlacebyID(parkingID).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(parkingID).Rows[0][7].ToString());
+            }
+            return 0;  
         }
         public int getCarFree(int ParkingID)
         {
-            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][5].ToString());
+            if (dalParkingPlace.getParkingPlacebyID(ParkingID) != null && dalParkingPlace.getParkingPlacebyID(ParkingID).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][5].ToString());
+            }
+            return 0; 
         }
         public int getMotorFree(int ParkingID)
         {
-            return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][6].ToString());
+            if (dalParkingPlace.getParkingPlacebyID(ParkingID) != null && dalParkingPlace.getParkingPlacebyID(ParkingID).Rows.Count > 0)
+            {
+                return Convert.ToInt32(dalParkingPlace.getParkingPlacebyID(ParkingID).Rows[0][6].ToString());
+            }
+            return 0; 
         }
         public string getParkingName(int parkingID)
         {
-            return dalParkingPlace.getParkingPlacebyID(parkingID).Rows[0][1].ToString();
+            if (dalParkingPlace.getParkingPlacebyID(parkingID) != null && dalParkingPlace.getParkingPlacebyID(parkingID).Rows.Count > 0)
+            {
+                return dalParkingPlace.getParkingPlacebyID(parkingID).Rows[0][1].ToString();
+            }
+            return "";  
         }
 
         public bool checkParking(int parkingID) //kiem tra parkingID co status = 1 co ton tai khong
         {
-            return dalParkingPlace.getParkingPlace().AsEnumerable().Any(row => parkingID == row.Field<Int32>("ParkingPlaceID"));
+            if (dalParkingPlace.getParkingPlace() != null && dalParkingPlace.getParkingPlace().Rows.Count > 0)
+            {
+                return dalParkingPlace.getParkingPlace().AsEnumerable().Any(row => parkingID == row.Field<Int32>("ParkingPlaceID"));
+            }
+            return false;
         }
         public bool updateCarParking(DTO_ParkingPlace parking)
         {
