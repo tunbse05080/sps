@@ -210,6 +210,7 @@ namespace SPS
             if (e.KeyCode == Keys.F5)
             {
                 chkCameraIP.Checked = !chkCameraIP.Checked;
+                txtStream.Select();
             }
             if (e.KeyCode == Keys.Up||e.KeyCode ==Keys.Down)
             {

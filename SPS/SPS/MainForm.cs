@@ -1702,6 +1702,10 @@ namespace SPS
                 txtLicense1.BackColor = Color.White;
 
             }
+            if (e.KeyCode == Keys.F12)
+            {
+                Cursor.Clip = Screen.PrimaryScreen.WorkingArea;
+            }
         }
 
         //private void txtCardNo_Leave(object sender, EventArgs e) //sau thoi gian 20s tu dong focus vao txtCardNo
