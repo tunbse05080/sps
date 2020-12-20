@@ -83,7 +83,7 @@ namespace SPS
         {
             InitializeComponent();
             CAMS = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            
+
             if (CAMS.Count > 0)
             {
                 foreach (FilterInfo info in CAMS)
@@ -94,23 +94,8 @@ namespace SPS
             }
             else
             {
-                //toolStripComboBox1.Text = "Không tìm thấy camera";
-                //string message = "Không tìm thấy camera. Kết nối với camera!";
-                //string caption = "Không tìm thấy camera";
-                //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                //DialogResult result;
-
-                //// Displays the MessageBox.
-
-                //result = MessageBox.Show(this, message, caption, buttons);
-
-                //if (result == DialogResult.Yes)
-                //{
-
-                //    // Closes the parent form.
-                //    Application.Exit();
-
-                //}
+                toolStripComboBox1.Text = "Không tìm thấy webcam";
+                toolStripComboBox1.Enabled = false;
             }
             txtCardNo.Focus();
         }
@@ -233,8 +218,6 @@ namespace SPS
                 {
                     GetVehicleInfo();
                 }
-
-
             }
             else
             {
@@ -261,6 +244,30 @@ namespace SPS
             showInformation();
             manualEnter();
             txtCardNo.Focus();
+        }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            txtCardNo.Focus();
+            if (working == 0)
+            {
+                CallLogin();
+
+                return;
+            }
+            if (working == 1)
+            {
+                if (MessageBox.Show(mes.mes(14), "Hỏi đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    working = 0;
+                    updateUser(1);
+                    updateAccountID(0); //dang xuat, luu accountID la 0
+                    btnCapture.Enabled = false;
+                    btnEnter.Enabled = false;
+                    btnLogin.Text = "Đăng nhập";
+                    lblSecureName.Text = "_ _ _";
+                    return;
+                }
+            }
         }
         #endregion
 
@@ -297,11 +304,30 @@ namespace SPS
                 {
                     startCamera();
                 }
+                else
+                {
+                    string message = "Không tìm thấy camera. Kết nối với camera!";
+                    string caption = "Không tìm thấy camera";
+                    lblGate.Text = "Không tìm thấy camera";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+
+                    // Displays the MessageBox.
+
+                    result = MessageBox.Show(this, message, caption, buttons);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Closes the parent form.
+                        Application.Exit();
+
+                    }
+                }
             }
             else
             {
                 startStream();
-            }            
+            }
             reset();
         }
         //Get info from LoginForm
@@ -394,6 +420,7 @@ namespace SPS
             }
             else
             {
+                lblGate.Text = "Khong co camera";
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
                 // get response
                 WebResponse resp = req.GetResponse();
@@ -407,13 +434,11 @@ namespace SPS
                     captureButtonClick(null, null); //reconnect
                 }
             }
-
-
         }
         private void captureButtonClick(object sender, EventArgs e)
         {
-            url = "rtsp://admin:DQQHRY@192.168.31.88:554"; //add this
-                                                           //... the rest of the code
+            url = cameraLink; //add this
+                              //... the rest of the code
         }
         private void FreeMemory(dess::Emgu.CV.Mat image)
         {
@@ -506,13 +531,6 @@ namespace SPS
             grPhoto.Dispose();
             return bmPhoto;
         }
-        /// <summary>
-        /// Resize the image to the specified width and height.
-        /// </summary>
-        /// <param name="image">The image to resize.</param>
-        /// <param name="width">The width to resize to.</param>
-        /// <param name="height">The height to resize to.</param>
-        /// <returns>The resized image.</returns>
         public static Bitmap ResizeImage(Image image, int width, int height)
         {
             var destRect = new Rectangle(0, 0, width, height);
@@ -1062,7 +1080,7 @@ namespace SPS
             }
             else
             {
-                 MessageBox.Show("Sửa transaction ko thành công");
+                MessageBox.Show("Sửa transaction ko thành công");
                 Error(100);
             }
         }
@@ -1651,30 +1669,6 @@ namespace SPS
             lblCost.Text = "VND";
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            txtCardNo.Focus();
-            if (working == 0)
-            {
-                CallLogin();
-
-                return;
-            }
-            if (working == 1)
-            {
-                if (MessageBox.Show(mes.mes(14), "Hỏi đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    working = 0;
-                    updateUser(1);
-                    updateAccountID(0); //dang xuat, luu accountID la 0
-                    btnCapture.Enabled = false;
-                    btnEnter.Enabled = false;
-                    btnLogin.Text = "Đăng nhập";
-                    lblSecureName.Text = "_ _ _";
-                    return;
-                }
-            }
-        }
         int a = 0;
         private void MainForm_KeyDown(object sender, KeyEventArgs e) //su kien phim tat
         {
@@ -1684,7 +1678,11 @@ namespace SPS
                 {
                     txtLicense1.Select();
                     txtLicense1.BackColor = Color.Yellow;
-                    txtLicense2.BackColor = Color.White;
+                    txtLicense2.BackColor = Color.White;                   
+                    if (txtLicense1.Text.TrimStart().Equals(""))
+                    {
+                        txtLicense1.Clear();
+                    }
                     a = 1;
                 }
                 else
@@ -1692,6 +1690,10 @@ namespace SPS
                     txtLicense2.Select();
                     txtLicense2.BackColor = Color.Yellow;
                     txtLicense1.BackColor = Color.White;
+                    if (txtLicense2.Text.TrimStart().Equals(""))
+                    {
+                        txtLicense2.Clear();
+                    }
                     a = 0;
                 }
             }
@@ -1700,6 +1702,10 @@ namespace SPS
                 txtCardNo.Select();
                 txtLicense2.BackColor = Color.White;
                 txtLicense1.BackColor = Color.White;
+                if (txtCardNo.Text.TrimStart().Equals(""))
+                {
+                    txtCardNo.Clear();
+                }
 
             }
             if (e.KeyCode == Keys.F12)
