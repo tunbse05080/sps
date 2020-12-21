@@ -359,6 +359,10 @@ namespace SPS
             {
                 CAM.Stop();
             }
+            if (cameraCapture != null)
+            {
+                cameraCapture.Stop();
+            }
             CAM = new VideoCaptureDevice(CAMS[toolStripComboBox1.SelectedIndex].MonikerString);
             CAM.NewFrame += CAM_NewFrame;
             CAM.Start();
@@ -373,6 +377,10 @@ namespace SPS
         //start Camera IP
         private void startStream()
         {
+            if (CAM != null && CAM.IsRunning)
+            {
+                CAM.Stop();
+            }
             if (cameraCapture != null)
             {
                 cameraCapture.Stop();

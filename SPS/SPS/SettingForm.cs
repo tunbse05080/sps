@@ -30,43 +30,51 @@ namespace SPS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            ParkingName = comboBoxEx1.Text;
-            ParkingID = Convert.ToInt32(comboBoxEx1.SelectedValue);
-            updateParking(ParkingID);
-            if (rbtIn.Checked == true)
+            if (String.IsNullOrEmpty(txtStream.Text) && chkCameraIP.Checked==true)
             {
-                SelectedGate = 0;
-                updateGate(0);
+                MessageBox.Show("Nhap dia chi camera IP", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                SelectedGate = 1;
-                updateGate(1);
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                ParkingName = comboBoxEx1.Text;
+                ParkingID = Convert.ToInt32(comboBoxEx1.SelectedValue);
+                updateParking(ParkingID);
+                if (rbtIn.Checked == true)
+                {
+                    SelectedGate = 0;
+                    updateGate(0);
+                }
+                else
+                {
+                    SelectedGate = 1;
+                    updateGate(1);
+                }
+                if (swbtnEnter.Value == true)
+                {
+                    EnterMethod = 1;
+                    updateMethod(1);
+                }
+                else
+                {
+                    EnterMethod = 0;
+                    updateMethod(0);
+                }
+                if (chkCameraIP.Checked == true)
+                {
+                    cameraMethod = 1;
+                    cameraLink = txtStream.Text;
+                    updateCameraMethod(1);
+                    updateCameraStream(txtStream.Text);
+                }
+                else
+                {
+                    cameraMethod = 0;
+                    updateCameraMethod(0);
+                }
+                this.Close();
             }
-            if (swbtnEnter.Value == true)
-            {
-                EnterMethod = 1;
-                updateMethod(1);
-            }
-            else
-            {
-                EnterMethod = 0;
-                updateMethod(0);
-            }
-            if(chkCameraIP.Checked == true)
-            {
-                cameraMethod = 1;
-                cameraLink = txtStream.Text;
-                updateCameraMethod(1);
-                updateCameraStream(txtStream.Text);
-            }
-            else
-            {
-                cameraMethod = 0;
-                updateCameraMethod(0);
-            }
-            this.Close();
+            
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
@@ -76,17 +84,18 @@ namespace SPS
             getMethod();
             getCameraMethod();
             getCameraStream();
-            if(working == 0)
-            {               
+            if (working == 0)
+            {
                 getParking();
                 comboBoxEx1.Enabled = true;
                 chkCameraIP.Enabled = true;
             }
-            else if(working == 1)
-            {                
+            else if (working == 1)
+            {
                 getParking();
                 comboBoxEx1.Enabled = false;
-                chkCameraIP.Enabled = false;
+                //chkCameraIP.Enabled = false;
+                //txtStream.Enabled = false;
             }
             if (chkCameraIP.Checked == false)
             {
@@ -96,11 +105,11 @@ namespace SPS
             {
                 txtStream.Enabled = true;
             }
-            comboBoxEx1.Select();          
+            comboBoxEx1.Select();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close(); 
+            this.Close();
         }
 
         //get bai do xe
@@ -114,7 +123,7 @@ namespace SPS
             if (busPK.checkParking(parkingID))
             {
                 comboBoxEx1.SelectedValue = parkingID.ToString();
-            }       
+            }
         }
         private void updateParking(int value)
         {
@@ -145,7 +154,7 @@ namespace SPS
         private void getGate()
         {
             var gate = Properties.Settings.Default.Gate;
-            if(gate == 0)
+            if (gate == 0)
             {
                 rbtIn.Checked = true;
                 rbtOut.Checked = false;
@@ -212,10 +221,10 @@ namespace SPS
                 chkCameraIP.Checked = !chkCameraIP.Checked;
                 txtStream.Select();
             }
-            if (e.KeyCode == Keys.Up||e.KeyCode ==Keys.Down)
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
                 comboBoxEx1.Select();
-                if(rbtIn.Checked == true)
+                if (rbtIn.Checked == true)
                 {
                     rbtIn.Checked = true;
                 }
