@@ -194,3 +194,4 @@ C:\Users\hanov\Downloads\Git\sps\SPS\SPS\bin\Debug\sv\ZedGraph.resources.dll
 C:\Users\hanov\Downloads\Git\sps\SPS\SPS\bin\Debug\tr\ZedGraph.resources.dll
 C:\Users\hanov\Downloads\Git\sps\SPS\SPS\bin\Debug\zh-cn\ZedGraph.resources.dll
 C:\Users\hanov\Downloads\Git\sps\SPS\SPS\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\hanov\Downloads\Git\sps\SPS\SPS\bin\Debug\Gma.System.MouseKeyHook.dll

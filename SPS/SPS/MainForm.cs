@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using Gma.System.MouseKeyHook;
 
 namespace SPS
 {
@@ -77,6 +78,7 @@ namespace SPS
         private string url; //duong dan stream
         private int cameraMethod; // 0 - dung webcam, 1 - dung camera IP
         private string cameraLink;
+        private IKeyboardMouseEvents m_GlobalHook;
         #endregion
 
         public MainForm()
@@ -98,11 +100,13 @@ namespace SPS
                 toolStripComboBox1.Enabled = false;
             }
             txtCardNo.Focus();
+            
         }
 
         #region Load Form
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             //this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
@@ -186,6 +190,7 @@ namespace SPS
                     updateUser(1);
                     updateAccountID(0);
                 }
+                Unsubscribe();
                 Application.Exit();
             }
             txtCardNo.Focus();
@@ -265,6 +270,7 @@ namespace SPS
                     btnEnter.Enabled = false;
                     btnLogin.Text = "Đăng nhập";
                     lblSecureName.Text = "_ _ _";
+                    Unsubscribe();
                     return;
                 }
             }
@@ -340,6 +346,7 @@ namespace SPS
                 accountID = form2.accountID;
                 userID = form2.userID;
                 working = 1;
+                Subscribe();
                 updateUser(0);
                 updateAccountID(accountID);
                 btnLogin.Text = "Đăng xuất";
@@ -1718,7 +1725,7 @@ namespace SPS
             }
             if (e.KeyCode == Keys.F12)
             {
-                
+                Unsubscribe();
             }
         }
 
@@ -1740,6 +1747,46 @@ namespace SPS
         {
             Properties.Settings.Default.AccountID = value;
             Properties.Settings.Default.Save();
+        }
+
+        //khoa click chuot
+        int sub = 0;
+        public void Subscribe()
+        {
+            // Note: for the application hook, use the Hook.AppEvents() instead
+            //Unsubscribe();
+            sub = 1;
+            m_GlobalHook = Hook.AppEvents();
+
+            m_GlobalHook.MouseDownExt += GlobalHookMouseDownExt;
+            m_GlobalHook.KeyPress += GlobalHookKeyPress;
+        }
+
+        private void GlobalHookKeyPress(object sender, KeyPressEventArgs e)
+        {
+            Console.WriteLine("KeyPress: \t{0}", e.KeyChar);
+        }
+
+        private void GlobalHookMouseDownExt(object sender, MouseEventExtArgs e)
+        {
+            Console.WriteLine("MouseDown: \t{0}; \t System Timestamp: \t{1}", e.Button, e.Timestamp);
+
+            // uncommenting the following line will suppress the middle mouse button click
+             if (e.Button == MouseButtons.Middle|| e.Button == MouseButtons.Left|| e.Button == MouseButtons.Right) { e.Handled = true; }
+        }
+
+        public void Unsubscribe()
+        {
+            if (sub == 1)
+            {
+                m_GlobalHook.MouseDownExt -= GlobalHookMouseDownExt;
+                m_GlobalHook.KeyPress -= GlobalHookKeyPress;
+
+                //It is recommened to dispose it
+                m_GlobalHook.Dispose();
+                sub = 0;
+            }
+            
         }
     }
 }

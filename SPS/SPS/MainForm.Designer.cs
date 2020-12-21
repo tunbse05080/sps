@@ -560,7 +560,7 @@
             this.btnEnter.Font = new System.Drawing.Font("Calibri", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.Location = new System.Drawing.Point(303, 3);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F10);
+            this.btnEnter.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F8);
             this.btnEnter.Size = new System.Drawing.Size(134, 33);
             this.btnEnter.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEnter.TabIndex = 4;
@@ -1042,9 +1042,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 31);
+            this.label4.Size = new System.Drawing.Size(74, 31);
             this.label4.TabIndex = 3;
-            this.label4.Text = "F10: Nhập";
+            this.label4.Text = "F8: Nhập";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
