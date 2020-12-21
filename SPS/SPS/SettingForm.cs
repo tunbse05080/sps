@@ -21,6 +21,7 @@ namespace SPS
         public string cameraLink { get; set; }
         public int cameraMethod { get; set; } //0 - No, 1 - Yes
         BUS_ParkingPlace busPK = new BUS_ParkingPlace();
+        //Message mes = new Message();
         #endregion
         public SettingForm()
         {
@@ -32,7 +33,7 @@ namespace SPS
         {
             if (String.IsNullOrEmpty(txtStream.Text) && chkCameraIP.Checked==true)
             {
-                MessageBox.Show("Nhap dia chi camera IP", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nhập địa chỉ CameraIP", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

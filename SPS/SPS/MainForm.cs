@@ -1718,7 +1718,7 @@ namespace SPS
             }
             if (e.KeyCode == Keys.F12)
             {
-                Cursor.Clip = Screen.PrimaryScreen.WorkingArea;
+                
             }
         }
 

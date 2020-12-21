@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SPS
 {
-    class Messages
+    public class Messages
     {
         private string m01 = "Bạn có chắc chắn muốn thoát không?";
         private string m02 = "Thẻ không hợp lệ";
@@ -22,6 +22,14 @@ namespace SPS
         private string m13 ="Bảo vệ chưa đăng nhập";
         private string m14 = "Thoát tài khoản";
         private string m15 = "Xe chưa đăng ký vé tháng";
+        private string m16 = "Nhập địa chỉ CameraIP";
+
+        public string M16
+        {
+            get { return m16; }
+            set { m16 = value; }
+        }
+
 
         public string M15
         {
@@ -116,67 +124,111 @@ namespace SPS
 
         public string mes(int a)
         {
-            if (a == 1)
+            switch (a)
             {
-                return m01;
+                case 1:
+                    return m01;
+                   // break;
+                case 2:
+                    return m02;
+                //  break;
+                case 3:
+                    return m03;
+                case 4:
+                    return m04;
+                case 5:
+                    return m05;
+                case 6:
+                    return m06;
+                case 7:
+                    return m07;
+                case 8:
+                    return m08;
+                case 9:
+                    return m09;
+                case 10:
+                    return m10;
+                case 11:
+                    return m11;
+                case 12:
+                    return m12;
+                case 13:
+                    return m13;
+                case 14:
+                    return m14;
+                case 15:
+                    return m15;
+                case 16:
+                    return m16;
+                default:
+                    return "NONE";
+                   // break;
             }
-            if (a == 2)
-            {
-                return m02;
-            }
-            if (a == 3)
-            {
-                return m03;
-            }
-            if (a == 4)
-            {
-                return m04;
-            }
-            if (a == 5)
-            {
-                return m05;
-            }
-            if (a == 6)
-            {
-                return m06;
-            }
-            if (a == 7)
-            {
-                return m07;
-            }
-            if (a == 8)
-            {
-                return m08;
-            }
-            if (a == 9)
-            {
-                return m09;
-            }
-            if (a == 10)
-            {
-                return m10;
-            }
-            if (a == 11)
-            {
-                return m11;
-            }
-            if (a == 12)
-            {
-                return m12;
-            }
-            if (a == 13)
-            {
-                return m13;
-            }
-            if (a == 14)
-            {
-                return m14;
-            }
-            if (a == 15)
-            {
-                return m15;
-            }
-            else return "NONE";
+            //if (a == 1)
+            //{
+            //    return m01;
+            //}
+            //if (a == 2)
+            //{
+            //    return m02;
+            //}
+            //if (a == 3)
+            //{
+            //    return m03;
+            //}
+            //if (a == 4)
+            //{
+            //    return m04;
+            //}
+            //if (a == 5)
+            //{
+            //    return m05;
+            //}
+            //if (a == 6)
+            //{
+            //    return m06;
+            //}
+            //if (a == 7)
+            //{
+            //    return m07;
+            //}
+            //if (a == 8)
+            //{
+            //    return m08;
+            //}
+            //if (a == 9)
+            //{
+            //    return m09;
+            //}
+            //if (a == 10)
+            //{
+            //    return m10;
+            //}
+            //if (a == 11)
+            //{
+            //    return m11;
+            //}
+            //if (a == 12)
+            //{
+            //    return m12;
+            //}
+            //if (a == 13)
+            //{
+            //    return m13;
+            //}
+            //if (a == 14)
+            //{
+            //    return m14;
+            //}
+            //if (a == 15)
+            //{
+            //    return m15;
+            //}
+            //if (a == 16)
+            //{
+            //    return m16;
+            //}
+            //else return "NONE";
         }
         public string M02
         {
