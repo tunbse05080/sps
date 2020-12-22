@@ -113,6 +113,7 @@ namespace SPS
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+            m_KeyHook.Install();
             pictureBox_WC.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox_WC.Height = pictureBox_WC.Width / 16 * 9;
@@ -275,7 +276,7 @@ namespace SPS
                     btnLogin.Text = "Đăng nhập";
                     lblSecureName.Text = "_ _ _";
                     m_GlobalHook.Unsubscribe();
-                    m_KeyHook.Uninstall();
+                    
                     return;
                 }
             }
@@ -353,7 +354,7 @@ namespace SPS
                 userID = form2.userID;
                 working = 1;
                 m_GlobalHook.Subscribe();
-                m_KeyHook.Install();
+                
                 updateUser(0);
                 updateAccountID(accountID);
                 btnLogin.Text = "Đăng xuất";

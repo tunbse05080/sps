@@ -82,7 +82,7 @@ namespace SPS
                     Keys k = (Keys)kbStruct.VirtualKeyCode;
 
                     // disable Left Windows, Left Shift and Left Control keys
-                    if (k == Keys.ControlKey || k == Keys.Alt || k == Keys.RWin || k == Keys.LWin || k == Keys.Oemtilde || k == Keys.Tab || k == Keys.OemOpenBrackets || k == Keys.OemPipe || k == Keys.OemCloseBrackets || k == Keys.OemSemicolon || k == Keys.Oemplus || k == Keys.OemMinus || k == Keys.OemQuotes || k == Keys.PrintScreen || k == Keys.Print)
+                    if (k == Keys.ControlKey || k == Keys.Alt || k == Keys.RWin || k == Keys.LWin || k == Keys.LControlKey|| k == Keys.RControlKey)
                     {
                         //SendKeys.Send(k.ToString());
                         return (IntPtr)1;
