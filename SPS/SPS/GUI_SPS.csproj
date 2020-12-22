@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="Detect.cs" />
     <Compile Include="GlobalHook.cs" />
+    <Compile Include="KeyboardHook.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

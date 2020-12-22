@@ -81,6 +81,7 @@ namespace SPS
         private string cameraLink;
         //private IKeyboardMouseEvents m_GlobalHook;
         GlobalHook m_GlobalHook = new GlobalHook();
+        KeyboardHook m_KeyHook = new KeyboardHook();
 
         #endregion
 
@@ -109,8 +110,7 @@ namespace SPS
         #region Load Form
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            //this.TopMost = true;
+            this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             pictureBox_WC.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -194,6 +194,7 @@ namespace SPS
                     updateAccountID(0);
                 }
                 m_GlobalHook.Unsubscribe();
+                m_KeyHook.Uninstall();
                 Application.Exit();
             }
             txtCardNo.Focus();
@@ -274,7 +275,7 @@ namespace SPS
                     btnLogin.Text = "Đăng nhập";
                     lblSecureName.Text = "_ _ _";
                     m_GlobalHook.Unsubscribe();
-                    //ReleaseKeyboardHook();
+                    m_KeyHook.Uninstall();
                     return;
                 }
             }
@@ -352,7 +353,7 @@ namespace SPS
                 userID = form2.userID;
                 working = 1;
                 m_GlobalHook.Subscribe();
-                //KeyboardHook();
+                m_KeyHook.Install();
                 updateUser(0);
                 updateAccountID(accountID);
                 btnLogin.Text = "Đăng xuất";
