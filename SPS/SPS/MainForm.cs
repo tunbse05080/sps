@@ -27,6 +27,7 @@ using System.Threading;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using Gma.System.MouseKeyHook;
+using System.Runtime.InteropServices;
 
 namespace SPS
 {
@@ -78,7 +79,9 @@ namespace SPS
         private string url; //duong dan stream
         private int cameraMethod; // 0 - dung webcam, 1 - dung camera IP
         private string cameraLink;
-        private IKeyboardMouseEvents m_GlobalHook;
+        //private IKeyboardMouseEvents m_GlobalHook;
+        GlobalHook m_GlobalHook = new GlobalHook();
+
         #endregion
 
         public MainForm()
@@ -190,7 +193,7 @@ namespace SPS
                     updateUser(1);
                     updateAccountID(0);
                 }
-                Unsubscribe();
+                m_GlobalHook.Unsubscribe();
                 Application.Exit();
             }
             txtCardNo.Focus();
@@ -270,7 +273,8 @@ namespace SPS
                     btnEnter.Enabled = false;
                     btnLogin.Text = "Đăng nhập";
                     lblSecureName.Text = "_ _ _";
-                    Unsubscribe();
+                    m_GlobalHook.Unsubscribe();
+                    //ReleaseKeyboardHook();
                     return;
                 }
             }
@@ -304,6 +308,7 @@ namespace SPS
             }
 
             StartTimer();
+            StartFreeVehicle();
             if (cameraMethod == 0)
             {
                 if (CAMS.Count > 0)
@@ -346,7 +351,8 @@ namespace SPS
                 accountID = form2.accountID;
                 userID = form2.userID;
                 working = 1;
-                Subscribe();
+                m_GlobalHook.Subscribe();
+                //KeyboardHook();
                 updateUser(0);
                 updateAccountID(accountID);
                 btnLogin.Text = "Đăng xuất";
@@ -481,7 +487,20 @@ namespace SPS
 
         void tmr_Tick(object sender, EventArgs e)
         {
-            lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt - dd/MM/yyyy");
+            lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt - dd/MM/yyyy");           
+        }
+        //Update Free Motor and Car
+        private void StartFreeVehicle()
+        {
+            tmr = new System.Windows.Forms.Timer();
+            tmr.Interval = 10000;
+            tmr.Tick += new EventHandler(tmr_FreeVehicle);
+            tmr.Enabled = true;
+        }
+        void tmr_FreeVehicle(object sender, EventArgs e)
+        {
+            lblCar.Text = busPK.getCarFree(ParkingID).ToString();
+            lblMotor.Text = busPK.getMotorFree(ParkingID).ToString();
         }
 
         //capture photo
@@ -1723,10 +1742,10 @@ namespace SPS
                 }
 
             }
-            if (e.KeyCode == Keys.F12)
-            {
-                Unsubscribe();
-            }
+            //if (e.KeyCode == Keys.F12)
+            //{
+            //    Unsubscribe();
+            //}
         }
 
         //private void txtCardNo_Leave(object sender, EventArgs e) //sau thoi gian 20s tu dong focus vao txtCardNo
@@ -1749,44 +1768,6 @@ namespace SPS
             Properties.Settings.Default.Save();
         }
 
-        //khoa click chuot
-        int sub = 0;
-        public void Subscribe()
-        {
-            // Note: for the application hook, use the Hook.AppEvents() instead
-            //Unsubscribe();
-            sub = 1;
-            m_GlobalHook = Hook.AppEvents();
-
-            m_GlobalHook.MouseDownExt += GlobalHookMouseDownExt;
-            m_GlobalHook.KeyPress += GlobalHookKeyPress;
-        }
-
-        private void GlobalHookKeyPress(object sender, KeyPressEventArgs e)
-        {
-            Console.WriteLine("KeyPress: \t{0}", e.KeyChar);
-        }
-
-        private void GlobalHookMouseDownExt(object sender, MouseEventExtArgs e)
-        {
-            Console.WriteLine("MouseDown: \t{0}; \t System Timestamp: \t{1}", e.Button, e.Timestamp);
-
-            // uncommenting the following line will suppress the middle mouse button click
-             if (e.Button == MouseButtons.Middle|| e.Button == MouseButtons.Left|| e.Button == MouseButtons.Right) { e.Handled = true; }
-        }
-
-        public void Unsubscribe()
-        {
-            if (sub == 1)
-            {
-                m_GlobalHook.MouseDownExt -= GlobalHookMouseDownExt;
-                m_GlobalHook.KeyPress -= GlobalHookKeyPress;
-
-                //It is recommened to dispose it
-                m_GlobalHook.Dispose();
-                sub = 0;
-            }
-            
-        }
+        
     }
 }
