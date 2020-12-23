@@ -26,6 +26,13 @@ namespace DAL_SPS
             da.Fill(dtTrans);
             return dtTrans;
         }
+        public DataTable getTransactionTimeOutisNull(string license)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select TOP(1) * from [Transaction] where LicensePlates = '" + license + "' AND TimeOutv is NULL  ORDER BY TimeIn DESC", conn);
+            DataTable dtTrans = new DataTable();
+            da.Fill(dtTrans);
+            return dtTrans;
+        }
         public DataTable getTransactionbyLicense(string license)
         {
             SqlDataAdapter da = new SqlDataAdapter("select * from [Transaction] where LicensePlates = '" + license + "'", conn);

@@ -24,13 +24,21 @@ namespace BUS_SPS
             }
             return false;
         }
+        public bool checkLicenseinPlace(string license) //kiem tra bien so xe co trong bai khong (TimeOuv != NULL)
+        {
+            if (dalTrans.getTransactionTimeOutisNull(license) != null && dalTrans.getTransactionTimeOutisNull(license).Rows.Count > 0)
+            {
+                return true; //xe trong bai
+            }
+            return false;
+        }
         public string checkLicenseTimeOut(string license) //thoi gian ra cua xe (neu = NULL : xe van con trong bai xe)
         {
             if (dalTrans.getTransactionOrdebyTimeIn(license) != null && dalTrans.getTransactionOrdebyTimeIn(license).Rows.Count > 0)
             {
                 return dalTrans.getTransactionOrdebyTimeIn(license).Rows[0][2].ToString();
             }
-            return "";
+            return "0";
         }
         public bool insertTransaction(DTO_Transaction trans)
         {

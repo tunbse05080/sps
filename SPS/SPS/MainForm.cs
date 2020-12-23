@@ -104,7 +104,7 @@ namespace SPS
                 toolStripComboBox1.Enabled = false;
             }
             txtCardNo.Focus();
-            
+
         }
 
         #region Load Form
@@ -245,6 +245,9 @@ namespace SPS
         //nhap bien so  xe bang  tay khi click nut Nhap
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            txtLicense2.BackColor = Color.White;
+            txtLicense1.BackColor = Color.White;
+            txtCardNo.Focus();
             if (working == 0)
             {
                 Error(13);
@@ -253,7 +256,6 @@ namespace SPS
             //chkLicense = true;
             showInformation();
             manualEnter();
-            txtCardNo.Focus();
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -276,7 +278,7 @@ namespace SPS
                     btnLogin.Text = "Đăng nhập";
                     lblSecureName.Text = "_ _ _";
                     m_GlobalHook.Unsubscribe();
-                    
+
                     return;
                 }
             }
@@ -354,7 +356,7 @@ namespace SPS
                 userID = form2.userID;
                 working = 1;
                 m_GlobalHook.Subscribe();
-                
+
                 updateUser(0);
                 updateAccountID(accountID);
                 btnLogin.Text = "Đăng xuất";
@@ -489,7 +491,7 @@ namespace SPS
 
         void tmr_Tick(object sender, EventArgs e)
         {
-            lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt - dd/MM/yyyy");           
+            lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt - dd/MM/yyyy");
         }
         //Update Free Motor and Car
         private void StartFreeVehicle()
@@ -645,19 +647,63 @@ namespace SPS
                 return;
             }
 
-            if (busTrans.checkLicense(lblLicense.Text) == true)
-            {
-                //lblTicket.Text = "haha";
-                // lblTimeOut.Text = busTrans.checkLicenseTimeOut(lblLicense.Text);
+            //if (busTrans.checkLicense(lblLicense.Text) == true)
+            //{
+            //    //lblTicket.Text = "haha";
+            //    // lblTimeOut.Text = busTrans.checkLicenseTimeOut(lblLicense.Text);
 
-                if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == "")
+            //    if (GateID == 0 && busTrans.checkLicenseTimeOut(lblLicense.Text) == "")
+            //    {
+            //        //lblTicket.Text = "hahaha";
+            //        chkLicense = false;
+            //        Error(9);
+            //        return;
+            //    }
+            //    else if (GateID == 1 && busTrans.checkLicenseTimeOut(lblLicense.Text) != "")
+            //    {
+            //        chkLicense = false;
+            //        Error(10);
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        TransID = busTrans.getTransactionID(lblLicense.Text);
+            //        if (GateID == 1 && (busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID)))
+            //        {
+            //            chkLicense = false;
+            //            Error(11);
+            //            return;
+            //        }
+            //    }
+            //    checkTicketType();
+            //}
+
+            //if (GateID == 0 && busTrans.checkLicense(lblLicense.Text) == false)
+            //{
+            //    checkTicketType();
+            //}
+            //if (GateID == 1 && busTrans.checkLicense(lblLicense.Text) == false)
+            //{
+            //    chkLicense = false;
+            //    Error(10);
+            //    return;
+            //}
+            if (GateID == 0) //cong vao
+            {
+                if (busTrans.checkLicenseinPlace(lblLicense.Text) == true) //xe dang trong bai
                 {
-                    //lblTicket.Text = "hahaha";
                     chkLicense = false;
                     Error(9);
                     return;
                 }
-                else if (GateID == 1 && busTrans.checkLicenseTimeOut(lblLicense.Text) != "")
+                else
+                {
+                    checkTicketType();
+                }
+            }
+            if (GateID == 1) //cong ra
+            {
+                if (busTrans.checkLicenseinPlace(lblLicense.Text) == false) //xe khong trong bai
                 {
                     chkLicense = false;
                     Error(10);
@@ -666,7 +712,7 @@ namespace SPS
                 else
                 {
                     TransID = busTrans.getTransactionID(lblLicense.Text);
-                    if (GateID == 1 && (busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID)))
+                    if ((busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID)))
                     {
                         chkLicense = false;
                         Error(11);
@@ -674,17 +720,6 @@ namespace SPS
                     }
                 }
                 checkTicketType();
-            }
-
-            if (GateID == 0 && busTrans.checkLicense(lblLicense.Text) == false)
-            {
-                checkTicketType();
-            }
-            if (GateID == 1 && busTrans.checkLicense(lblLicense.Text) == false)
-            {
-                chkLicense = false;
-                Error(10);
-                return;
             }
         }
 
@@ -1630,12 +1665,12 @@ namespace SPS
             //    //textBox2.Text = DateTime.Now.ToString("dd/MM/yyyy ");
             //}
 
-            if (txtLicense1.Text.Length == 3)
+            if (txtLicense1.Text.Trim().Length == 3)
             {
                 lblVehicle.Text = "Xe Ôtô";
                 vehicleType = 1;
             }
-            else if (txtLicense1.Text.Length == 4)
+            else if (txtLicense1.Text.Trim().Length == 4)
             {
                 lblVehicle.Text = "Xe Máy";
                 vehicleType = 0;
@@ -1717,7 +1752,7 @@ namespace SPS
                 {
                     txtLicense1.Select();
                     txtLicense1.BackColor = Color.Yellow;
-                    txtLicense2.BackColor = Color.White;                   
+                    txtLicense2.BackColor = Color.White;
                     if (txtLicense1.Text.TrimStart().Equals(""))
                     {
                         txtLicense1.Clear();
@@ -1773,6 +1808,6 @@ namespace SPS
             Properties.Settings.Default.Save();
         }
 
-        
+
     }
 }
