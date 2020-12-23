@@ -1608,12 +1608,15 @@ namespace SPS
                 else if (enterMethod == 0)
                 {
                     autoCapture();
+                    lblCardNo.Focus();
                 }
                 else
                 {
                     GetVehicleInfo();
+                    lblCardNo.Focus();
                 }
             }
+            //
         }
         //hien thi thong tin
         private void showInformation()
@@ -1708,7 +1711,7 @@ namespace SPS
         int a = 0;
         private void MainForm_KeyDown(object sender, KeyEventArgs e) //su kien phim tat
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Space)
             {
                 if (a == 0)
                 {
@@ -1733,7 +1736,7 @@ namespace SPS
                     a = 0;
                 }
             }
-            if (e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Enter)
             {
                 txtCardNo.Select();
                 txtLicense2.BackColor = Color.White;
