@@ -510,13 +510,17 @@ namespace SPS
         //capture photo
         private void CapturePhoto()
         {
-            pictureBox1.Image = FixedSize(pictureBox_WC.Image, 533, 300);
+            pictureBox1.Image = ResizeImage(pictureBox_WC.Image, 1280, 720);
             if (System.IO.File.Exists(m_path + "aa.bmp")) //xoa file aa.bmp neu file da ton tai
             {
                 System.IO.File.Delete(m_path + "aa.bmp");
             }
             pictureBox1.Image.Save(m_path + "aa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
-
+            if (System.IO.File.Exists(m_path + "aaa.bmp")) //xoa file aa.bmp neu file da ton tai
+            {
+                System.IO.File.Delete(m_path + "aaa.bmp");
+            }
+            FixedSize(pictureBox_WC.Image, 533, 300).Save(m_path + "aaa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
 
         }
         //resize photo
@@ -810,7 +814,7 @@ namespace SPS
                                 {
                                     Thread.CurrentThread.IsBackground = true;
                                     /* run your code here */
-                                    pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                    pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                     insertImage();
                                     //Console.WriteLine("Hello, world");
                                 }).Start();
@@ -834,7 +838,7 @@ namespace SPS
                                 {
                                     Thread.CurrentThread.IsBackground = true;
                                     /* run your code here */
-                                    pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                    pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                     insertImage();
                                     //Console.WriteLine("Hello, world");
                                 }).Start();
@@ -868,7 +872,7 @@ namespace SPS
                             {
                                 Thread.CurrentThread.IsBackground = true;
                                 /* run your code here */
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                 updateImage();
                                 //Console.WriteLine("Hello, world");
                             }).Start();
@@ -894,7 +898,7 @@ namespace SPS
                             {
                                 Thread.CurrentThread.IsBackground = true;
                                 /* run your code here */
-                                pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
+                                pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                 updateImage();
                                 //Console.WriteLine("Hello, world");
                             }).Start();
