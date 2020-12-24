@@ -402,13 +402,22 @@ namespace SPS
             {
                 cameraCapture.Stop();
             }
+
             try
             {
                 cameraCapture = new dess::Emgu.CV.Capture(cameraLink);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameWidth, 1280);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.FrameHeight, 720);
                 cameraCapture.SetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.Fps, 15);
-                cameraCapture.ImageGrabbed += ProcessFrame;
+                if ("rtsp".Equals(cameraLink))
+                {
+                    cameraCapture.ImageGrabbed += ProcessFrame;
+                }
+                else
+                {
+                    cameraCapture.ImageGrabbed += ProcessClip;
+                }
+
                 cameraCapture.Start();
             }
             catch (Exception)
@@ -431,6 +440,38 @@ namespace SPS
                 }
                 throw;
             }
+
+
+        }
+        private void ProcessClip(object sender, EventArgs arg)
+        {
+            dess::Emgu.CV.Mat image = new dess::Emgu.CV.Mat();
+            dess::Emgu.CV.Mat frame_copy = new dess::Emgu.CV.Mat();
+            cameraCapture.Retrieve(image);
+            if (image != null)
+            {
+                frame_copy = image;
+                pictureBox_WC.Image = frame_copy.ToImage<dess::Emgu.CV.Structure.Bgr, byte>().Bitmap;
+                FreeMemory(image);
+            }
+            else
+            {
+                lblGate.Text = "Khong co camera";
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                // get response
+                WebResponse resp = req.GetResponse();
+                //get stream
+                Stream stream = resp.GetResponseStream();
+                if (!stream.CanRead)
+                {
+                    //try reconnecting the camera
+                    captureButtonClick(null, null); //pause
+                    cameraCapture.Dispose();//get rid
+                    captureButtonClick(null, null); //reconnect
+                }
+            }
+            double FrameRate = cameraCapture.GetCaptureProperty(dess::Emgu.CV.CvEnum.CapProp.Fps);
+            Thread.Sleep((int)(1000.0 / FrameRate));
         }
         private void ProcessFrame(object sender, EventArgs arg)
         {
@@ -813,11 +854,11 @@ namespace SPS
                                 new Thread(() =>
                                 {
                                     Thread.CurrentThread.IsBackground = true;
-                                    /* run your code here */
+                                        /* run your code here */
                                     pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                     insertImage();
-                                    //Console.WriteLine("Hello, world");
-                                }).Start();
+                                        //Console.WriteLine("Hello, world");
+                                    }).Start();
 
                             }
                             else
@@ -837,11 +878,11 @@ namespace SPS
                                 new Thread(() =>
                                 {
                                     Thread.CurrentThread.IsBackground = true;
-                                    /* run your code here */
+                                        /* run your code here */
                                     pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                     insertImage();
-                                    //Console.WriteLine("Hello, world");
-                                }).Start();
+                                        //Console.WriteLine("Hello, world");
+                                    }).Start();
 
                             }
                             else
@@ -871,11 +912,11 @@ namespace SPS
                             new Thread(() =>
                             {
                                 Thread.CurrentThread.IsBackground = true;
-                                /* run your code here */
+                                    /* run your code here */
                                 pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                 updateImage();
-                                //Console.WriteLine("Hello, world");
-                            }).Start();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();
 
                         }
                         else
@@ -897,11 +938,11 @@ namespace SPS
                             new Thread(() =>
                             {
                                 Thread.CurrentThread.IsBackground = true;
-                                /* run your code here */
+                                    /* run your code here */
                                 pictureLink = UploadImageToImageShack(m_path + "aaa.bmp");
                                 updateImage();
-                                //Console.WriteLine("Hello, world");
-                            }).Start();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();
 
                         }
                     }
@@ -940,11 +981,11 @@ namespace SPS
                                 new Thread(() =>
                                 {
                                     Thread.CurrentThread.IsBackground = true;
-                                    /* run your code here */
+                                        /* run your code here */
                                     pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                     insertImage();
-                                    //Console.WriteLine("Hello, world");
-                                }).Start();
+                                        //Console.WriteLine("Hello, world");
+                                    }).Start();
                             }
                             else
                             {
@@ -963,11 +1004,11 @@ namespace SPS
                                 new Thread(() =>
                                 {
                                     Thread.CurrentThread.IsBackground = true;
-                                    /* run your code here */
+                                        /* run your code here */
                                     pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                     insertImage();
-                                    //Console.WriteLine("Hello, world");
-                                }).Start();
+                                        //Console.WriteLine("Hello, world");
+                                    }).Start();
 
                             }
                             else
@@ -999,11 +1040,11 @@ namespace SPS
                             new Thread(() =>
                             {
                                 Thread.CurrentThread.IsBackground = true;
-                                /* run your code here */
+                                    /* run your code here */
                                 pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                 updateImage();
-                                //Console.WriteLine("Hello, world");
-                            }).Start();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();
 
                         }
                         else
@@ -1027,11 +1068,11 @@ namespace SPS
                             new Thread(() =>
                             {
                                 Thread.CurrentThread.IsBackground = true;
-                                /* run your code here */
+                                    /* run your code here */
                                 pictureLink = UploadImageToImageShack(m_path + "aa.bmp");
                                 updateImage();
-                                //Console.WriteLine("Hello, world");
-                            }).Start();
+                                    //Console.WriteLine("Hello, world");
+                                }).Start();
 
                         }
                     }
