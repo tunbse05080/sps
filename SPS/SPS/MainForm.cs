@@ -128,7 +128,7 @@ namespace SPS
             {
                 btnCapture.Enabled = false;
                 btnEnter.Enabled = false;
-                btnLogin.Text = "Đăng nhập";
+                btnLogin.Text = "Đăng nhập (F1)";
             }
             full_tesseract = new TesseractProcessor();
             bool succeed = full_tesseract.Init(m_path, m_lang, 3);
@@ -275,7 +275,7 @@ namespace SPS
                     updateAccountID(0); //dang xuat, luu accountID la 0
                     btnCapture.Enabled = false;
                     btnEnter.Enabled = false;
-                    btnLogin.Text = "Đăng nhập";
+                    btnLogin.Text = "Đăng nhập (F1)";
                     lblSecureName.Text = "_ _ _";
                     m_GlobalHook.Unsubscribe();
 
@@ -359,7 +359,7 @@ namespace SPS
 
                 updateUser(0);
                 updateAccountID(accountID);
-                btnLogin.Text = "Đăng xuất";
+                btnLogin.Text = "Đăng xuất (F1)";
                 btnCapture.Enabled = true;
                 btnEnter.Enabled = true;
                 lblSecureName.Text = busUser.getNamebyAccountID(accountID);
