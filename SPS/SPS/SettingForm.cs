@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -31,51 +32,52 @@ namespace SPS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtStream.Text) && chkCameraIP.Checked==true)
+            if (String.IsNullOrEmpty(txtStream.Text) && chkCameraIP.Checked == true)
             {
-                MessageBox.Show("Nhập địa chỉ CameraIP", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chọn CameraIP", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                ParkingName = comboBoxEx1.Text;
-                ParkingID = Convert.ToInt32(comboBoxEx1.SelectedValue);
-                updateParking(ParkingID);
-                if (rbtIn.Checked == true)
-                {
-                    SelectedGate = 0;
-                    updateGate(0);
-                }
-                else
-                {
-                    SelectedGate = 1;
-                    updateGate(1);
-                }
-                if (swbtnEnter.Value == true)
-                {
-                    EnterMethod = 1;
-                    updateMethod(1);
-                }
-                else
-                {
-                    EnterMethod = 0;
-                    updateMethod(0);
-                }
-                if (chkCameraIP.Checked == true)
-                {
-                    cameraMethod = 1;
-                    cameraLink = txtStream.Text;
-                    updateCameraMethod(1);
-                    updateCameraStream(txtStream.Text);
-                }
-                else
-                {
-                    cameraMethod = 0;
-                    updateCameraMethod(0);
-                }
-                this.Close();
+            ParkingName = comboBoxEx1.Text;
+            ParkingID = Convert.ToInt32(comboBoxEx1.SelectedValue);
+            updateParking(ParkingID);
+            if (rbtIn.Checked == true)
+            {
+                SelectedGate = 0;
+                updateGate(0);
             }
-            
+            else
+            {
+                SelectedGate = 1;
+                updateGate(1);
+            }
+            if (swbtnEnter.Value == true)
+            {
+                EnterMethod = 1;
+                updateMethod(1);
+            }
+            else
+            {
+                EnterMethod = 0;
+                updateMethod(0);
+            }
+            if (chkCameraIP.Checked == true)
+            {
+                cameraMethod = 1;
+                cameraLink = comboBoxEx2.GetItemText(comboBoxEx2.SelectedItem);
+                updateCameraMethod(1);
+                updateCameraStream(comboBoxEx2.GetItemText(comboBoxEx2.SelectedItem));
+                // updateComboCamera(comboBoxEx2.SelectedIndex);
+            }
+            else
+            {
+                cameraMethod = 0;
+                updateCameraMethod(0);
+            }
+            this.Close();
+             }
+
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
@@ -85,6 +87,7 @@ namespace SPS
             getMethod();
             getCameraMethod();
             getCameraStream();
+            getCameraCombobox();
             if (working == 0)
             {
                 getParking();
@@ -101,10 +104,12 @@ namespace SPS
             if (chkCameraIP.Checked == false)
             {
                 txtStream.Enabled = false;
+                comboBoxEx2.Enabled = false;
             }
             else
             {
                 txtStream.Enabled = true;
+                comboBoxEx2.Enabled = true;
             }
             comboBoxEx1.Select();
         }
@@ -176,12 +181,29 @@ namespace SPS
         private void getCameraStream()
         {
             var streamLink = Properties.Settings.Default.rtsp;
-            txtStream.Text = streamLink;
+            //comboBoxEx2.SelectedText = streamLink;
             cameraLink = streamLink;
         }
         private void updateCameraStream(string value)
         {
             Properties.Settings.Default.rtsp = value;
+            Properties.Settings.Default.Save();
+        }
+        private void getCameraCombobox()
+        {
+            comboBoxEx2.DropDownStyle = ComboBoxStyle.DropDownList;
+            var comboCamera = Properties.Settings.Default.comboCamera;
+            string[] lineOfContents = File.ReadAllLines(@".\MyCamera.ini");
+            foreach (var line in lineOfContents)
+            {
+                string[] tokens = line.Split(',');
+                comboBoxEx2.Items.Add(tokens[0]);
+            }
+            comboBoxEx2.SelectedIndex = comboBoxEx2.FindStringExact(cameraLink);
+        }
+        private void updateComboCamera(int value)
+        {
+            Properties.Settings.Default.comboCamera = value;
             Properties.Settings.Default.Save();
         }
         private void getCameraMethod()
@@ -241,10 +263,12 @@ namespace SPS
             if (chkCameraIP.Checked == false)
             {
                 txtStream.Enabled = false;
+                comboBoxEx2.Enabled = false;
             }
             else
             {
                 txtStream.Enabled = true;
+                comboBoxEx2.Enabled = true;
             }
         }
         //giu focus o combobox

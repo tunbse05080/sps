@@ -94,5 +94,17 @@ namespace SPS.Properties {
                 this["cameraIP"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int comboCamera {
+            get {
+                return ((int)(this["comboCamera"]));
+            }
+            set {
+                this["comboCamera"] = value;
+            }
+        }
     }
 }
