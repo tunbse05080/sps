@@ -588,7 +588,7 @@ namespace SPS
             {
                 System.IO.File.Delete(m_path + "aaa.bmp");
             }
-            FixedSize(pictureBox_WC.Image, 533, 300).Save(m_path + "aaa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            FixedSize(pictureBox_WC.Image, 400, 225).Save(m_path + "aaa.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
 
         }
         //resize photo
