@@ -110,7 +110,7 @@ namespace SPS
         #region Load Form
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
+            //this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             m_KeyHook.Install();
