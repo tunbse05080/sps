@@ -32,7 +32,7 @@ namespace SPS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtStream.Text) && chkCameraIP.Checked == true)
+            if (String.IsNullOrEmpty(comboBoxEx2.GetItemText(comboBoxEx2.SelectedItem)) && chkCameraIP.Checked == true)
             {
                 MessageBox.Show("Chọn CameraIP", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
