@@ -25,6 +25,12 @@ namespace DAL_SPS
             da.Fill(dtPrice);
             return dtPrice;
         }
-
+        public DataTable getCurrentPrice(int parkingID, int vehicleType, DateTime Timein)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select TOP(1) * from Price where ParkingPlaceID = " + parkingID + " AND TypeOfvehicle = " + vehicleType + " AND TimeOfApply <= '"+ Timein+"'", conn);
+            DataTable dtPrice = new DataTable();
+            da.Fill(dtPrice);
+            return dtPrice;
+        }
     }
 }

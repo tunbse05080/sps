@@ -1127,21 +1127,21 @@ namespace SPS
             }
             DateTime TimeOut = DateTime.Now;
             //lay thong tin block
-            int timeFirstBlock = busPrice.gettimeFirstBlock(ParkingID, vehicleType);
-            int timeNextBlock = busPrice.gettimeNextBlock(ParkingID, vehicleType);
+            int timeFirstBlock = busPrice.gettimeFirstBlock(ParkingID, vehicleType, TimeIn);
+            int timeNextBlock = busPrice.gettimeNextBlock(ParkingID, vehicleType, TimeIn);
 
             //tinh thoi gian gui xe
             int numberOfDays = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalDays));
             int numberOfhours = Convert.ToInt32(Math.Ceiling((TimeOut - TimeIn).TotalHours));
             int numberOfBlocks = 0;
             //lay thong tin gia ve
-            double dailyPrice = busPrice.getDailyPrice(ParkingID, vehicleType);
+            double dailyPrice = busPrice.getDailyPrice(ParkingID, vehicleType, TimeIn);
             if (Convert.ToInt32(dailyPrice) == 0)
             {
                 numberOfBlocks = ((numberOfhours - timeFirstBlock) > 0) ? 1 + Convert.ToInt32(Math.Ceiling((Convert.ToDouble(numberOfhours - timeFirstBlock) / Convert.ToDouble(timeNextBlock)))) : 1;
             }
-            double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, vehicleType);
-            double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, vehicleType);
+            double firstBlockPrice = busPrice.getFirstBlockPrice(ParkingID, vehicleType, TimeIn);
+            double nextBlockPrice = busPrice.getNextBlockPrice(ParkingID, vehicleType, TimeIn);
             if (ticketType == 0 && expiredTicket == false)
             {
                 price = 0;
@@ -1155,7 +1155,7 @@ namespace SPS
             labelX11.BackColor = Color.Yellow;
             lblCost.BackColor = Color.Yellow;
             labelX11.Text = "Số tiền:";
-            lblCost.Text = price.ToString() + "VND";
+            lblCost.Text = price.ToString("000") + " VND";
 
         }
 
