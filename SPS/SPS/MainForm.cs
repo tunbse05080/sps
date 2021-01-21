@@ -804,7 +804,7 @@ namespace SPS
 
                 if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text))
                 {
-
+                    chkLicense = false;
                     Error(11);
                     return;
                 }
