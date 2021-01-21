@@ -784,7 +784,7 @@ namespace SPS
                 else
                 {
                     TransID = busTrans.getTransactionID(lblLicense.Text);
-                    if ((busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID)))
+                    if ((busCard.getCardID(lblCardNo.Text) != busTrans.getCardID(TransID) || ParkingID != busTrans.getParkingID(TransID))) //kiem tra so the co dung khong
                     {
                         chkLicense = false;
                         Error(11);
@@ -802,10 +802,18 @@ namespace SPS
             if (busTicket.checkLicense(lblLicense.Text) == true)
             {
 
-                if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text))
+                if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text) && busCard.getCardStatus(lblCardNo.Text)==1)
                 {
                     chkLicense = false;
                     Error(11);
+                    return;
+                }
+                if (busCard.getCardID(lblCardNo.Text) != busTicket.getCardIDbyLicense(lblLicense.Text) && busCard.getCardStatus(lblCardNo.Text) == 0)
+                {
+                    lblTicket.Text = "Vé ngày/block";
+                    ticketType = 1;
+                    chkLicense = true;
+                    Passed(6);
                     return;
                 }
                 if (busTicket.getParkingIDbyLicense(lblLicense.Text) != ParkingID) //ve thang gui khong dung bai, tinh nhu ve ngay
